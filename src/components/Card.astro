@@ -1,7 +1,22 @@
 ---
 import "../styles/global.css";
+import Tag from "./Tag.astro"
+export interface Cards{
+    
+}
 ---
 
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+
+<div
+    class="text-3xl font-bold underline">
+    <div>
+        Title
+    </div>
+    <div>
+        Content
+    </div>
+    <div 
+        class="flex justify-center items-center">
+        <Tag/>
+    </div>
+</div>

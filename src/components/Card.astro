@@ -1,9 +1,18 @@
 ---
 import "../styles/global.css";
 import Tag from "./Tag.astro"
-export interface Cards{
-    
+export interface TagData{
+    color : string;
+    content : string;
 }
+
+const tags: TagData[] = [
+    {color: "blue" , content: "React"},
+    {color: "green" , content: "Tailwind"},
+    {color: "yellow" , content: "Electron"},
+    {color: "orange" , content: "Chrome Extension"},
+    {color: "Purple" , content: "Google Map API"}
+]
 ---
 
 
@@ -17,6 +26,7 @@ export interface Cards{
     </div>
     <div 
         class="flex justify-center items-center">
+        {}
         <Tag/>
     </div>
 </div>

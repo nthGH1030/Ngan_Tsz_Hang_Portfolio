@@ -12,26 +12,14 @@ import "../styles/global.css";
 <div>
     <div>
         <nav>
-            <a href = "#about" class = "nav-link" target = "about">About</a>
-            <a href = "#experience" class = "nav-link" target = "experience">Experience</a>
-            <a href = "#qualification" class = "nav-link" target = "qualificaiton">Qualification</a>
-            <a href = "#contact" class = "nav-link" target = "contact">Contact</a>
+            <a href = "#about" class = "nav-link" >About</a>
+            <a href = "#experience" class = "nav-link" >Experience</a>
+            <a href = "#qualification" class = "nav-link" >Qualification</a>
+            <a href = "#contact" class = "nav-link" >Contact</a>
         </nav>
     </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded' , () => {
-        const navLinks = document.querySelectorAll('.nav-link')
-        navLinks.forEach(link => {
-            const target = link.getAttribute('target')
-            const targetEle = document.querySelector(`#${target}`)
-            if(targetEle){
-                targetEle.scrollIntoView({
-                    behavior : 'smooth',
-                    block : 'start'
-                })
-            }
-        })
-    })
+
 </script>

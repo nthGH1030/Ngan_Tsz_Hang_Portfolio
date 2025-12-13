@@ -1,5 +1,4 @@
 ---
-import type { string } from "astro:schema";
 import "../styles/global.css";
 import Tag from "./Tag.astro"
 import { FaGithub } from "react-icons/fa";
@@ -7,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 export interface ProjData{
     title : string;
     content : string;
+    href?: string;
 }
 
 export interface TagData{
@@ -22,9 +22,10 @@ const tags: TagData[] = [
     {color: "Purple" , content: "Google Map API"}
 ]
 
-const {title, content} = Astro.props;
+const {title, content, href} = Astro.props;
+
 ---
-<div>
+<div id="card" data-href={href}>
     <div class = "hidden md:block">
         this is for desktop version
     </div>
@@ -50,3 +51,20 @@ const {title, content} = Astro.props;
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded' , () => {
+        const card = document.getElementById('card');
+        if(card){
+            card.addEventListener('click' ,() => {
+                console.log('card is clicked')
+                const href = card.dataset.href
+                if(href){
+                    window.open(href)
+                }
+            })
+        }
+    })
+    
+    
+</script>

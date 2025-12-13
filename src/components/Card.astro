@@ -2,6 +2,7 @@
 import type { string } from "astro:schema";
 import "../styles/global.css";
 import Tag from "./Tag.astro"
+import { FaGithub } from "react-icons/fa";
 
 export interface ProjData{
     title : string;
@@ -23,22 +24,29 @@ const tags: TagData[] = [
 
 const {title, content} = Astro.props;
 ---
-
 <div>
-    <div class = "text-red-500">
-        Featured
+    <div class = "hidden md:block">
+        this is for desktop version
     </div>
-    <div class = "text-lg md:text-3xl font-bold">
-        {title}
-    </div>
-    <div class = "text-base md:text-3xl mt-3">
-        <p>
-            {content}
-        </p>
-    </div>
-    <div 
-        class="flex justify-center items-center">
-        {}
-        <Tag/>
+    <div class = "md:hidden rounded-lg bg-gray-200/50 p-2">
+        <div class = "text-red-500">
+            Featured
+        </div>
+        <div class = "text-lg md:text-3xl font-bold">
+            {title}
+        </div>
+        <div class = "text-base md:text-3xl mt-3">
+            <p>
+                {content}
+            </p>
+        </div>
+        <div 
+            class="flex justify-center items-center">
+            {}
+            <Tag/>
+        </div>
+        <div>
+            <FaGithub className = "text-3xl"/>
+        </div>
     </div>
 </div>

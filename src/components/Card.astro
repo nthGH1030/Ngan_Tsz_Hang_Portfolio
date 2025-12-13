@@ -1,6 +1,13 @@
 ---
+import type { string } from "astro:schema";
 import "../styles/global.css";
 import Tag from "./Tag.astro"
+
+export interface ProjData{
+    title : string;
+    content : string;
+}
+
 export interface TagData{
     color : string;
     content : string;
@@ -13,16 +20,21 @@ const tags: TagData[] = [
     {color: "orange" , content: "Chrome Extension"},
     {color: "Purple" , content: "Google Map API"}
 ]
+
+const {title, content} = Astro.props;
 ---
 
-
-<div
-    class="text-3xl font-bold underline">
-    <div>
-        Title
+<div>
+    <div class = "text-red-500">
+        Featured
     </div>
-    <div>
-        Content
+    <div class = "text-lg md:text-3xl font-bold">
+        {title}
+    </div>
+    <div class = "text-base md:text-3xl mt-3">
+        <p>
+            {content}
+        </p>
     </div>
     <div 
         class="flex justify-center items-center">

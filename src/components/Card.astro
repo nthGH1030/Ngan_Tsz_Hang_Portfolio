@@ -3,28 +3,84 @@ import "../styles/global.css";
 import Tag from "./Tag.astro"
 import { FaGithub } from "react-icons/fa";
 
-export interface ProjData{
+export interface Props{
     title : string;
     content : string;
+    tagNames: string[];
     href?: string;
 }
 
 export interface TagData{
-    color : string;
-    content : string;
+    name : string;
+    category : string;
 }
 
-const tags: TagData[] = [
-    {color: "blue" , content: "React"},
-    {color: "green" , content: "Tailwind"},
-    {color: "yellow" , content: "Electron"},
-    {color: "orange" , content: "Chrome Extension"},
-    {color: "Purple" , content: "Google Map API"}
-]
+const allTags: TagData[] = [
+    {name: "JavaScript", category: "language"},
+    {name: "TypeScript", category: "language"},
+    {name: "HTML", category: "language"},
+    {name: "CSS", category: "language"},
+    {name: "React", category: "framework"},
+    {name: "Next.js", category: "framework"},
+    {name: "Tailwind", category: "framework"},
+    {name: "Electron", category: "framework"},
+    {name: "Vercel", category: "deployment"},
+    {name: "Chrome Extension", category: "deployment"},
+    {name: "Azure", category: "deployment"},
+    {name: "Google Map API", category: "api"},
+    {name: "openAI", category: "api"},
+];
 
-const {title, content, href} = Astro.props;
+const colorMap = {
+    language : {
+        base : "blue",
+        variants: ["bg-blue-300" , "bg-blue-400" , "bg-blue-500" , "bg-blue-600"]
+    },
+    framework : {
+        base : "green",
+        variants: ["bg-green-300" , "bg-green-400" , "bg-green-500" , "bg-green-600"]
+    },
+    deployment: {
+        base: "purple",
+        variants: ["bg-purple-300" , "bg-purple-400" , "bg-purple-500" , "bg-purple-600"]
+    },
+    api : {
+        base: "orange",
+        variants: ["bg-orange-300" , "bg-orange-400" , "bg-orange-500" , "bg-orange-600"]
+    }
+}
 
+const {title, content, tagNames, href } = Astro.props;
+
+function getSelectedTag(tagNames: string[]) {
+
+    const selectedTags = allTags.map(tag => {
+
+        if(tagNames.includes(tag.name)){
+            return tag
+        }
+    }).filter(Boolean) as TagData[]
+
+
+    return selectedTags
+
+}
+
+function getTagColor(tag: TagData, idx : number){
+    //handle non-valid tag
+    //divide the leng of the array with the index and get the remainder.
+    //assign the color array using the remainder as index.
+    const categoryColors = colorMap[tag.category as keyof typeof colorMap];
+    if(!categoryColors) return "gray-500"
+    const variantIdx = idx % categoryColors.variants.length;
+    return categoryColors.variants[variantIdx]
+}
+
+const selectedTags = getSelectedTag(tagNames)
+//console.log('selectedTags are' , selectedTags)
 ---
+
+
 <div id="card" data-href={href}>
     <div class = "hidden md:block">
         this is for desktop version
@@ -42,9 +98,14 @@ const {title, content, href} = Astro.props;
             </p>
         </div>
         <div 
-            class="flex justify-center items-center">
-            {}
-            <Tag/>
+            class="flex justify-start items-center gap-2 my-2">
+            {selectedTags.map((tag, idx) => (
+                <Tag
+                    color = {getTagColor(tag, idx)}
+                    content = {tag.name}
+                />
+            ))}
+            
         </div>
         <div>
             <FaGithub className = "text-3xl"/>
@@ -53,6 +114,7 @@ const {title, content, href} = Astro.props;
 </div>
 
 <script>
+
     document.addEventListener('DOMContentLoaded' , () => {
         const card = document.getElementById('card');
         if(card){
@@ -65,6 +127,8 @@ const {title, content, href} = Astro.props;
             })
         }
     })
-    
+/*
+
+*/
     
 </script>

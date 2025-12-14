@@ -1,8 +1,10 @@
 ---
 import "../styles/global.css";
+const {color , content} = Astro.props
+console.log(color)
 ---
 
 <div 
-    class = "bg-red">
-    I am a tag
+    class = `rounded-full px-2 py-1 ${color}`>
+    {content}
 </div>

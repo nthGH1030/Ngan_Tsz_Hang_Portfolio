@@ -7,11 +7,30 @@ import Card from './Card.astro'
         <h1 class = "whitespace-nowrap font-bold text-xl md:3xl">4. Work</h1>
         <div class = "w-full bg-gray-300 h-px ml-2"></div>
     </div>
-    <div class = "mx-8 md:mx-25">
+    <div class = "flex flex-col justify-start items-center gap-3 mx-8 md:mx-25">
         <Card
-            title = "Payment form filler"
+            title = "Lunch Roulette"
+            content = {`A web app that recommand restaurants, categories by location, crusines
+            . Spin the roulette to decide what to get for lunch!`}
+            href = {"https://lunch-roulette-phi.vercel.app/"}
+        />
+        <Card
+            title = "Landlord Provision Chatbot"
+            content = {`A chatbot that recommand industry standard premise provision for 
+            leasing commercial real estate, such as retail, restaurant`}
+            href = {"placeholder"}
+        />
+        <Card
+            title = "LLM-Token-Checker"
+            content = {`A chrome extension that tracks the amount of free token you have
+            and refresh time for LLM chatbot such as POE.com, Grok`}
+            href = {"placeholder"}
+        />
+        <Card
+            title = "Payment Form filler"
             content = {`An desktop Application that takes in a master table in an excel file,
             extract its content, check the format and paste onto a separate excel form`}
+            href = {"placeholder"}
         />
     </div>
     

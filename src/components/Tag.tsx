@@ -7,7 +7,7 @@ interface TagProps {
 
 const Tag: React.FC<TagProps> = ({ color, content }) => {
     return (
-        <div className={`rounded-full px-2 py-1 ${color}`}>
+        <div className={`rounded-full px-2 py-1 whitespace-nowrap ${color}`}>
             {content}
         </div>
     );

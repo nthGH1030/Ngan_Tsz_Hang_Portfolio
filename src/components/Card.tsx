@@ -103,7 +103,7 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href}) => {
                         {content}
                     </p>
                 </div>
-                <div className="flex justify-start items-center gap-2 my-2">
+                <div className="flex flex-wrap justify-start items-center gap-2 my-2">
                     {selectedTags.map((tag, idx) => (
                         <Tag
                             key={`${tag.name}-${idx}`}  

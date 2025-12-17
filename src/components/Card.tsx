@@ -7,6 +7,7 @@ export interface CardProps{
     content : string;
     tagNames: string[];
     href?: string;
+    gitHref?: string;
 }
 
 export interface TagData{
@@ -14,7 +15,7 @@ export interface TagData{
     category : string;
 }
 
-const Card: React.FC<CardProps> = ({title, content, tagNames, href}) => {
+const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -75,13 +76,11 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href}) => {
 
     const handleCardClick = () => {
         if (href) {
-            console.log('card is clicked');
             window.open(href, '_blank');
         }
     };
 
     const selectedTags = getSelectedTag(tagNames)
-    //console.log('selectedTags are' , selectedTags)
 
     return (
         <div 
@@ -95,10 +94,10 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href}) => {
                 <div className="text-red-500">
                     Featured
                 </div>
-                <div className="text-lg md:text-2xl font-bold">  {/* Fixed: was md:text-3xl */}
+                <div className="text-lg md:text-2xl font-bold">  
                     {title}
                 </div>
-                <div className="text-base mt-3">  {/* Fixed: was md:text-3xl */}
+                <div className="text-base mt-3">  
                     <p>
                         {content}
                     </p>

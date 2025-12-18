@@ -14,7 +14,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
              <div className="md:hidden rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors
              flex justify-between">
                 <div className="w-1/4 max-w-xs h-auto">
-                    <img src = "../public/AWS badge.png"/>
+                    <img src = {img}/>
                 </div>
                 <div className = "flex flex-col items-center">
                     <div className="text-lg md:text-2xl font-bold">  

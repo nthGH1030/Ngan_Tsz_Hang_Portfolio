@@ -42,7 +42,15 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 </div>
             </div>
             {isImgOpen ? 
-            <div>
+            <div className = "fixed inset-0 bg-gray-900/80 flex itesm-center justify-center">
+                <button
+                    className = "fixed top-8 right-8 text-4xl text-white"
+                    onClick = {() =>
+                        setIsImgOpen(false)
+                    }    
+                >
+                    X
+                </button>
                 <img src = {img}/>
             </div> : ''}
             

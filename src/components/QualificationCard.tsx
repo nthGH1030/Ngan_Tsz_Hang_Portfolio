@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export interface QualifcationProps{
     title : string;
     date: string;
     img: string;
 }
+
+
+
 const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
+    const [isImgOpen , setIsImgOpen] = useState(false)
+
+    const handleImgClick = () => {
+        console.log('clicked')
+        setIsImgOpen(!isImgOpen)
+        
+    }
+
     return (
         <div>
             <div className = "hidden md:block">
                 this is the desktop version
             </div>
-             <div className="md:hidden rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors
-             flex justify-between my-2">
+            <div 
+                className="md:hidden rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors
+                flex justify-between my-2"
+                onClick = {handleImgClick}
+            >
                 <div className="w-24 max-w-xs h-auto">
                     <img src = {img}/>
                 </div>
@@ -27,6 +41,11 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                     </div>
                 </div>
             </div>
+            {isImgOpen ? 
+            <div>
+                <img src = {img}/>
+            </div> : ''}
+            
         </div>
     )
 }

@@ -12,7 +12,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 this is the desktop version
             </div>
              <div className="md:hidden rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors
-             flex justify-between">
+             flex justify-between my-2">
                 <div className="w-24 max-w-xs h-auto">
                     <img src = {img}/>
                 </div>
@@ -28,8 +28,6 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 </div>
             </div>
         </div>
-
-        
     )
 }
 

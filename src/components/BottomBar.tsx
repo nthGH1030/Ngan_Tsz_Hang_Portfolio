@@ -21,3 +21,4 @@ const BottomBar: React.FC = () => {
     )
 }
 
+export default BottomBar

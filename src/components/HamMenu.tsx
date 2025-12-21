@@ -5,6 +5,19 @@ import { IoClose } from "react-icons/io5";
 const HamMenu: React.FC = () => {
     const [isMOpen , setIsMOpen] = useState(false)
     const [hasClicked , setHasClicked] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
+
+    const handleOpen = () => {
+        setIsVisible(true);
+        setHasClicked(true)
+        setIsMOpen(true);
+        setTimeout(() => setIsMOpen(true), 10)
+    }
+
+    const handleClose = () => {
+        setIsMOpen(false);
+        setTimeout(() => setIsMOpen(false), 10)
+    }
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement> , target: string) => {
         e.preventDefault();
@@ -17,6 +30,8 @@ const HamMenu: React.FC = () => {
         },150)
     }
 
+    const menuSlide = isMOpen ? "animate-slide-in" : "animate-slide-out"
+
     return (
         <div> 
             <div>
@@ -27,10 +42,7 @@ const HamMenu: React.FC = () => {
                             : 'opacity-0 scale-90 pointer-events-none'
                             : hasClicked ? 'opacity-100 animate-spin-fade-in' : 'opacity-100'
                     }`} 
-                    onClick = {() => {
-                        setIsMOpen(true)
-                        setHasClicked(true)
-                    }}
+                    onClick={handleOpen}
                 />
                 <IoClose 
                     className = {`fixed top-12 right-12 text-5xl z-51
@@ -40,16 +52,13 @@ const HamMenu: React.FC = () => {
                             : hasClicked ? 'opacity-0 scale-90 pointer-events-none animate-spin-fade-out' : 
                             'opacity-0 scale-90 pointer-events-none'
                     }`} 
-                    onClick = {() => {
-                        setIsMOpen(false)
-                        setHasClicked(true)
-                    }}
+                    onClick={handleClose}
                 />
             </div>
-            {isMOpen ? 
+            {isVisible ? 
                 <div>
                     <div className = "backdrop-blur fixed top-0 left-0 z-45 top-0 h-full w-full"></div>
-                    <aside className = "fixed top-0 right-0 z-50 top-0 h-full w-3/4 bg-gray-300 animate-slide-in ">
+                    <aside className = {`fixed top-0 right-0 z-50 top-0 h-full w-3/4 bg-gray-300 ${menuSlide}`}>
                         <div className ="flex flex-col items-center justify-center gap-8 
                             text-4xl my-64 mx-6 scrool-smooth">
                             <a href = "#about" 

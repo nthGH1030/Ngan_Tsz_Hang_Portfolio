@@ -34,10 +34,16 @@ const HamMenu: React.FC = () => {
                 />
                 <IoClose 
                     className = {`fixed top-12 right-12 text-5xl z-51
-                        ${isMOpen ? `opocity-100 animate-spin-fade-in` : 
-                            `opacity-0 scale-90 pointer-events-none animate-spin-fade-out`
+                        ${isMOpen 
+                            ? hasClicked ? `opacity-100 animate-spin-fade-in ` 
+                            :  'opacity-100'
+                            : hasClicked ? 'opacity-0 scale-90 pointer-events-none animate-spin-fade-out' : 
+                            'opacity-0 scale-90 pointer-events-none'
                     }`} 
-                    onClick = {() => setIsMOpen(false)}
+                    onClick = {() => {
+                        setIsMOpen(false)
+                        setHasClicked(true)
+                    }}
                 />
             </div>
             {isMOpen ? 

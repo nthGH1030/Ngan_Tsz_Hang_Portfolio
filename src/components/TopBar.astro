@@ -7,25 +7,41 @@
 // a special button that link to a resume
 
 import "../styles/global.css";
+import HamMenu from "./HamMenu";
 ---
 
 <div>
-    <div class = "sticky top-0 w-full text-xs md:text-base py-5 md:py-10">
-        <nav class = "flex justify-between">
-            <div class = "flex items-start gap-2 md:gap-5 ml-3 md:ml-16">
-                <a href = "#icon">
-                    <img src = "" alt = "icon"/>
-                </a>
-                <p class = "">My Name</p>
-            </div>
-            <div class = "flex gap-2 md:gap-15 mr-3 md:mr-24">
-                <a href = "#about" class = "nav-link" >About</a>
-                <a href = "#experience" class = "nav-link" >Experience</a>
-                <a href = "#qualification" class = "nav-link" >Qualification</a>
-                <a href = "#work" class = "nav-link" >Work</a>
-                <a href = "#contact" class = "nav-link" >Contact</a>
-            </div>
-        </nav>
+    <div class = "sticky top-0 w-full text-xs md:text-base pr-12 py-5 md:py-10">
+        <div class = "hidden md:block">
+            <nav class = "flex justify-between">
+                <div class = "flex items-start gap-2 text-2xl md:gap-5 ml-3 md:ml-16">
+                    <a href = "#icon">
+                        <img src = "" alt = "icon"/>
+                    </a>
+                    <p class = "">My Name</p>
+                </div>
+                <div class = "flex gap-2 md:gap-15 text-lg mr-3 md:mr-24">
+                    <a href = "#about" class = "nav-link" >About</a>
+                    <a href = "#experience" class = "nav-link" >Experience</a>
+                    <a href = "#qualification" class = "nav-link" >Qualification</a>
+                    <a href = "#work" class = "nav-link" >Work</a>
+                    <a href = "#contact" class = "nav-link" >Contact</a>
+                </div>
+            </nav>
+        </div>
+        <div class = "md:hidden">
+            <nav class = "flex justify-between">
+                <div class = "flex items-start gap-16 text-2xl ml-3 ">
+                    <a href = "#icon">
+                        <img src = "" alt = "icon"/>
+                    </a>
+                    <p class = "">My Name</p>
+                </div>
+                <div class = "text-5xl">
+                    <HamMenu client:load/>
+                </div>
+            </nav>
+        </div>
     </div>
 </div>
 

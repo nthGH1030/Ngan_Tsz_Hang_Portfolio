@@ -15,7 +15,6 @@ const HamMenu: React.FC = () => {
                 el.scrollIntoView({behavior: 'smooth'})
             }
         },150)
-        
     }
 
     return (

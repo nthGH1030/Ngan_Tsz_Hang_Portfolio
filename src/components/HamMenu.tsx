@@ -4,11 +4,7 @@ import { IoClose } from "react-icons/io5";
 
 const HamMenu: React.FC = () => {
     const [isMOpen , setIsMOpen] = useState(false)
-
-    const handleMOpen = () => {
-        setIsMOpen(!isMOpen)
-        console.log("i am clicked")
-    }
+    const [hasClicked , setHasClicked] = useState(false)
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement> , target: string) => {
         e.preventDefault();
@@ -19,6 +15,7 @@ const HamMenu: React.FC = () => {
                 el.scrollIntoView({behavior: 'smooth'})
             }
         },150)
+        
     }
 
     return (
@@ -26,14 +23,20 @@ const HamMenu: React.FC = () => {
             <div>
                 <GiHamburgerMenu 
                     className = {`fixed top-12 right-12 text-5xl z-50
-                        ${isMOpen ? `opacity-0 scale-90 pointer-events-none` 
-                            : `opocity-100`
+                        ${isMOpen 
+                            ? hasClicked ? `opacity-0 scale-90 pointer-events-none animate-spin-fade-out` 
+                            : 'opacity-0 scale-90 pointer-events-none'
+                            : hasClicked ? 'opacity-100 animate-spin-fade-in' : 'opacity-100'
                     }`} 
-                    onClick = {() => setIsMOpen(true)}
+                    onClick = {() => {
+                        setIsMOpen(true)
+                        setHasClicked(true)
+                    }}
                 />
                 <IoClose 
                     className = {`fixed top-12 right-12 text-5xl z-51
-                        ${isMOpen ? `opocity-100` : `opacity-0 scale-90 pointer-events-none`
+                        ${isMOpen ? `opocity-100 animate-spin-fade-in` : 
+                            `opacity-0 scale-90 pointer-events-none animate-spin-fade-out`
                     }`} 
                     onClick = {() => setIsMOpen(false)}
                 />

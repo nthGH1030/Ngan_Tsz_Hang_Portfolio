@@ -8,17 +8,17 @@ const HamMenu: React.FC = () => {
 
     const handleOpen = () => {
         setIsVisible(true);
-        setIsMOpen(true);
         setTimeout(() => setIsMOpen(true), 10)
     }
 
     const handleClose = () => {
-        setIsMOpen(false);
+        setIsVisible(false);
         setTimeout(() => setIsMOpen(false), 10)
     }
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement> , target: string) => {
         e.preventDefault();
+        setIsVisible(false)
         setIsMOpen(false);
         setTimeout(() => {
             const el = document.querySelector(target);

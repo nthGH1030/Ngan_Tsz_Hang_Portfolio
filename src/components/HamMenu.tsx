@@ -41,7 +41,7 @@ const HamMenu: React.FC = () => {
             {isMOpen ? 
                 <div>
                     <div className = "backdrop-blur fixed top-0 left-0 z-45 top-0 h-full w-full"></div>
-                    <aside className = "fixed top-0 right-0 z-50 top-0 h-full w-3/4 bg-gray-300">
+                    <aside className = "fixed top-0 right-0 z-50 top-0 h-full w-3/4 bg-gray-300 animate-slide-in ">
                         <div className ="flex flex-col items-center justify-center gap-8 
                             text-4xl my-64 mx-6 scrool-smooth">
                             <a href = "#about" 

@@ -4,12 +4,10 @@ import { IoClose } from "react-icons/io5";
 
 const HamMenu: React.FC = () => {
     const [isMOpen , setIsMOpen] = useState(false)
-    const [hasClicked , setHasClicked] = useState(false)
     const [isVisible, setIsVisible] = useState(false);
 
     const handleOpen = () => {
         setIsVisible(true);
-        setHasClicked(true)
         setIsMOpen(true);
         setTimeout(() => setIsMOpen(true), 10)
     }
@@ -38,18 +36,18 @@ const HamMenu: React.FC = () => {
                 <GiHamburgerMenu 
                     className = {`fixed top-12 right-12 text-5xl z-50
                         ${isMOpen 
-                            ? hasClicked ? `opacity-0 scale-90 pointer-events-none animate-spin-fade-out` 
+                            ? isVisible ? `opacity-0 scale-90 pointer-events-none animate-spin-fade-out` 
                             : 'opacity-0 scale-90 pointer-events-none'
-                            : hasClicked ? 'opacity-100 animate-spin-fade-in' : 'opacity-100'
+                            : isVisible ? 'opacity-100 animate-spin-fade-in' : 'opacity-100'
                     }`} 
                     onClick={handleOpen}
                 />
                 <IoClose 
                     className = {`fixed top-12 right-12 text-5xl z-51
                         ${isMOpen 
-                            ? hasClicked ? `opacity-100 animate-spin-fade-in ` 
+                            ? isVisible ? `opacity-100 animate-spin-fade-in ` 
                             :  'opacity-100'
-                            : hasClicked ? 'opacity-0 scale-90 pointer-events-none animate-spin-fade-out' : 
+                            : isVisible ? 'opacity-0 scale-90 pointer-events-none animate-spin-fade-out' : 
                             'opacity-0 scale-90 pointer-events-none'
                     }`} 
                     onClick={handleClose}

@@ -3,23 +3,23 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 
 const HamMenu: React.FC = () => {
-    const [isClosing , setisClosing] = useState(false)
+    const [isOpen , setisOpen] = useState(false)
     const [isVisible, setIsVisible] = useState(false);
 
     const handleOpen = () => {
         setIsVisible(true);
-        setisClosing(true)
+        setisOpen(true)
     }
     
 
     const handleClose = () => {
-        setisClosing(false)
+        setisOpen(false)
     }
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement> , target: string) => {
         e.preventDefault();
         setIsVisible(false)
-        setisClosing(false);
+        setisOpen(false);
         setTimeout(() => {
             const el = document.querySelector(target);
             if(el){
@@ -28,7 +28,7 @@ const HamMenu: React.FC = () => {
         },150)
     }
 
-    const menuSlide = isClosing ? "animate-slide-in" : "animate-slide-out"
+    const menuSlide = isOpen ? "animate-slide-in" : "animate-slide-out"
     const blur = isVisible ? "backdrop-blur" : ""
 
     return (
@@ -36,7 +36,7 @@ const HamMenu: React.FC = () => {
             <div>
                 <GiHamburgerMenu 
                     className = {`fixed top-12 right-12 text-5xl z-50
-                        ${isClosing 
+                        ${isOpen 
                             ? isVisible ? `opacity-0 scale-90 pointer-events-none animate-spin-fade-out` 
                             : 'opacity-0 scale-90 pointer-events-none'
                             : isVisible ? 'opacity-100 animate-spin-fade-in' : 'opacity-100'
@@ -45,15 +45,15 @@ const HamMenu: React.FC = () => {
                 />
                 <IoClose 
                     className = {`fixed top-12 right-12 text-5xl z-51
-                        ${isClosing 
+                        ${isOpen 
                             ? isVisible ? `opacity-100 animate-spin-fade-in ` 
                             :  'opacity-100'
                             : isVisible ? 'opacity-0 scale-90 pointer-events-none animate-spin-fade-out' : 
                             'opacity-0 scale-90 pointer-events-none'
                     }`} 
-                    //Click -> !isClosing -> Trigger Animation -> setIsvisible(false)
+                    //Click -> !isOpen -> Trigger Animation -> setIsvisible(false)
                     onAnimationEnd = {() => {
-                        if(!isClosing) setIsVisible(false)
+                        if(!isOpen) setIsVisible(false)
                     }}
                     onClick={handleClose}
                 />

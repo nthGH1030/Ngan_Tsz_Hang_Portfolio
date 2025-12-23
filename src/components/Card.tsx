@@ -89,12 +89,11 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
             className="cursor-pointer hover:shadow-lg transition-shadow"
         >   
             <div className="h-full w-full rounded-lg bg-gray-200/50 p-8 transition-colors
-                md:hidden  
                 hover:bg-gray-200/70 ">
                 <div className="text-red-500">
                     Featured
                 </div>
-                <div className="text-lg md:text-2xl font-bold">  
+                <div className="text-lg md:text-xl font-bold">  
                     {title}
                 </div>
                 <div className="text-base mt-3">  

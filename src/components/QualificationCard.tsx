@@ -12,26 +12,23 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
     const [isImgOpen , setIsImgOpen] = useState(false)
 
     const handleImgClick = () => {
-        console.log('clicked')
+
         setIsImgOpen(!isImgOpen)
         
     }
 
     return (
         <div>
-            <div className = "hidden md:block">
-                this is the desktop version
-            </div>
             <div 
-                className="md:hidden rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors
-                flex justify-between my-2"
+                className="rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors
+                flex justify-between"
                 onClick = {handleImgClick}
             >
-                <div className="w-24 max-w-xs h-auto">
+                <div className="w-24 min-w-16 h-auto">
                     <img src = {img}/>
                 </div>
                 <div className = "mx-5 w-full flex flex-col items-center justify-center">
-                    <div className="text-base md:text-2xl font-medium self-start">  
+                    <div className="text-base md:text-xl font-medium self-start">  
                         {title}
                     </div>
                     <div className="text-xs mt-3 font-light self-end">  

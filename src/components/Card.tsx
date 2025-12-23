@@ -2,6 +2,7 @@ import React from 'react';
 import Tag from './Tag';
 import { FaGithub } from "react-icons/fa"
 
+
 export interface CardProps{
     title : string;
     content : string;
@@ -86,11 +87,10 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
         <div 
             onClick={handleCardClick}
             className="cursor-pointer hover:shadow-lg transition-shadow"
-        >
-            <div className="hidden md:block">
-                this is for desktop version
-            </div>
-            <div className="md:hidden rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors">
+        >   
+            <div className="h-full w-full rounded-lg bg-gray-200/50 p-8 transition-colors
+                md:hidden  
+                hover:bg-gray-200/70 ">
                 <div className="text-red-500">
                     Featured
                 </div>

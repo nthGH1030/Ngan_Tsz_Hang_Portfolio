@@ -67,18 +67,22 @@ const HamMenu: React.FC = () => {
                             <a href = "#about" 
                                 className = "nav-link" 
                                 onClick = {(e) => handleNavClick(e, "#about")}>
+                                <span>1. </span>
                                 About</a>
                             <a href = "#experience" 
                                 className = "nav-link" 
                                 onClick = {(e) => handleNavClick(e, "#experience")}>
+                                <span>2. </span>
                                 Experience</a>
                             <a href = "#qualification" 
                                 className = "nav-link" 
                                 onClick = {(e) => handleNavClick(e, "#qualification")}>
+                                <span>3. </span>
                                 Qualification</a>
                             <a href = "#work" 
                                 className = "nav-link" 
                                 onClick = {(e) => handleNavClick(e, "#work")}>
+                                <span>4. </span>
                                 Work</a>
                             <a href = "#contact" 
                                 className = "nav-link" 

@@ -21,17 +21,17 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
         <div>
             <div 
                 className="rounded-lg bg-gray-200/50 p-2 hover:bg-gray-200/70 transition-colors
-                flex justify-between h-full"
+                flex justify-start h-full"
                 onClick = {handleImgClick}
             >
-                <div className="m-4 aspect-square max-w-24 max-h-24 sm:max-w-48 sm:max-h-48 md:max-w-64 md:max-h-64">
+                <div className="m-4 aspect-square w-16 sm:w-30 md:w-30 flex-shrink-0">
                     <img src = {img} className = "w-full h-full object-contain"/>
                 </div>
-                <div className = "mx-5 w-full flex flex-col items-center justify-center">
-                    <div className="text-lg md:text-xl font-medium self-start">  
+                <div className = "mx-4 flex-1 flex flex-col items-center justify-center">
+                    <div className="text-sm sm:text-lg md:text-lg font-medium self-start">  
                         {title}
                     </div>
-                    <div className="text-xs mt-3 font-light self-end">  
+                    <div className="text-xs mt-3 font-light self-start">  
                         <p>
                             {date}
                         </p>

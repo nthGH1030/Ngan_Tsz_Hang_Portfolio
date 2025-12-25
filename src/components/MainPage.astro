@@ -11,7 +11,9 @@ import Reference from './Reference.astro'
 ---
 
 <div>
-    <TopBar/>
+    <div id = "top-bar">
+        <TopBar/>
+    </div>
     <Introduction/>
     <About/>
     <Experience/>
@@ -21,3 +23,24 @@ import Reference from './Reference.astro'
     <BottomBar/>
     <Reference/>
 </div>
+
+<script>
+    let lastState = false;
+    window.addEventListener('scroll' , () => {
+        const bar = document.getElementById('top-bar');
+        if(!bar) return
+        if(window.scrollY > 40){
+            if(!lastState){
+                bar.classList.remove('topbar-slide-in')
+                bar.classList.add('topbar-slide-out')
+                lastState = true
+            } 
+        } else {
+            if(lastState){
+                bar.classList.remove('topbar-slide-out')
+                bar.classList.add('topbar-slide-in')
+                lastState = false
+            }
+        }
+    })
+</script>

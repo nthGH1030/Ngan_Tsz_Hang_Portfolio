@@ -10,18 +10,20 @@ import BottomBar from './BottomBar.tsx'
 import Reference from './Reference.astro'
 ---
 
-<div>
+<div >
     <div id = "top-bar">
         <TopBar/>
     </div>
-    <Introduction/>
-    <About/>
-    <Experience/>
-    <Qualification/>
-    <Work/>
-    <Contact/>
-    <BottomBar/>
-    <Reference/>
+    <div class="snap-y snap-mandatory h-screen overflow-y-scroll">
+        <Introduction/>
+        <About/>
+        <Experience/>
+        <Qualification/>
+        <Work/>
+        <Contact/>
+        <BottomBar/>
+        <Reference/>
+    </div>
 </div>
 
 <script>

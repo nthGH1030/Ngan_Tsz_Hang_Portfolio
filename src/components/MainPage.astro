@@ -14,37 +14,49 @@ import Reference from './Reference.astro'
     <div id = "top-bar">
         <TopBar/>
     </div>
-    <div class="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <div 
+        id = 'snapContainer'
+        class="snap-y snap-mandatory h-screen overflow-y-scroll">
         <Introduction/>
         <About/>
-    <div class = "h-screen">
-        <Experience/>
-        <Qualification/>
-    </div>
-        <Work/>
-        <Contact/>
-        <BottomBar/>
-        <Reference/>
+        <div class = "h-screen">
+            <Experience/>
+            <Qualification/>
+        </div>
+            <Work/>
+            <Contact/>
+            <BottomBar/>
+            <Reference/>
     </div>
 </div>
 
 <script>
     let lastState = false;
-    window.addEventListener('scroll' , () => {
+    let lastYCoor = 0
+    window.addEventListener('DOMContentLoaded' , () => {
+        const snapContainer = document.getElementById('snapContainer');
         const bar = document.getElementById('top-bar');
-        if(!bar) return
-        if(window.scrollY > 40){
-            if(!lastState){
-                bar.classList.remove('topbar-slide-in')
-                bar.classList.add('topbar-slide-out')
-                lastState = true
-            } 
-        } else {
-            if(lastState){
-                bar.classList.remove('topbar-slide-out')
-                bar.classList.add('topbar-slide-in')
-                lastState = false
+        if(!snapContainer || !bar) return
+        
+        snapContainer.addEventListener('scroll' , () => {
+            const bar = document.getElementById('top-bar');
+            const scrollY = snapContainer.scrollTop
+            if(!bar) return
+            if(scrollY > lastYCoor){
+                if(!lastState){
+                    bar.classList.remove('topbar-slide-in')
+                    bar.classList.add('topbar-slide-out')
+                    lastState = true
+                } 
+            } else if (scrollY < lastYCoor) {
+                if(lastState ){
+                    bar.classList.remove('topbar-slide-out')
+                    bar.classList.add('topbar-slide-in')
+                    lastState = false
+                }
             }
-        }
+            lastYCoor = scrollY;
+        })
     })
+
 </script>

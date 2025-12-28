@@ -88,7 +88,7 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
             onClick={handleCardClick}
             className="cursor-pointer hover:shadow-lg transition-shadow"
         >   
-            <div className="h-full w-full rounded-lg bg-gray-200/50 p-8 transition-colors
+            <div className="h-full w-full rounded-lg bg-gray-200/50 py-8 px-4 transition-colors
                 hover:bg-gray-200/70 ">
                 <div className="text-red-500">
                     Featured

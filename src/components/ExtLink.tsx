@@ -11,6 +11,7 @@ const ExtLink: React.FC <LinkProps> = ({href , icon}) => {
     }
     return (
         <div
+            className = "hover:text-black transition-colors cursor-pointer"
             onClick = {handleClick}
         >
             {icon}

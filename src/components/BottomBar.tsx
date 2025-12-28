@@ -10,8 +10,8 @@ const BottomBar: React.FC = () => {
     return (
         <section>
             <div className = "hidden md:block">
-                <div className = "fixed bottom-0 left-0 ml-12">
-                    <div className ="text-2xl text-gray-600 hover:text-black transition-colors
+                <div className = "fixed bottom-0 left-0 ml-8">
+                    <div className ="text-2xl text-gray-600 
                         flex flex-col items-center justify-center gap-8 mb-4">
                         <ExtLink
                             href = "https://github.com/nthGH1030"

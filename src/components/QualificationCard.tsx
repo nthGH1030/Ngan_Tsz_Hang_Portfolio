@@ -24,11 +24,11 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 flex justify-start h-full"
                 onClick = {handleImgClick}
             >
-                <div className="m-4 aspect-square w-16 sm:w-30 md:w-30 flex-shrink-0">
+                <div className="m-4 aspect-square w-12 sm:w-20 md:w-24 flex-shrink-0">
                     <img src = {img} className = "w-full h-full object-contain"/>
                 </div>
                 <div className = "mx-4 flex-1 flex flex-col items-center justify-center">
-                    <div className="text-sm sm:text-lg md:text-lg font-medium self-start">  
+                    <div className="text-sm sm:text-base md:text-base font-medium self-start">  
                         {title}
                     </div>
                     <div className="text-xs mt-3 font-light self-start">  

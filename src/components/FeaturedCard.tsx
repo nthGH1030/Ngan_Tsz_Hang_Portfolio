@@ -89,12 +89,16 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             className="cursor-pointer hover:shadow-lg transition-shadow
             flex items-center justify-center gap-6"
         >   
-            <video
-                src="lunch_demo.mp4"
-                controls
-                loop
-                className="rounded-lg shadow-lg w-1/4 max-w-sm"
-            ></video>
+            <div className="group relative w-1/2 max-w-lg min-w-[200px]">
+                <video
+                    src="lunch_demo.mp4"
+                    controls
+                    loop
+                    className="rounded-lg shadow-lg w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/30 rounded-lg pointer-events-none 
+                    group-hover:bg-transparent transition-colors" />
+            </div>
             <div className="h-full w-full rounded-lg bg-gray-200/50 py-8 px-4 transition-colors
                 hover:bg-gray-200/70 ">
                 <div className="text-red-500">

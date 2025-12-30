@@ -92,16 +92,16 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                
                 <div className="flex gap-4">
                     
-                    <div className="flex-1 flex items-center justify-center max-w-1/2">
-                    <video
-                        src="lunch_demo.mp4"
-                        controls
-                        loop
-                        className="rounded-lg shadow-lg w-full max-h-[450px] object-contain"
-                    />
+                    <div className="hidden sm:flex md:flex flex-1 items-center justify-center max-w-1/2">
+                        <video
+                            src="lunch_demo.mp4"
+                            controls
+                            loop
+                            className="rounded-lg shadow-lg w-full max-h-[450px] object-contain"
+                        />
                     </div>
                     {/* Screenshots or Features on the right */}
-                    <div className="flex-1 grid grid-rows-2 gap-2">
+                    <div className="flex-1 hidden sm:grid md:grid grid-rows-2 gap-2">
                     {/* Replace these with your screenshots or feature cards */}
                         <img src="feature1.png" alt="Feature 1" className="rounded shadow" />
                         <img src="feature2.png" alt="Feature 2" className="rounded shadow" />

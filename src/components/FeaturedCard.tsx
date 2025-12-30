@@ -84,48 +84,51 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     const selectedTags = getSelectedTag(tagNames)
 
     return (
-        <div 
+        <div
             onClick={handleCardClick}
-            className="cursor-pointer hover:shadow-lg transition-shadow
-            flex items-center justify-center gap-6"
-        >   
-            <div className="group relative w-1/2 max-w-lg min-w-[200px]">
-                <video
-                    src="lunch_demo.mp4"
-                    controls
-                    loop
-                    className="rounded-lg shadow-lg w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/30 rounded-lg pointer-events-none 
-                    group-hover:bg-transparent transition-colors" />
-            </div>
-            <div className="h-full w-full rounded-lg bg-gray-200/50 py-8 px-4 transition-colors
-                hover:bg-gray-200/70 ">
-                <div className="text-red-500">
-                    Featured
+            className="cursor-pointer hover:shadow-lg transition-shadow flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6"
+            >
+            <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
+               
+                <div className="flex gap-4">
+                    
+                    <div className="flex-1 flex items-center justify-center max-w-1/2">
+                    <video
+                        src="lunch_demo.mp4"
+                        controls
+                        loop
+                        className="rounded-lg shadow-lg w-full max-h-[450px] object-contain"
+                    />
+                    </div>
+                    {/* Screenshots or Features on the right */}
+                    <div className="flex-1 grid grid-rows-2 gap-2">
+                    {/* Replace these with your screenshots or feature cards */}
+                        <img src="feature1.png" alt="Feature 1" className="rounded shadow" />
+                        <img src="feature2.png" alt="Feature 2" className="rounded shadow" />
+                    {/* ...add more as needed */}
+                    </div>
                 </div>
-                <div className="text-lg md:text-xl font-bold">  
-                    {title}
-                </div>
-                <div className="text-base mt-3">  
-                    <p>
-                        {content}
-                    </p>
-                </div>
-                <div className="flex flex-wrap justify-start items-center gap-2 my-2">
+                {/* Bottom Card Area */}
+                <div className="mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col justify-center items-center">
+                    <div className="text-lg md:text-xl font-bold">{title}</div>
+                    <div className="text-base mt-3 text-center">
+                    <p>{content}</p>
+                    </div>
+                    <div className="flex flex-wrap justify-center items-center gap-2 my-2">
                     {selectedTags.map((tag, idx) => (
                         <Tag
-                            key={`${tag.name}-${idx}`}  
-                            color={getTagColor(tag, idx)}
-                            content={tag.name}
+                        key={`${tag.name}-${idx}`}
+                        color={getTagColor(tag, idx)}
+                        content={tag.name}
                         />
                     ))}
-                </div>
-                <div className="flex items-center mt-3">
+                    </div>
+                    <div className="flex items-center mt-3">
                     <FaGithub className="text-3xl text-gray-600 hover:text-black transition-colors" />
                     <span className="ml-2 text-sm text-gray-600">View on GitHub</span>
+                    </div>
                 </div>
-            </div>
+</div>
         </div>
     );
 }

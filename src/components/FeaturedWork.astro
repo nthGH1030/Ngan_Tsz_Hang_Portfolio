@@ -5,7 +5,7 @@ import FeaturedCard from './FeaturedCard'
 
 <section id="work" class = "snap-start h-screen pt-24" >
     <div class = "mx-2 sm:mx-4 md:mx-24 flex items-center">
-        <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">4. What i've built</h1>
+        <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">3. What i've built</h1>
         <div class = "w-full bg-gray-300 h-px ml-2"></div>
     </div>
     <div class = " 
@@ -13,14 +13,20 @@ import FeaturedCard from './FeaturedCard'
         sm:mx-4
         md:mx-24 
         mx-2 ">
-        <FeaturedCard
+        <div class="relative w-full flex flex-col items-end justify-end">
+            <div class="absolute -top-6 right-6 z-10">
+                <span class="bg-white px-4 py-1 rounded font-bold text-lg md:text-xl">
+                    Featured Project
+                </span>
+            </div>
+            <FeaturedCard
             client:visible
-            title = "Lunch Roulette"
-            content = {`A web app that recommand restaurants, categories by location, crusines
-            . Spin the roulette to decide what to get for lunch!`}
-            tagNames = {["JavaScript" , "Next.js", "React" , "Tailwind", "Vercel" , "Google Map API"]}
-            href = {"https://lunch-roulette-phi.vercel.app/"}
-            gitHref = {"placeholder"}
-        />
+            title="Lunch Roulette"
+            content={`A web app that recommends restaurants, categories by location, cuisines. Spin the roulette to decide what to get for lunch!`}
+            tagNames={["JavaScript", "Next.js", "React", "Tailwind", "Vercel", "Google Map API"]}
+            href={"https://lunch-roulette-phi.vercel.app/"}
+            gitHref={"placeholder"}
+            />
+        </div>
     </div>
 </section>

@@ -109,12 +109,13 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     </div>
                 </div>
                 {/* Bottom Card Area */}
-                <div className="mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col justify-center items-center">
-                    <div className="text-lg md:text-xl font-bold"></div>
+                <div className="mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col ">
+                    <div className="w-full text-base font-semibold sm:hidden md:hidden ">Featured</div>
+                    <div className="w-full text-lg font-bold sm:hidden md:hidden ">{title}</div>
                     <div className="text-base mt-3 text-center">
-                    <p>{content}</p>
+                    <div className = "text-left">{content}</div>
                     </div>
-                    <div className="flex flex-wrap justify-center items-center gap-2 my-2">
+                    <div className="flex flex-wrap gap-2 my-2">
                     {selectedTags.map((tag, idx) => (
                         <Tag
                         key={`${tag.name}-${idx}`}

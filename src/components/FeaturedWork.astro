@@ -14,18 +14,21 @@ import FeaturedCard from './FeaturedCard'
         md:mx-24 
         mx-2 ">
         <div class="relative w-full flex flex-col items-end justify-end">
-            <div class="absolute -top-6 right-6 z-10">
-                <span class="bg-white px-4 py-1 rounded font-bold text-lg md:text-xl">
+            <div class="absolute -top-8 right-4 z-10 text-right">
+                <div class="bg-white px-4 py-1 rounded font-semibold text-sm md:text-base">
                     Featured Project
-                </span>
+                </div>
+                <div class="bg-white px-4 rounded font-bold text-base md:text-lg">
+                    Lunch Roulette
+                </div>
             </div>
             <FeaturedCard
-            client:visible
-            title="Lunch Roulette"
-            content={`A web app that recommends restaurants, categories by location, cuisines. Spin the roulette to decide what to get for lunch!`}
-            tagNames={["JavaScript", "Next.js", "React", "Tailwind", "Vercel", "Google Map API"]}
-            href={"https://lunch-roulette-phi.vercel.app/"}
-            gitHref={"placeholder"}
+                client:visible
+                title="Lunch Roulette"
+                content={`A web app that recommends restaurants, categories by location, cuisines. Spin the roulette to decide what to get for lunch!`}
+                tagNames={["JavaScript", "Next.js", "React", "Tailwind", "Vercel", "Google Map API"]}
+                href={"https://lunch-roulette-phi.vercel.app/"}
+                gitHref={"placeholder"}
             />
         </div>
     </div>

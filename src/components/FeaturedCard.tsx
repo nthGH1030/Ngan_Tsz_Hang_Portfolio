@@ -110,7 +110,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 </div>
                 {/* Bottom Card Area */}
                 <div className="mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col justify-center items-center">
-                    <div className="text-lg md:text-xl font-bold">{title}</div>
+                    <div className="text-lg md:text-xl font-bold"></div>
                     <div className="text-base mt-3 text-center">
                     <p>{content}</p>
                     </div>
@@ -124,7 +124,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     ))}
                     </div>
                     <div className="flex items-center mt-3">
-                    <FaGithub className="text-3xl text-gray-600 hover:text-black transition-colors" />
+                        <FaGithub className="text-3xl text-gray-600 hover:text-black transition-colors" />
                     <span className="ml-2 text-sm text-gray-600">View on GitHub</span>
                     </div>
                 </div>

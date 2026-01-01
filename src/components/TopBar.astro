@@ -12,21 +12,24 @@ import HamMenu from "./HamMenu";
 
 
 <div class = 
-    "z-10 fixed top-0 w-full text-xs md:text-base pr-12 py-8 md:pt-8
+    "z-10 fixed top-0 w-full text-xs md:text-base pl-8 pr-12 py-8 md:pt-8
     topbar-slide-in">
     <div class = "hidden md:block">
         <nav class = "flex justify-between">
-            <div class = "flex items-start gap-2 text-base md:gap-5 ml-3 md:ml-16">
+            <div class = "flex items-center mr-3 gap-2 md:gap-5 md:ml-16">
                 <a href = "#icon">
                     <img src = "" alt = "icon"/>
                 </a>
                 <p class = "">My Name</p>
             </div>
-            <div class = "flex gap-2 gap-8 text-base mr-3 md:mr-24">
+            <div class = "flex gap-8 items-center justify-end text-base mr-3 md:mr-24">
                 <a href = "#about" class = "nav-link" >About</a>
                 <a href = "#experience" class = "nav-link" >Experience</a>
                 <a href = "#work" class = "nav-link" >Work</a>
-                <a href = "#contact" class = "nav-link" >Contact</a>
+                <a href = "#contact" 
+                    class = "nav-link inline-block border  p-2 rounded-xs
+                            hover:-translate-y-2 hover:-translate-x-2 hover:border-b-4 
+                            hover:border-r-4 hover:border-red-500 cursor-pointer transition" >Contact</a>
             </div>
         </nav>
     </div>

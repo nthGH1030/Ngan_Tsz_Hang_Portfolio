@@ -12,17 +12,18 @@ import HamMenu from "./HamMenu";
 
 
 <div class = 
-    "z-10 fixed top-0 w-full text-xs md:text-base pl-8 pr-12 py-8 md:pt-8
+    "z-10 fixed top-0 w-full text-xs md:text-base px-8 py-8 md:pt-8
     topbar-slide-in">
+    {/* This is the desktop version */ }
     <div class = "hidden md:block">
         <nav class = "flex justify-between">
-            <div class = "flex items-center mr-3 gap-2 md:gap-5 md:ml-16">
+            <div class = "flex items-center gap-2 md:gap-5 md:ml-16">
                 <a href = "#icon">
                     <img src = "" alt = "icon"/>
                 </a>
                 <p class = "">My Name</p>
             </div>
-            <div class = "flex gap-8 items-center justify-end text-base mr-3 md:mr-24">
+            <div class = "flex gap-8 items-center justify-end text-base md:mr-24">
                 <a href = "#about" class = "nav-link" >About</a>
                 <a href = "#experience" class = "nav-link" >Experience</a>
                 <a href = "#work" class = "nav-link" >Work</a>
@@ -33,13 +34,13 @@ import HamMenu from "./HamMenu";
             </div>
         </nav>
     </div>
+    {/* This is the mobile version */ }
     <div class = "md:hidden">
-        <nav class = "flex justify-between">
-            <div class = "flex items-start gap-16 text-2xl ml-3 ">
+        <nav class = "flex justify-between mx-2 sm:mx-4 ">
+            <div class = "text-base ">
                 <a href = "#icon">
                     <img src = "" alt = "icon"/>
                 </a>
-                <p class = "">My Name</p>
             </div>
             <div>
                 <HamMenu client:load/>

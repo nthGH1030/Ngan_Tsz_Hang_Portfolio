@@ -1,7 +1,8 @@
 ---
 import { IoIosArrowForward } from "react-icons/io";
+import Qualification from './Qualification.astro'
 ---
-<section id="experience" class="snap-start pt-24">
+<section id="experience" class="snap-start pt-24 overflow-y-auto">
     <div class = "mx-8 md:mx-24 flex items-center">
         <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">2. Experience</h1>
         <div class = "w-full bg-gray-300 h-px ml-2"></div>
@@ -19,7 +20,7 @@ import { IoIosArrowForward } from "react-icons/io";
                 <IoIosArrowForward />
             </div>
             <div>
-                <p>
+                <p class = "text-[clamp(0.9rem,2.5vw,1rem)]">
                     Analyzed team workflows to identify inefficiencies in project expenditure tracking; 
                     proposed and developed a desktop application to automate data extraction and payment 
                     form generation from Excel files, designed user workflows, gathered user feedback, 
@@ -32,7 +33,7 @@ import { IoIosArrowForward } from "react-icons/io";
                 <IoIosArrowForward />
             </div>
             <div>
-                <p>
+                <p class = "text-[clamp(0.9rem,2.5vw,1rem)]">
                     Collaborated with internal IT teams and end users to identify and suggest use cases 
                     for adopting automation and AI agents to enhance workflow efficiency; 
                     drafted presentations and architecture diagrams, developed technical demos, 
@@ -46,7 +47,7 @@ import { IoIosArrowForward } from "react-icons/io";
                 <IoIosArrowForward />
             </div>
             <div>
-                <p>
+                <p class = "text-[clamp(0.9rem,2.5vw,1rem)]">
                     Managed multiple properties as a project manager, overseeing technical aspects 
                     and coordinating with leasing and property management teams to deliver construction projects 
                     on schedule and within budget, while ensuring full compliance with relevant 
@@ -54,5 +55,8 @@ import { IoIosArrowForward } from "react-icons/io";
                 </p>
             </div>
         </div>      
+    </div>
+    <div>
+        <Qualification/>
     </div>
 </section>

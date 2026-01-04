@@ -12,18 +12,27 @@ const ImgSlider: React.FC = () => {
 
     const [imgIdx , setImgIdx] = useState(0)
     const [direction , setDirection] = useState('right')
+    const [isSlidingOut, setIsSlidingOut] = useState(false);
 
     const onClickLeft = () => {
         if(imgIdx !== 0) setImgIdx((prev) => prev - 1)
+        setDirection('left');
     }
 
     const onClickRight = () => {
         if(imgIdx < imgSrc.length - 1 ){
-            setImgIdx((prev) => prev + 1)
-            
+            //setImgIdx((prev) => prev + 1)
+            setDirection('right');
+            setIsSlidingOut(true);
         } 
-            
     }
+
+    const handleAnimationEnd = () => {
+    if (isSlidingOut) {
+        setImgIdx((prev) => prev + 1);
+        setIsSlidingOut(false);
+    }
+    };
     
     return (
         <div
@@ -37,22 +46,18 @@ const ImgSlider: React.FC = () => {
                 onClick={(e) => {
                     e.stopPropagation();
                     onClickLeft();
-                    setDirection('left')
                 }}
+                
             />
             <img 
                 src = {imgSrc[imgIdx]}
                 alt = 'Feature'
                 className = {`rounded-lg shadow-lg w-[225px] h-[450px] object-contain 
-                 ${
-                    imgIdx !== 0 && direction === 'right'
-                        ? 'animate-slide-in-right'
-                        : imgIdx !== imgSrc.length - 1 && direction === 'left'
-                        ? 'animate-slide-in-left'
-                        : ""
-                 }
-                    `}
+                 ${isSlidingOut ? 'animate-slide-out-left' : ''}
+                `}
+                onAnimationEnd={handleAnimationEnd}
             />
+            
             <IoIosArrowDropright
                 className ="absolute top-1/2 right-1 
                     backdrop-blur text-gray-300 rounded-full text-4xl
@@ -61,8 +66,8 @@ const ImgSlider: React.FC = () => {
                 onClick={(e) => {
                     e.stopPropagation();
                     onClickRight();
-                    setDirection('right')
                 }}
+                
             />
         </div>
     )

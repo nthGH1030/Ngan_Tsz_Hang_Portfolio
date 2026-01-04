@@ -35,7 +35,7 @@ const HamMenu: React.FC = () => {
         <div> 
             <div>
                 <GiHamburgerMenu 
-                    className = {`text-3xl z-20
+                    className = {`text-2xl z-20
                         ${isOpen 
                             ? isVisible ? `opacity-0 scale-90 pointer-events-none animate-spin-fade-out` 
                             : 'opacity-0 scale-90 pointer-events-none'

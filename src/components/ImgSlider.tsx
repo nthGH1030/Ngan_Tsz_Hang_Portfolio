@@ -11,6 +11,7 @@ const ImgSlider: React.FC = () => {
     ]
 
     const [imgIdx , setImgIdx] = useState(0)
+    const [direction , setDirection] = useState('right')
 
     const onClickLeft = () => {
         if(imgIdx !== 0) setImgIdx((prev) => prev - 1)
@@ -36,12 +37,14 @@ const ImgSlider: React.FC = () => {
                 onClick={(e) => {
                     e.stopPropagation();
                     onClickLeft();
+                    setDirection('left')
                 }}
             />
             <img 
                 src = {imgSrc[imgIdx]}
                 alt = 'Feature'
-                className = "rounded-lg shadow-lg w-[225px] h-[450px] object-contain"
+                className = {`rounded-lg shadow-lg w-[225px] h-[450px] object-contain 
+                 `}
             />
             <IoIosArrowDropright
                 className ="absolute top-1/2 right-1 
@@ -51,6 +54,7 @@ const ImgSlider: React.FC = () => {
                 onClick={(e) => {
                     e.stopPropagation();
                     onClickRight();
+                    setDirection('right')
                 }}
             />
         </div>

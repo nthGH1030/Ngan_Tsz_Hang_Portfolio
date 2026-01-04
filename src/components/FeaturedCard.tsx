@@ -91,7 +91,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             >
             <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
                
-                <div className="flex justify-between  gap-4">
+                <div className="flex justify-between gap-2">
                     
                     <div className="hidden sm:flex md:flex flex-1 max-w-1/2">
                         <video
@@ -104,14 +104,6 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     <div className="hidden md:block max-w-1/2 ">
                         <ImgSlider/>
                     </div>
-                    {/* Screenshots or Features on the right */}
-                    {/*
-                    <div className="flex-1 hidden sm:grid md:grid grid-rows-2 gap-2">
-                    
-                        <img src="feature1.png" alt="Feature 1" className="rounded shadow" />
-                        <img src="feature2.png" alt="Feature 2" className="rounded shadow" />
-                    </div>
-                    */}
                     
                 </div>
                 {/* Bottom Card Area */}

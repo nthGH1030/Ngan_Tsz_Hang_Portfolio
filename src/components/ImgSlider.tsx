@@ -1,4 +1,6 @@
 import React , {useState} from 'react';
+import { IoIosArrowDropleft } from "react-icons/io";
+import { IoIosArrowDropright } from "react-icons/io";
 
 const ImgSlider: React.FC = () => {
 
@@ -9,15 +11,25 @@ const ImgSlider: React.FC = () => {
     ]
 
     const [img , setImg] = useState(imgSrc[0])
+
+
     
     return (
         <div
-            className = "px-8 bg-black rounded-lg shadow"
+            className = "relative px-8 bg-black rounded-lg shadow"
         >
+            <IoIosArrowDropleft
+                className ="absolute top-1/2 left-1 
+                    backdrop-blur text-gray-300 rounded-full text-3xl"
+            />
             <img 
                 src = {img}
                 alt = 'Feature'
-                className = "max-h-[450px]"
+                className = "rounded-lg shadow-lg w-full max-h-[450px] object-contain"
+            />
+            <IoIosArrowDropright
+                className ="absolute top-1/2 right-1 
+                    backdrop-blur text-gray-300 rounded-full text-3xl"
             />
         </div>
     )

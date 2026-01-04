@@ -16,11 +16,11 @@ const ImgSlider: React.FC = () => {
     
     return (
         <div
-            className = "relative px-8 bg-black rounded-lg shadow"
+            className = "relative px-10 bg-black rounded-lg shadow"
         >
             <IoIosArrowDropleft
                 className ="absolute top-1/2 left-1 
-                    backdrop-blur text-gray-300 rounded-full text-3xl"
+                    backdrop-blur text-gray-300 rounded-full text-4xl"
             />
             <img 
                 src = {img}
@@ -29,7 +29,7 @@ const ImgSlider: React.FC = () => {
             />
             <IoIosArrowDropright
                 className ="absolute top-1/2 right-1 
-                    backdrop-blur text-gray-300 rounded-full text-3xl"
+                    backdrop-blur text-gray-300 rounded-full text-4xl"
             />
         </div>
     )

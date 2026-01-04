@@ -44,7 +44,14 @@ const ImgSlider: React.FC = () => {
                 src = {imgSrc[imgIdx]}
                 alt = 'Feature'
                 className = {`rounded-lg shadow-lg w-[225px] h-[450px] object-contain 
-                 `}
+                 ${
+                    imgIdx !== 0 && direction === 'right'
+                        ? 'animate-slide-in-right'
+                        : imgIdx !== imgSrc.length - 1 && direction === 'left'
+                        ? 'animate-slide-in-left'
+                        : ""
+                 }
+                    `}
             />
             <IoIosArrowDropright
                 className ="absolute top-1/2 right-1 

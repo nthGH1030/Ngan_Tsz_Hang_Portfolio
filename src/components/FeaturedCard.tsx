@@ -91,7 +91,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             >
             <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
                
-                <div className="flex justify-between gap-2">
+                <div className="flex justify-between gap-2 pr-12">
                     
                     <div className="hidden sm:flex md:flex flex-1 max-w-1/2">
                         <video

@@ -39,9 +39,9 @@ const ImgSlider: React.FC = () => {
             className ="relative bg-black rounded-lg shadow z-10
              w-[225px] h-[450px]"
         >
-            <div className = "absolute inset-0 -left-8 -right-8 bg-black/70"/>
+            <div className = "absolute inset-0 -left-12 -right-12 bg-black/70 rounded-lg"/>
                 <IoIosArrowDropleft
-                    className ="absolute top-1/2 -left-4 
+                    className ="absolute top-1/2 -left-10 
                         backdrop-blur text-gray-300 rounded-full text-4xl
                         curosr-pointer hover:text-gray-300/50 z-20"
                     onMouseDown={e => e.preventDefault()}
@@ -49,7 +49,6 @@ const ImgSlider: React.FC = () => {
                         e.stopPropagation();
                         onClickLeft();
                     }}
-                    
                 />
                 <div className = "relative w-full h-full overflow-hidden">
                     <img 
@@ -63,9 +62,8 @@ const ImgSlider: React.FC = () => {
                         onAnimationEnd={handleSlideLeft}
                     />
                 </div>
-                
                 <IoIosArrowDropright
-                    className ="absolute top-1/2 -right-4 
+                    className ="absolute top-1/2 -right-10 
                         backdrop-blur text-gray-300 rounded-full text-4xl
                         curosr-pointer hover:text-gray-300/50 z-20"
                     onMouseDown={e => e.preventDefault()}

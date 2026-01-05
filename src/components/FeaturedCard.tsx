@@ -101,7 +101,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                             className="rounded-lg shadow-lg w-full max-h-[450px] object-contain"
                         />
                     </div>
-                    <div className="hidden sm:block md:block max-w-1/2 ">
+                    <div className="hidden md:block max-w-1/2 ">
                         <ImgSlider/>
                     </div>
                     

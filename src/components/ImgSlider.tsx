@@ -37,39 +37,44 @@ const ImgSlider: React.FC = () => {
     return (
         <div
             className ="relative bg-black rounded-lg shadow z-10
-            overflow-hidden w-[225px] h-[450px]"
+             w-[225px] h-[450px]"
         >
-            <IoIosArrowDropleft
-                className ="absolute top-1/2 left-1 
-                    backdrop-blur text-gray-300 rounded-full text-4xl
-                    curosr-pointer hover:text-gray-300/50"
-                onMouseDown={e => e.preventDefault()}
-                onClick={(e) => {
-                    e.stopPropagation();
-                    onClickLeft();
-                }}
+            <div className = "absolute inset-0 -left-8 -right-8 bg-black/70"/>
+                <IoIosArrowDropleft
+                    className ="absolute top-1/2 -left-4 
+                        backdrop-blur text-gray-300 rounded-full text-4xl
+                        curosr-pointer hover:text-gray-300/50 z-20"
+                    onMouseDown={e => e.preventDefault()}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onClickLeft();
+                    }}
+                    
+                />
+                <div className = "relative w-full h-full overflow-hidden">
+                    <img 
+                        src = {imgSrc[imgIdx]}
+                        alt = 'Feature'
+                        className = {`
+                            absolute top-0 left-0 w-full h-full
+                            rounded-lg shadow-lg z-10 object-contain 
+                        ${isSlidingOut ? 'animate-slide-out-left' : ''}
+                        `}
+                        onAnimationEnd={handleSlideLeft}
+                    />
+                </div>
                 
-            />
-            <img 
-                src = {imgSrc[imgIdx]}
-                alt = 'Feature'
-                className = {`rounded-lg shadow-lg  object-contain 
-                 ${isSlidingOut ? 'animate-slide-out-left' : ''}
-                `}
-                onAnimationEnd={handleSlideLeft}
-            />
-            
-            <IoIosArrowDropright
-                className ="absolute top-1/2 right-1 
-                    backdrop-blur text-gray-300 rounded-full text-4xl
-                    curosr-pointer hover:text-gray-300/50"
-                onMouseDown={e => e.preventDefault()}
-                onClick={(e) => {
-                    e.stopPropagation();
-                    onClickRight();
-                }}
-                
-            />
+                <IoIosArrowDropright
+                    className ="absolute top-1/2 -right-4 
+                        backdrop-blur text-gray-300 rounded-full text-4xl
+                        curosr-pointer hover:text-gray-300/50 z-20"
+                    onMouseDown={e => e.preventDefault()}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onClickRight();
+                    }}
+                    
+                />
         </div>
     )
 }

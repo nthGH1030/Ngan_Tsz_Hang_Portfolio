@@ -4,6 +4,7 @@ import { IoIosArrowDropright } from "react-icons/io";
 
 const ImgSlider: React.FC = () => {
 
+   
     const imgSrc = ["Demo_address.png",
         "Demo_cuisine.png",
         "Demo_location.png",
@@ -15,24 +16,37 @@ const ImgSlider: React.FC = () => {
     const [isSlidingOut, setIsSlidingOut] = useState(false);
 
     const onClickLeft = () => {
-        if(imgIdx !== 0) setImgIdx((prev) => prev - 1)
-        setDirection('left');
+        if(imgIdx !== 0) {
+            setDirection('left');
+            setIsSlidingOut(true);
+        }
     }
 
     const onClickRight = () => {
         if(imgIdx < imgSrc.length - 1 ){
-            //setImgIdx((prev) => prev + 1)
             setDirection('right');
             setIsSlidingOut(true);
         } 
     }
 
-    const handleSlideLeft = () => {
-    if (isSlidingOut) {
-        setImgIdx((prev) => prev + 1);
-        setIsSlidingOut(false);
-    }
+    const handleSlide = () => {
+        if (direction === 'right') {
+            setImgIdx((prev) => prev + 1);
+            setIsSlidingOut(false);
+            console.log('handleslide right is called')
+        } else if ( direction === 'left'){
+            setImgIdx((prev) => prev - 1);
+            setIsSlidingOut(false);
+            console.log('handleslide left is called')
+        }
     };
+    /*
+     useEffect(() => {
+        console.log('direction is now' , direction)
+        console.log('isSlidingOut is now' , isSlidingOut)
+    }, [direction , isSlidingOut ])
+    */
+
     
     return (
         <div
@@ -43,7 +57,7 @@ const ImgSlider: React.FC = () => {
                 <IoIosArrowDropleft
                     className ="absolute top-1/2 -left-10 
                         backdrop-blur text-gray-300 rounded-full text-4xl
-                        curosr-pointer hover:text-gray-300/50 z-20"
+                        cursor-pointer hover:text-gray-300/50 z-20"
                     onMouseDown={e => e.preventDefault()}
                     onClick={(e) => {
                         e.stopPropagation();
@@ -57,9 +71,10 @@ const ImgSlider: React.FC = () => {
                         className = {`
                             absolute top-0 left-0 w-full h-full
                             rounded-lg shadow-lg z-10 object-contain 
-                        ${isSlidingOut ? 'animate-slide-out-left' : ''}
+                        ${isSlidingOut && direction === 'left' ? 'animate-slide-out-left' : 
+                            isSlidingOut && direction === 'right' ?  'animate-slide-out-right' : ''}
                         `}
-                        onAnimationEnd={handleSlideLeft}
+                        onAnimationEnd={handleSlide}
                     />
                 </div>
                 <IoIosArrowDropright
@@ -71,7 +86,6 @@ const ImgSlider: React.FC = () => {
                         e.stopPropagation();
                         onClickRight();
                     }}
-                    
                 />
         </div>
     )

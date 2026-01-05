@@ -27,7 +27,7 @@ const ImgSlider: React.FC = () => {
         } 
     }
 
-    const handleAnimationEnd = () => {
+    const handleSlideLeft = () => {
     if (isSlidingOut) {
         setImgIdx((prev) => prev + 1);
         setIsSlidingOut(false);
@@ -36,7 +36,8 @@ const ImgSlider: React.FC = () => {
     
     return (
         <div
-            className = "relative px-10 bg-black rounded-lg shadow z-10"
+            className ="relative bg-black rounded-lg shadow z-10
+            overflow-hidden w-[225px] h-[450px]"
         >
             <IoIosArrowDropleft
                 className ="absolute top-1/2 left-1 
@@ -52,10 +53,10 @@ const ImgSlider: React.FC = () => {
             <img 
                 src = {imgSrc[imgIdx]}
                 alt = 'Feature'
-                className = {`rounded-lg shadow-lg w-[225px] h-[450px] object-contain 
+                className = {`rounded-lg shadow-lg  object-contain 
                  ${isSlidingOut ? 'animate-slide-out-left' : ''}
                 `}
-                onAnimationEnd={handleAnimationEnd}
+                onAnimationEnd={handleSlideLeft}
             />
             
             <IoIosArrowDropright

@@ -33,11 +33,9 @@ const ImgSlider: React.FC = () => {
         if (direction === 'right') {
             setImgIdx((prev) => prev + 1);
             setIsSlidingOut(false);
-            console.log('handleslide right is called')
         } else if ( direction === 'left'){
             setImgIdx((prev) => prev - 1);
             setIsSlidingOut(false);
-            console.log('handleslide left is called')
         }
     };
     /*
@@ -71,8 +69,8 @@ const ImgSlider: React.FC = () => {
                         className = {`
                             absolute top-0 left-0 w-full h-full
                             rounded-lg shadow-lg z-10 object-contain 
-                        ${isSlidingOut && direction === 'left' ? 'animate-slide-out-left' : 
-                            isSlidingOut && direction === 'right' ?  'animate-slide-out-right' : ''}
+                        ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
+                            isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
                         `}
                         onAnimationEnd={handleSlide}
                     />

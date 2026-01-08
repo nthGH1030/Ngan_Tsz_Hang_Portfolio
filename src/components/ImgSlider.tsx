@@ -20,7 +20,7 @@ const ImgSlider: React.FC = () => {
         if(imgIdx !== 0) {
             setDirection('left');
             setIsSlidingOut(true);
-            if(imgIdx === 1) {
+            if(imgIdx === 0) {
                 setNextImgIdx(imgIdx)
             } else {
                 setNextImgIdx(imgIdx - 1)

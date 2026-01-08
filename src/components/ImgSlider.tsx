@@ -12,6 +12,7 @@ const ImgSlider: React.FC = () => {
     ]
 
     const [imgIdx , setImgIdx] = useState(0)
+    const [nextImgIdx , setNextImgIdx] = useState(0)
     const [direction , setDirection] = useState('right')
     const [isSlidingOut, setIsSlidingOut] = useState(false);
 
@@ -19,6 +20,11 @@ const ImgSlider: React.FC = () => {
         if(imgIdx !== 0) {
             setDirection('left');
             setIsSlidingOut(true);
+            if(imgIdx === 1) {
+                setNextImgIdx(imgIdx)
+            } else {
+                setNextImgIdx(imgIdx - 1)
+            }
         }
     }
 
@@ -26,6 +32,11 @@ const ImgSlider: React.FC = () => {
         if(imgIdx < imgSrc.length - 1 ){
             setDirection('right');
             setIsSlidingOut(true);
+            if(imgIdx === imgSrc.length - 1) {
+                setNextImgIdx(imgIdx)
+            } else {
+                setNextImgIdx(imgIdx + 1)
+            }
         } 
     }
 
@@ -62,19 +73,48 @@ const ImgSlider: React.FC = () => {
                         onClickLeft();
                     }}
                 />
-                <div className = "relative w-full h-full overflow-hidden">
-                    <img 
-                        src = {imgSrc[imgIdx]}
-                        alt = 'Feature'
-                        className = {`
-                            absolute top-0 left-0 w-full h-full
-                            rounded-lg shadow-lg z-10 object-contain 
-                        ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
-                            isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
-                        `}
-                        onAnimationEnd={handleSlide}
-                    />
-                </div>
+                {
+                    isSlidingOut ? 
+                    <div className = "relative w-full h-full overflow-hidden">
+                        <img 
+                            src = {imgSrc[imgIdx]}
+                            alt = 'Feature'
+                            className = {`
+                                absolute top-0 left-0 w-full h-full
+                                rounded-lg shadow-lg z-10 object-contain 
+                            ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
+                                isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
+                            `}
+                            onAnimationEnd={handleSlide}
+                        />
+                        <img
+                            src = {imgSrc[nextImgIdx]}
+                            alt = 'Feature'
+                            className = {`
+                                absolute top-0 left-0 w-full h-full
+                                rounded-lg shadow-lg z-10 object-contain 
+                            ${isSlidingOut && direction === 'left' ? 'animate-slide-in-left' : 
+                                isSlidingOut && direction === 'right' ?  'animate-slide-in-right' : ''}
+                            `}
+                            onAnimationEnd={() => setIsSlidingOut(false)}
+                        />
+                    </div>
+                    : 
+                    <div className = "relative w-full h-full overflow-hidden">
+                         <img 
+                            src = {imgSrc[imgIdx]}
+                            alt = 'Feature'
+                            className = {`
+                                absolute top-0 left-0 w-full h-full
+                                rounded-lg shadow-lg z-10 object-contain 
+                            ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
+                                isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
+                            `}
+                            onAnimationEnd={handleSlide}
+                        />
+                    </div>
+                }
+
                 <IoIosArrowDropright
                     className ="absolute top-1/2 -right-10 
                         backdrop-blur text-gray-300 rounded-full text-4xl

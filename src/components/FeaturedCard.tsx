@@ -92,7 +92,6 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
                
                 <div className="flex justify-between gap-2 pr-12">
-                    
                     <div className="hidden sm:flex md:flex flex-1 max-w-1/2">
                         <video
                             src="lunch_demo.mp4"
@@ -106,7 +105,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     </div>
                     
                 </div>
-                {/* Bottom Card Area */}
+                
                 <div className="mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col ">
                     <div className="w-full text-base font-semibold sm:hidden md:hidden ">Featured</div>
                     <div className="w-full text-lg font-bold sm:hidden md:hidden ">{title}</div>

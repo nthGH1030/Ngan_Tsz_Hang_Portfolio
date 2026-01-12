@@ -91,8 +91,8 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             >
             <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
                
-                <div className="flex justify-center gap-24 pr-12">
-                    <div className="hidden sm:flex md:flex min-w-[225px] max-w-[450px]">
+                <div className="flex justify-center gap-16 mr-4">
+                    <div className="hidden sm:flex md:flex min-w-[250px] max-w-[450px]">
                         <video
                             src="lunch_demo.mp4"
                             controls
@@ -101,7 +101,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                         />
                     </div>
                     <div className="hidden md:block sm:block 
-                        relative w-[225px] h-[450px] flex  items-center justify-center">
+                        relative w-[250px] h-[450px] flex  items-center justify-center">
                         
                         <ImgSlider/>
                     </div>

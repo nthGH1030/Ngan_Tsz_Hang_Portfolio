@@ -59,72 +59,75 @@ const ImgSlider: React.FC = () => {
     
     return (
         <div
-            className ="relative bg-black rounded-lg shadow z-10
-             w-[225px] h-[450px]"
+            className ="relative w-[225px] h-[450px] z-10 flex items-center justify-center"
         >
-            <div className = "absolute inset-0 -left-12 -right-12 bg-black/70 rounded-lg"/>
-                <IoIosArrowDropleft
-                    className ="absolute top-1/2 -left-10 
-                        backdrop-blur text-gray-300 rounded-full text-4xl
-                        cursor-pointer hover:text-gray-300/50 z-20"
-                    onMouseDown={e => e.preventDefault()}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        onClickLeft();
-                    }}
-                />
-                {
-                    isSlidingOut ? 
-                    <div className = "relative w-full h-full overflow-hidden">
-                        <img 
-                            src = {imgSrc[imgIdx]}
-                            alt = 'Feature'
-                            className = {`
-                                absolute top-0 left-0 w-full h-full
-                                rounded-lg shadow-lg z-10 object-contain 
-                            ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
-                                isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
-                            `}
-                            onAnimationEnd={handleSlide}
-                        />
-                        <img
-                            src = {imgSrc[nextImgIdx]}
-                            alt = 'Feature'
-                            className = {`
-                                absolute top-0 left-0 w-full h-full
-                                rounded-lg shadow-lg z-10 object-contain 
-                            ${isSlidingOut && direction === 'left' ? 'animate-slide-in-left' : 
-                                isSlidingOut && direction === 'right' ?  'animate-slide-in-right' : ''}
-                            `}
-                            onAnimationEnd={() => setIsSlidingOut(false)}
-                        />
-                    </div>
-                    : 
-                    <div className = "relative w-full h-full overflow-hidden">
-                         <img 
-                            src = {imgSrc[imgIdx]}
-                            alt = 'Feature'
-                            className = {`
-                                absolute top-0 left-0 w-full h-full
-                                rounded-lg shadow-lg z-10 object-contain 
-                            ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
-                                isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
-                            `}
-                            onAnimationEnd={handleSlide}
-                        />
-                    </div>
-                }
+            <div className="absolute left-1/2 top-0 -translate-x-1/2 
+                w-[260px] h-full bg-black/70 rounded-lg z-0 pointer-events-none" />
+                <div className = "relative w-[225px] h-[450px] z-10 flex items-center justify-center">
+                    <IoIosArrowDropleft
+                        className ="absolute top-1/2 -left-10 
+                            backdrop-blur text-gray-300 rounded-full text-4xl
+                            cursor-pointer hover:text-gray-300/50 z-20"
+                        onMouseDown={e => e.preventDefault()}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClickLeft();
+                        }}
+                    />
+                    {
+                        isSlidingOut ? 
+                        <div className = "relative w-full h-full overflow-hidden">
+                            <img 
+                                src = {imgSrc[imgIdx]}
+                                alt = 'Feature'
+                                className = {`
+                                    absolute top-0 left-0 w-full h-full
+                                    rounded-lg shadow-lg z-10 object-contain 
+                                ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
+                                    isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
+                                `}
+                                onAnimationEnd={handleSlide}
+                            />
+                            <img
+                                src = {imgSrc[nextImgIdx]}
+                                alt = 'Feature'
+                                className = {`
+                                    absolute top-0 left-0 w-full h-full
+                                    rounded-lg shadow-lg z-10 object-contain 
+                                ${isSlidingOut && direction === 'left' ? 'animate-slide-in-left' : 
+                                    isSlidingOut && direction === 'right' ?  'animate-slide-in-right' : ''}
+                                `}
+                                onAnimationEnd={() => setIsSlidingOut(false)}
+                            />
+                        </div>
+                        : 
+                        <div className = "relative w-full h-full overflow-hidden">
+                            <img 
+                                src = {imgSrc[imgIdx]}
+                                alt = 'Feature'
+                                className = {`
+                                    absolute top-0 left-0 w-full h-full
+                                    rounded-lg shadow-lg z-10 object-contain 
+                                ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
+                                    isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
+                                `}
+                                onAnimationEnd={handleSlide}
+                            />
+                        </div>
+                    }
+                    <IoIosArrowDropright
+                        className ="absolute top-1/2 -right-10 
+                            backdrop-blur text-gray-300 rounded-full text-4xl
+                            curosr-pointer hover:text-gray-300/50 z-20"
+                        onMouseDown={e => e.preventDefault()}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClickRight();
+                        }}
+                    />
+                </div>
 
-                <IoIosArrowDropright
-                    className ="absolute top-1/2 -right-10 
-                        backdrop-blur text-gray-300 rounded-full text-4xl
-                        curosr-pointer hover:text-gray-300/50 z-20"
-                    onMouseDown={e => e.preventDefault()}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        onClickRight();
-                    }}
-                />
+               
         </div>
     )
 }

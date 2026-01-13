@@ -89,7 +89,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             onClick={handleCardClick}
             className="cursor-pointer hover:shadow-lg transition-shadow flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6"
             >
-            <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
+            <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl pt-8 p-4 md:p-8">
                
                 <div className="flex justify-center gap-16 mr-4">
                     <div className="hidden sm:flex md:flex min-w-[250px] max-w-[450px]">

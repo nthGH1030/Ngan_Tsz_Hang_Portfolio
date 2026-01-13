@@ -2,6 +2,7 @@ import React from 'react';
 import Tag from './Tag';
 import { FaGithub } from "react-icons/fa"
 import ImgSlider from './imgSlider';
+import { RxOpenInNewWindow } from "react-icons/rx";
 
 
 export interface CardProps{
@@ -86,8 +87,8 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
 
     return (
         <div
-            onClick={handleCardClick}
-            className="cursor-pointer hover:shadow-lg transition-shadow flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6"
+            
+            className="hover:shadow-lg transition-shadow flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6"
             >
             <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl pt-8 p-4 md:p-8">
                
@@ -123,9 +124,15 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                         />
                     ))}
                     </div>
-                    <div className="flex items-center mt-3">
+                    <div className="flex items-center mt-3 w-full">
                         <FaGithub className="text-3xl text-gray-600 hover:text-black transition-colors" />
-                    <span className="ml-2 text-sm text-gray-600">View on GitHub</span>
+                        <span className="ml-2 text-sm text-gray-600 text-nowrap">View on GitHub</span>
+                        <div className = "ml-auto text-3xl">
+                            <RxOpenInNewWindow 
+                                className = "cursor-pointer"
+                                onClick={handleCardClick}
+                            />
+                        </div>
                     </div>
                 </div>
 </div>

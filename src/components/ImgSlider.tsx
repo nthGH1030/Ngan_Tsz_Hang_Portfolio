@@ -118,7 +118,7 @@ const ImgSlider: React.FC = () => {
                     <IoIosArrowDropright
                         className ="absolute top-1/2 -right-10 
                             backdrop-blur text-gray-300 rounded-full text-4xl
-                            curosr-pointer hover:text-gray-300/50 z-20"
+                            cursor-pointer hover:text-gray-300/50 z-20"
                         onMouseDown={e => e.preventDefault()}
                         onClick={(e) => {
                             e.stopPropagation();

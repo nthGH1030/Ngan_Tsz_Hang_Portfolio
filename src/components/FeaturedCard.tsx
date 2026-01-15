@@ -3,6 +3,7 @@ import Tag from './Tag';
 import { FaGithub } from "react-icons/fa"
 import ImgSlider from './ImgSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
+import { FaRegPlayCircle } from "react-icons/fa";
 
 
 export interface CardProps{
@@ -34,6 +35,20 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
         {name: "Google Map API", category: "api"},
         {name: "openAI", category: "api"},
     ];
+
+    const videoRef = React.useRef<HTMLVideoElement>(null);
+    const [isPlaying, setIsPlaying] = React.useState(false);
+
+    const handlePlay = () => {
+        if(videoRef.current){
+            if(isPlaying){
+                videoRef.current.pause()
+            } else {
+                videoRef.current.play()
+            }
+            setIsPlaying(prev => !prev)
+        } 
+    }
 
     const colorMap = {
         language : {
@@ -110,12 +125,19 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 {/* Desktop: Side-by-side media */}
                 <div className="hidden sm:block md:block relative rounded-lg overflow-hidden bg-gray-900 mb-6">
                     <div className="flex gap-4 p-4">
-                        <div className="flex-1">
+                        <div className="flex-1 relative">
+                            <div
+                                 onClick = {handlePlay}
+                                 className ="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                    rounded-full text-white bg-black/75 backdrop-blur-sm text-4xl cursor-pointer"
+                            >
+                                <FaRegPlayCircle/>
+                            </div>
                             <video
                                 src="lunch_demo.mp4"
-                                controls
                                 loop
                                 className="rounded-lg w-full h-[450px] object-contain"
+                                ref = {videoRef}
                             />
                         </div>
                         <div className="w-[300px] flex items-center justify-center">

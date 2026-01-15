@@ -90,9 +90,9 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             
             className="hover:shadow-lg transition-shadow flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6"
             >
-            <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl pt-8 p-4 md:p-8">
+            <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
                
-                {/* Mobile: Single centered media */}
+            {/* Mobile: Single centered media */}
                <div className="relative mb-4 sm:hidden md:hidden rounded-lg overflow-hidden">
                     <video
                         src="lunch_demo.mp4"
@@ -108,21 +108,28 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 </div>
 
                 {/* Desktop: Side-by-side media */}
-                <div className="hidden sm:flex md:flex justify-center gap-16 mr-4">
-                    <div className="min-w-[250px] max-w-[450px]">
-                        <video
-                            src="lunch_demo.mp4"
-                            controls
-                            loop
-                            className="rounded-lg shadow-lg w-full h-[450px] object-contain"
-                        />
+                <div className="hidden sm:block md:block relative rounded-lg overflow-hidden bg-gray-900 mb-6">
+                    <div className="flex gap-4 p-4">
+                        <div className="flex-1">
+                            <video
+                                src="lunch_demo.mp4"
+                                controls
+                                loop
+                                className="rounded-lg w-full h-[450px] object-contain"
+                            />
+                        </div>
+                        <div className="w-[300px] flex items-center justify-center">
+                            <ImgSlider/>
+                        </div>
                     </div>
-                    <div className="relative w-[250px] h-[450px] flex items-center justify-center">
-                        <ImgSlider/>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white pointer-events-none">
+                        <div className="text-sm font-semibold uppercase tracking-wider mb-1 opacity-90">Featured</div>
+                        <div className="text-3xl font-bold">{title}</div>
                     </div>
                 </div>
                 
-                <div className="md:mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col">
+                <div className=" rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col">
                     <div className="w-full text-xs font-semibold text-gray-500 uppercase tracking-wider sm:hidden md:hidden mb-1">Featured Project</div>
                     <div className="w-full text-xl font-bold sm:hidden md:hidden mb-3">{title}</div>
                     

@@ -1,7 +1,7 @@
 import React from 'react';
 import Tag from './Tag';
 import { FaGithub } from "react-icons/fa"
-import ImgSlider from './imgSlider';
+import ImgSlider from './ImgSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
 
 
@@ -109,33 +109,39 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     
                 </div>
                 
-                <div className="mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col ">
-                    <div className="w-full text-base font-semibold sm:hidden md:hidden ">Featured</div>
-                    <div className="w-full text-lg font-bold sm:hidden md:hidden ">{title}</div>
-                    <div className="text-base mt-3 text-center">
-                    <div className = "text-left">{content}</div>
+                <div className="md:mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col">
+                    <div className="w-full text-xs font-semibold text-gray-500 uppercase tracking-wider sm:hidden md:hidden mb-1">Featured Project</div>
+                    <div className="w-full text-xl font-bold sm:hidden md:hidden mb-3">{title}</div>
+                    
+                    <div className="text-sm leading-relaxed text-gray-700 mb-3">
+                        {content}
                     </div>
-                    <div className="flex flex-wrap gap-2 my-2">
-                    {selectedTags.map((tag, idx) => (
-                        <Tag
-                        key={`${tag.name}-${idx}`}
-                        color={getTagColor(tag, idx)}
-                        content={tag.name}
-                        />
-                    ))}
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                        {selectedTags.map((tag, idx) => (
+                            <Tag
+                                key={`${tag.name}-${idx}`}
+                                color={getTagColor(tag, idx)}
+                                content={tag.name}
+                            />
+                        ))}
                     </div>
-                    <div className="flex items-center mt-3 w-full">
-                        <FaGithub className="text-3xl text-gray-600 hover:text-black transition-colors" />
-                        <span className="ml-2 text-sm text-gray-600 text-nowrap">View on GitHub</span>
-                        <div className = "ml-auto text-3xl">
+                    
+                    <div className="flex items-center pt-4 border-t border-gray-300">
+                        <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors">
+                            <FaGithub className="text-2xl text-gray-600" />
+                            <span className="ml-2 text-sm text-gray-600">View Source</span>
+                        </a>
+                        <div className="ml-auto text-2xl">
                             <RxOpenInNewWindow 
-                                className = "cursor-pointer"
+                                className="cursor-pointer text-gray-600 hover:text-black transition-colors"
                                 onClick={handleCardClick}
+                                title="Open Project"
                             />
                         </div>
                     </div>
                 </div>
-</div>
+        </div>
         </div>
     );
 }

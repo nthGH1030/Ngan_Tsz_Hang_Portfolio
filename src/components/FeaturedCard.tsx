@@ -92,8 +92,24 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             >
             <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl pt-8 p-4 md:p-8">
                
-                <div className="flex justify-center gap-16 mr-4">
-                    <div className="hidden sm:flex md:flex min-w-[250px] max-w-[450px]">
+                {/* Mobile: Single centered media */}
+               <div className="relative mb-4 sm:hidden md:hidden rounded-lg overflow-hidden">
+                    <video
+                        src="lunch_demo.mp4"
+                        controls
+                        loop
+                        className="w-full h-[400px] object-contain"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white pointer-events-none">
+                        <div className="text-xs font-semibold uppercase tracking-wider mb-1">Featured Project</div>
+                        <div className="text-2xl font-bold">{title}</div>
+                    </div>
+                </div>
+
+                {/* Desktop: Side-by-side media */}
+                <div className="hidden sm:flex md:flex justify-center gap-16 mr-4">
+                    <div className="min-w-[250px] max-w-[450px]">
                         <video
                             src="lunch_demo.mp4"
                             controls
@@ -101,12 +117,9 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                             className="rounded-lg shadow-lg w-full h-[450px] object-contain"
                         />
                     </div>
-                    <div className="hidden md:block sm:block 
-                        relative w-[250px] h-[450px] flex  items-center justify-center">
-                        
+                    <div className="relative w-[250px] h-[450px] flex items-center justify-center">
                         <ImgSlider/>
                     </div>
-                    
                 </div>
                 
                 <div className="md:mt-6 rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col">

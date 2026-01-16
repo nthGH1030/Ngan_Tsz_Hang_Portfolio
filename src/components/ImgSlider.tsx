@@ -62,7 +62,7 @@ const ImgSlider: React.FC = () => {
             className ="relative w-[225px] h-[450px] z-10 flex items-center justify-center"
         >
             <div className="absolute left-1/2 top-0 -translate-x-1/2 
-                w-[320px] h-full bg-black/70 rounded-lg z-0 pointer-events-none" />
+                w-[320px] h-full rounded-lg z-0 pointer-events-none" />
                 <div className = "relative w-[225px] h-[450px] z-10 flex items-center justify-center">
                     <IoIosArrowDropleft
                         className ="absolute top-1/2 -left-10 

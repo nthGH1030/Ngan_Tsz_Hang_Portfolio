@@ -38,13 +38,23 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
 
     const videoRef = React.useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = React.useState(false);
+    const [showPlayBtn , setShowPlayBtn] = React.useState(true);
+    const [animatePlayBtn , setAnimatePlayBtn] = React.useState(false);
 
     const handlePlay = () => {
         if(videoRef.current){
             if(isPlaying){
                 videoRef.current.pause()
+                setShowPlayBtn(true)
+                setAnimatePlayBtn(false)
             } else {
                 videoRef.current.play()
+                setAnimatePlayBtn(true)
+                //reset
+                setTimeout(() => {
+                    setShowPlayBtn(false)
+                    setAnimatePlayBtn(false)
+            }, 400)
             }
             setIsPlaying(prev => !prev)
         } 
@@ -126,13 +136,16 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 <div className="hidden sm:block md:block relative rounded-lg overflow-hidden bg-gray-900 mb-6">
                     <div className="flex gap-4 p-4">
                         <div className="flex-1 relative">
-                            <div
-                                 onClick = {handlePlay}
-                                 className ="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                    rounded-full text-white bg-black/75 backdrop-blur-sm text-4xl cursor-pointer"
-                            >
-                                <FaRegPlayCircle/>
-                            </div>
+                            {showPlayBtn && (
+                                <div
+                                    onClick = {handlePlay}
+                                    className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                        rounded-full text-white bg-black/75 backdrop-blur-sm text-4xl cursor-pointer
+                                        ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                                >
+                                    <FaRegPlayCircle/>
+                                </div>
+                            )}
                             <video
                                 src="lunch_demo.mp4"
                                 loop

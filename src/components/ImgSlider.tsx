@@ -65,7 +65,7 @@ const ImgSlider: React.FC = () => {
                 w-[320px] h-full rounded-lg z-0 pointer-events-none" />
                 <div className = "relative w-[225px] h-[450px] z-10 flex items-center justify-center">
                     <IoIosArrowDropleft
-                        className ="absolute top-1/2 -left-10 
+                        className ="absolute top-1/2 -left-10 -translate-y-1/2
                             backdrop-blur text-gray-300 rounded-full text-4xl
                             cursor-pointer hover:text-gray-300/50 z-20"
                         onMouseDown={e => e.preventDefault()}
@@ -116,7 +116,7 @@ const ImgSlider: React.FC = () => {
                         </div>
                     }
                     <IoIosArrowDropright
-                        className ="absolute top-1/2 -right-10 
+                        className ="absolute top-1/2 -right-10 -translate-y-1/2
                             backdrop-blur text-gray-300 rounded-full text-4xl
                             cursor-pointer hover:text-gray-300/50 z-20"
                         onMouseDown={e => e.preventDefault()}

@@ -115,7 +115,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             
             className="hover:shadow-lg transition-shadow flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6"
             >
-            <div className="w-full max-w-4xl mx-auto bg-white/80 rounded-lg shadow-2xl p-4 md:p-8">
+            <div className="w-full max-w-4xl mx-auto  rounded-lg shadow-2xl p-4 md:p-8">
                
             {/* Mobile: Single centered media */}
                <div className="relative mb-4 sm:hidden md:hidden rounded-lg overflow-hidden">
@@ -136,7 +136,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 <div className="hidden sm:block md:block relative mb-8">
                     {/* Background stops before the extra padding */}
                     <div className="rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 p-4">
-                        <div className="flex gap-4 pb-12">
+                        <div className="flex gap-4 pb-10">
                             <div className="flex-1 relative">
                                 {showPlayBtn && (
                                     <div
@@ -163,14 +163,14 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                         {/* Title and gradient within media container */}
                         <div className="absolute inset-0 rounded-lg
                             bg-gradient-to-t from-gray-900/70 via-black/20 to-transparent pointer-events-none"></div>
-                        <div className="absolute bottom-10 left-6 right-6 text-white pointer-events-none">
+                        <div className="absolute bottom-12 left-6 right-6 text-white pointer-events-none">
                             <div className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">Featured Project</div>
                             <div className="text-2xl font-bold">{title}</div>
                         </div>
                     </div>
                     
                     {/* Description card - overlaps bottom of media */}
-                    <div className="absolute -bottom-12 left-24 right-0 z-20 rounded-lg 
+                    <div className="absolute -bottom-8 left-24 right-0 z-20 rounded-lg 
                         bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-xl py-4 px-6">
                         <p className="text-sm leading-relaxed text-gray-700">{content}</p>
                     </div>

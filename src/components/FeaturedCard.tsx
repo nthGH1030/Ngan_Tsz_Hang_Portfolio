@@ -132,47 +132,50 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     </div>
                 </div>
 
-                {/* Desktop: Side-by-side media */}
-                <div className="hidden sm:block md:block relative rounded-lg overflow-visible 
-                    bg-gradient-to-br from-gray-800 to-gray-900 mb-8">
-                    <div className="flex gap-4 p-4 pb-20">
-                        <div className="flex-1 relative">
-                            {showPlayBtn && (
-                                <div
-                                    onClick = {handlePlay}
-                                    className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                        rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
-                                        ${animatePlayBtn ? 'animate-play-out' : ''}`}
-                                >
-                                    <FaRegPlayCircle/>
-                                </div>
-                            )}
-                            <video
-                                src="lunch_demo.mp4"
-                                loop
-                                className="rounded-lg w-full h-[450px] object-contain"
-                                ref = {videoRef}
-                            />
+               {/* Desktop: Side-by-side media */}
+                <div className="hidden sm:block md:block relative mb-8">
+                    {/* Background stops before the extra padding */}
+                    <div className="rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 p-4">
+                        <div className="flex gap-4 pb-12">
+                            <div className="flex-1 relative">
+                                {showPlayBtn && (
+                                    <div
+                                        onClick = {handlePlay}
+                                        className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                            rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
+                                            ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                                    >
+                                        <FaRegPlayCircle/>
+                                    </div>
+                                )}
+                                <video
+                                    src="lunch_demo.mp4"
+                                    loop
+                                    className="rounded-lg w-full h-[450px] object-contain"
+                                    ref = {videoRef}
+                                />
+                            </div>
+                            <div className="w-[300px] flex items-center justify-center">
+                                <ImgSlider/>
+                            </div>
                         </div>
-                        <div className="w-[300px] flex items-center justify-center">
-                            <ImgSlider/>
+                        
+                        {/* Title and gradient within media container */}
+                        <div className="absolute inset-0 rounded-lg
+                            bg-gradient-to-t from-gray-900/70 via-black/20 to-transparent pointer-events-none"></div>
+                        <div className="absolute bottom-10 left-6 right-6 text-white pointer-events-none">
+                            <div className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">Featured Project</div>
+                            <div className="text-2xl font-bold">{title}</div>
                         </div>
-                    </div>
-                    
-                    {/* Title and gradient within media container */}
-                    <div className="absolute inset-0 
-                        bg-gradient-to-t from-gray-900/70 via-black/20 to-transparent pointer-events-none"></div>
-                    <div className="absolute bottom-14 left-6 right-6 text-white pointer-events-none">
-                        <div className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">Featured Project</div>
-                        <div className="text-2xl font-bold">{title}</div>
                     </div>
                     
                     {/* Description card - overlaps bottom of media */}
-                    <div className="absolute -bottom-8 left-8 z-20 rounded-lg 
-                        bg-slate-50/95 border-gray-200/50 backdrop-blur-sm shadow-xl py-4 px-6">
+                    <div className="absolute -bottom-12 left-24 right-0 z-20 rounded-lg 
+                        bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-xl py-4 px-6">
                         <p className="text-sm leading-relaxed text-gray-700">{content}</p>
                     </div>
                 </div>
+                
 
                 {/* Tags and action buttons - completely separate below */}
                 <div className="hidden sm:block md:block mt-12 px-8">

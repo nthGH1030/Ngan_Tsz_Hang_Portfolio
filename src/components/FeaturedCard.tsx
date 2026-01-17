@@ -133,14 +133,15 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 </div>
 
                 {/* Desktop: Side-by-side media */}
-                <div className="hidden sm:block md:block relative rounded-lg overflow-hidden bg-gray-900 mb-6">
-                    <div className="flex gap-4 p-4">
+                <div className="hidden sm:block md:block relative rounded-lg overflow-visible 
+                    bg-gradient-to-br from-gray-800 to-gray-900 mb-8">
+                    <div className="flex gap-4 p-4 pb-20">
                         <div className="flex-1 relative">
                             {showPlayBtn && (
                                 <div
                                     onClick = {handlePlay}
                                     className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                        rounded-full text-white bg-black/75 backdrop-blur-sm text-4xl cursor-pointer
+                                        rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
                                         ${animatePlayBtn ? 'animate-play-out' : ''}`}
                                 >
                                     <FaRegPlayCircle/>
@@ -157,45 +158,56 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                             <ImgSlider/>
                         </div>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white pointer-events-none">
-                        <div className="text-sm font-semibold uppercase tracking-wider mb-1 opacity-90">Featured</div>
-                        <div className="text-3xl font-bold">{title}</div>
+                    
+                    {/* Title and gradient within media container */}
+                    <div className="absolute inset-0 
+                        bg-gradient-to-t from-gray-900/70 via-black/20 to-transparent pointer-events-none"></div>
+                    <div className="absolute bottom-14 left-6 right-6 text-white pointer-events-none">
+                        <div className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">Featured Project</div>
+                        <div className="text-2xl font-bold">{title}</div>
+                    </div>
+                    
+                    {/* Description card - overlaps bottom of media */}
+                    <div className="absolute -bottom-8 left-8 z-20 rounded-lg 
+                        bg-slate-50/95 border-gray-200/50 backdrop-blur-sm shadow-xl py-4 px-6">
+                        <p className="text-sm leading-relaxed text-gray-700">{content}</p>
                     </div>
                 </div>
-                
-                <div className=" rounded-lg bg-gray-200/70 py-6 px-4 flex flex-col">
-                    <div className="w-full text-xs font-semibold text-gray-500 uppercase tracking-wider sm:hidden md:hidden mb-1">Featured Project</div>
-                    <div className="w-full text-xl font-bold sm:hidden md:hidden mb-3">{title}</div>
-                    
-                    <div className="text-sm leading-relaxed text-gray-700 mb-3">
-                        {content}
+
+                {/* Tags and action buttons - completely separate below */}
+                <div className="hidden sm:block md:block mt-12 px-8">
+                    {/* Tags section */}
+                    <div className="mb-6">
+                        <div className="flex flex-wrap gap-2">
+                            {selectedTags.map((tag, idx) => (
+                                <Tag
+                                    key={`${tag.name}-${idx}`}
+                                    color={getTagColor(tag, idx)}
+                                    content={tag.name}
+                                />
+                            ))}
+                        </div>
                     </div>
                     
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {selectedTags.map((tag, idx) => (
-                            <Tag
-                                key={`${tag.name}-${idx}`}
-                                color={getTagColor(tag, idx)}
-                                content={tag.name}
-                            />
-                        ))}
-                    </div>
-                    
-                    <div className="flex items-center pt-4 border-t border-gray-300">
-                        <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors">
-                            <FaGithub className="text-2xl text-gray-600" />
-                            <span className="ml-2 text-sm text-gray-600">View Source</span>
+                    {/* Action buttons with divider */}
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-300">
+                        <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors group">
+                            <FaGithub className="text-xl text-gray-600 group-hover:text-black transition-colors" />
+                            <span className="ml-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
                         </a>
-                        <div className="ml-auto text-2xl">
+                        <div 
+                            className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group"
+                            onClick={handleCardClick}
+                        >
+                            <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
                             <RxOpenInNewWindow 
-                                className="cursor-pointer text-gray-600 hover:text-black transition-colors"
-                                onClick={handleCardClick}
+                                className="text-xl text-gray-600 group-hover:text-black transition-colors"
                                 title="Open Project"
                             />
                         </div>
                     </div>
                 </div>
+
         </div>
         </div>
     );

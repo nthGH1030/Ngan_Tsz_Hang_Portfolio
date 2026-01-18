@@ -194,10 +194,10 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     </div>
                     
                     {/* Action buttons with divider */}
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-300">
+                    <div className="flex items-center justify-end gap-6 ">
                         <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors group">
-                            <FaGithub className="text-xl text-gray-600 group-hover:text-black transition-colors" />
-                            <span className="ml-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
+                            <span className="mr-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
+                            <FaGithub className="text-2xl text-gray-600 group-hover:text-black transition-colors" />
                         </a>
                         <div 
                             className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group"
@@ -205,7 +205,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                         >
                             <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
                             <RxOpenInNewWindow 
-                                className="text-xl text-gray-600 group-hover:text-black transition-colors"
+                                className="text-2xl text-gray-600 group-hover:text-black transition-colors"
                                 title="Open Project"
                             />
                         </div>

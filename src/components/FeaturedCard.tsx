@@ -171,7 +171,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     </div>
                     
                     {/* Description card - overlaps bottom of media */}
-                    <div className="absolute -bottom-8 left-24 right-0 z-20 rounded-lg 
+                    <div className="absolute -bottom-0 left-24 right-0 translate-y-1/2 z-20 rounded-lg 
                         bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-xl py-4 px-6">
                         <p className="text-sm leading-relaxed text-gray-700">{content}</p>
                     </div>
@@ -179,7 +179,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 
 
                 {/* Tags and action buttons - completely separate below */}
-                <div className="hidden sm:block md:block mt-12 ">
+                <div className="hidden sm:block md:block mt-16 ">
                     {/* Tags section */}
                     <div className="mb-4">
                         <div className="flex flex-wrap gap-2 text-xs justify-end">

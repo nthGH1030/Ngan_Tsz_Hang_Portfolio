@@ -118,13 +118,26 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             <div className="w-full max-w-4xl mx-auto  rounded-lg shadow-2xl p-4 md:p-8">
             {/* Mobile: Single centered media */}
             <div className="sm:hidden md:hidden">
-                <div className="relative mb-4 rounded-lg overflow-hidden">
-                    <video
-                        src="lunch_demo.mp4"
-                        controls
-                        loop
-                        className="w-full h-[400px] object-contain"
-                    />
+                <div className="relative mb-4 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+                     <div className="flex-1 relative">
+                        {showPlayBtn && (
+                            <div
+                                onClick = {handlePlay}
+                                className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                    rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
+                                    ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                            >
+                                <FaRegPlayCircle/>
+                            </div>
+                        )}
+                        <video
+                            src="lunch_demo.mp4"
+                            loop
+                            className="rounded-lg w-full h-[450px] object-contain"
+                            ref = {videoRef}
+                        />
+                    </div>
+
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white pointer-events-none">
                         <div className="text-xs font-semibold uppercase tracking-wider mb-1">Featured Project</div>

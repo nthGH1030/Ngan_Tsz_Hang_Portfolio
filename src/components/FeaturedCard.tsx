@@ -117,7 +117,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
             >
             <div className="w-full max-w-4xl mx-auto  rounded-lg shadow-2xl p-4 md:p-8">
             {/* Mobile: Single centered media */}
-            <div className="sm:hidden md:hidden">
+            <div className="sm:hidden md:hidden ">
                 <div className="relative mb-4 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
                      <div className="flex-1 relative">
                         {showPlayBtn && (
@@ -166,16 +166,16 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 {/* Action buttons */}
                 <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
                     <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors group">
-                        <FaGithub className="text-xl text-gray-600 group-hover:text-black transition-colors" />
-                        <span className="ml-2 text-sm text-gray-600 group-hover:text-black transition-colors">Source</span>
+                        <FaGithub className="text-2xl text-gray-600 group-hover:text-black transition-colors" />
+                        <span className="ml-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
                     </a>
                     <div 
                         className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group"
                         onClick={handleCardClick}
                     >
-                        <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open</span>
+                        <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
                         <RxOpenInNewWindow 
-                            className="text-xl text-gray-600 group-hover:text-black transition-colors"
+                            className="text-2xl text-gray-600 group-hover:text-black transition-colors"
                             title="Open Project"
                         />
                     </div>

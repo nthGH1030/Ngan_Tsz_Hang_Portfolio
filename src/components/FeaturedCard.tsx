@@ -112,14 +112,13 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
 
     return (
         <div
-            
             className="hover:shadow-lg transition-shadow flex flex-col md:flex-row 
                 items-center md:items-stretch justify-center gap-6"
             >
             <div className="w-full max-w-4xl mx-auto  rounded-lg shadow-2xl p-4 md:p-8">
-               
             {/* Mobile: Single centered media */}
-               <div className="relative mb-4 sm:hidden md:hidden rounded-lg overflow-hidden">
+            <div className="sm:hidden md:hidden">
+                <div className="relative mb-4 rounded-lg overflow-hidden">
                     <video
                         src="lunch_demo.mp4"
                         controls
@@ -132,6 +131,43 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                         <div className="text-2xl font-bold">{title}</div>
                     </div>
                 </div>
+
+                {/* Description card */}
+                <div className="mb-4 rounded-lg bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-lg py-4 px-4">
+                    <p className="text-sm leading-relaxed text-gray-700">{content}</p>
+                </div>
+
+                {/* Tags section */}
+                <div className="mb-4">
+                    <div className="flex flex-wrap gap-2 text-xs">
+                        {selectedTags.map((tag, idx) => (
+                            <Tag
+                                key={`${tag.name}-${idx}`}
+                                color={getTagColor(tag, idx)}
+                                content={tag.name}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
+                    <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors group">
+                        <FaGithub className="text-xl text-gray-600 group-hover:text-black transition-colors" />
+                        <span className="ml-2 text-sm text-gray-600 group-hover:text-black transition-colors">Source</span>
+                    </a>
+                    <div 
+                        className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group"
+                        onClick={handleCardClick}
+                    >
+                        <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open</span>
+                        <RxOpenInNewWindow 
+                            className="text-xl text-gray-600 group-hover:text-black transition-colors"
+                            title="Open Project"
+                        />
+                    </div>
+                </div>
+            </div>
 
                {/* Desktop: Side-by-side media */}
                 <div className="hidden sm:block md:block relative mb-8">

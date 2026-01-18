@@ -113,7 +113,8 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     return (
         <div
             
-            className="hover:shadow-lg transition-shadow flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6"
+            className="hover:shadow-lg transition-shadow flex flex-col md:flex-row 
+                items-center md:items-stretch justify-center gap-6"
             >
             <div className="w-full max-w-4xl mx-auto  rounded-lg shadow-2xl p-4 md:p-8">
                
@@ -178,10 +179,10 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                 
 
                 {/* Tags and action buttons - completely separate below */}
-                <div className="hidden sm:block md:block mt-12 px-8">
+                <div className="hidden sm:block md:block mt-12 ">
                     {/* Tags section */}
-                    <div className="mb-6">
-                        <div className="flex flex-wrap gap-2">
+                    <div className="mb-4">
+                        <div className="flex flex-wrap gap-2 text-xs justify-end">
                             {selectedTags.map((tag, idx) => (
                                 <Tag
                                     key={`${tag.name}-${idx}`}

@@ -128,7 +128,7 @@ const ImgSlider: React.FC = () => {
                     <div className = "absolute -bottom-2 z-30 w-full flex items-center justify-center gap-1">
                     {
                         imgSrc.map((bar , idx) => (
-                            idx === imgIdx ?
+                            idx === (isSlidingOut ? nextImgIdx : imgIdx) ?
                                 <div key={idx} className ="w-12 bg-white h-1 "></div>
                                 :
                                 <div key={idx} className ="w-12 bg-white/50 h-1 "></div>

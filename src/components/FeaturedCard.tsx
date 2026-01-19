@@ -3,7 +3,8 @@ import Tag from './Tag';
 import { FaGithub } from "react-icons/fa"
 import ImgSlider from './ImgSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
-import { FaRegPlayCircle } from "react-icons/fa";
+import { FaRegPlayCircle , FaRegPauseCircle } from "react-icons/fa";
+
 
 
 export interface CardProps{
@@ -40,8 +41,11 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [showPlayBtn , setShowPlayBtn] = React.useState(true);
     const [animatePlayBtn , setAnimatePlayBtn] = React.useState(false);
+    const [showPauseBtn , setShowPauseBtn] = React.useState(false);
+    const [animatePauseBtn , setAnimatePauseBtn] = React.useState(false);
 
     const handlePlay = () => {
+        console.log('handlePlay is triggered')
         if(videoRef.current){
             if(isPlaying){
                 videoRef.current.pause()
@@ -56,6 +60,17 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     setAnimatePlayBtn(false)
             }, 400)
             }
+            setIsPlaying(prev => !prev)
+        } 
+    }
+
+    const handlePause = () => {
+        if(videoRef.current){
+            if(isPlaying){
+                videoRef.current.pause()
+                setShowPauseBtn(true)
+                setAnimatePauseBtn(false)
+            } 
             setIsPlaying(prev => !prev)
         } 
     }
@@ -122,7 +137,6 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                      <div className="flex-1 relative">
                         {showPlayBtn && (
                             <div
-                                onClick = {handlePlay}
                                 className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                     rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
                                     ${animatePlayBtn ? 'animate-play-out' : ''}`}
@@ -130,12 +144,13 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                                 <FaRegPlayCircle/>
                             </div>
                         )}
-                        <video
-                            src="lunch_demo.mp4"
-                            loop
-                            className="rounded-lg w-full h-[450px] object-contain"
-                            ref = {videoRef}
-                        />
+                            <video
+                                src="lunch_demo.mp4"
+                                loop
+                                className="rounded-lg w-full h-[450px] object-contain"
+                                ref = {videoRef}
+                            />
+                        
                     </div>
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
@@ -198,12 +213,17 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                                         <FaRegPlayCircle/>
                                     </div>
                                 )}
-                                <video
-                                    src="lunch_demo.mp4"
-                                    loop
-                                    className="rounded-lg w-full h-[450px] object-contain"
-                                    ref = {videoRef}
-                                />
+                                <div
+                                    onClick = {handlePlay}
+                                >
+                                    <video
+                                        src="lunch_demo.mp4"
+                                        loop
+                                        className="rounded-lg w-full h-[450px] object-contain"
+                                        ref = {videoRef}
+                                    />
+                                </div>
+    
                             </div>
                             <div className="w-[300px] flex items-center justify-center">
                                 <ImgSlider/>

@@ -45,15 +45,15 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     const [animatePauseBtn , setAnimatePauseBtn] = React.useState(false);
 
     const handlePlay = () => {
-        console.log('handlePlay is triggered')
         if(videoRef.current){
             if(isPlaying){
                 videoRef.current.pause()
-                setShowPlayBtn(true)
+                setShowPauseBtn(true)
                 setAnimatePlayBtn(false)
             } else {
                 videoRef.current.play()
                 setAnimatePlayBtn(true)
+                setShowPauseBtn(false)
                 //reset
                 setTimeout(() => {
                     setShowPlayBtn(false)
@@ -211,6 +211,16 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                                             ${animatePlayBtn ? 'animate-play-out' : ''}`}
                                     >
                                         <FaRegPlayCircle/>
+                                    </div>
+                                )}
+                                 {showPauseBtn && (
+                                    <div
+                                        onClick = {handlePlay}
+                                        className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                            rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
+                                            ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                                    >
+                                        <FaRegPauseCircle/>
                                     </div>
                                 )}
                                 <div

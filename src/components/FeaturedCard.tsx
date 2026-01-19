@@ -207,7 +207,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                                     <div
                                         onClick = {handlePlay}
                                         className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                            rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
+                                            rounded-full text-white bg-transparent text-4xl cursor-pointer
                                             ${animatePlayBtn ? 'animate-play-out' : ''}`}
                                     >
                                         <FaRegPlayCircle/>
@@ -217,7 +217,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                                     <div
                                         onClick = {handlePlay}
                                         className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                            rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
+                                            rounded-full text-white bg-transparent text-4xl cursor-pointer
                                             ${animatePlayBtn ? 'animate-play-out' : ''}`}
                                     >
                                         <FaRegPauseCircle/>

@@ -42,7 +42,6 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     const [showPlayBtn , setShowPlayBtn] = React.useState(true);
     const [animatePlayBtn , setAnimatePlayBtn] = React.useState(false);
     const [showPauseBtn , setShowPauseBtn] = React.useState(false);
-    const [animatePauseBtn , setAnimatePauseBtn] = React.useState(false);
 
     const handlePlay = () => {
         if(videoRef.current){
@@ -60,17 +59,6 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                     setAnimatePlayBtn(false)
             }, 400)
             }
-            setIsPlaying(prev => !prev)
-        } 
-    }
-
-    const handlePause = () => {
-        if(videoRef.current){
-            if(isPlaying){
-                videoRef.current.pause()
-                setShowPauseBtn(true)
-                setAnimatePauseBtn(false)
-            } 
             setIsPlaying(prev => !prev)
         } 
     }
@@ -137,19 +125,32 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                      <div className="flex-1 relative">
                         {showPlayBtn && (
                             <div
+                                onClick = {handlePlay}
                                 className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                    rounded-full text-white bg-white/10 backdrop-blur-sm text-4xl cursor-pointer
+                                    rounded-full text-white bg-transparent text-4xl cursor-pointer
                                     ${animatePlayBtn ? 'animate-play-out' : ''}`}
                             >
                                 <FaRegPlayCircle/>
                             </div>
                         )}
+                        {showPauseBtn && (
+                            <div
+                                onClick = {handlePlay}
+                                className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
+                                    rounded-full text-white bg-transparent text-4xl cursor-pointer
+                                    ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                            >
+                                <FaRegPauseCircle/>
+                            </div>
+                        )}
+                        <div onClick = {handlePlay}>
                             <video
                                 src="lunch_demo.mp4"
                                 loop
                                 className="rounded-lg w-full h-[450px] object-contain"
                                 ref = {videoRef}
                             />
+                        </div>
                         
                     </div>
 

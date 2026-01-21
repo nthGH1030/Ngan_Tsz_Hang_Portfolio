@@ -42,21 +42,24 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     const [showPlayBtn , setShowPlayBtn] = React.useState(true);
     const [animatePlayBtn , setAnimatePlayBtn] = React.useState(false);
     const [showPauseBtn , setShowPauseBtn] = React.useState(false);
+    const [animatePauseBtn , setAnimatePauseBtn] = React.useState(false);
 
     const handlePlay = () => {
         if(videoRef.current){
             if(isPlaying){
                 videoRef.current.pause()
+                setAnimatePauseBtn(false)
                 setShowPauseBtn(true)
-                setAnimatePlayBtn(false)
             } else {
                 videoRef.current.play()
+                //play animation first
                 setAnimatePlayBtn(true)
-                setShowPauseBtn(false)
-                //reset
+                setAnimatePauseBtn(true)
+                //remove button after handling animation
                 setTimeout(() => {
                     setShowPlayBtn(false)
-                    setAnimatePlayBtn(false)
+                    setShowPauseBtn(false)
+
             }, 400)
             }
             setIsPlaying(prev => !prev)
@@ -138,7 +141,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                                 onClick = {handlePlay}
                                 className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                     rounded-full text-white bg-transparent text-4xl cursor-pointer
-                                    ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                                    ${animatePauseBtn ? 'animate-play-out' : ''}`}
                             >
                                 <FaRegPauseCircle/>
                             </div>
@@ -219,7 +222,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                                         onClick = {handlePlay}
                                         className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                             rounded-full text-white bg-transparent text-4xl cursor-pointer
-                                            ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                                            ${animatePauseBtn ? 'animate-play-out' : ''}`}
                                     >
                                         <FaRegPauseCircle/>
                                     </div>

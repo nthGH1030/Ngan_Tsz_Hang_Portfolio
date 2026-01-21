@@ -90,7 +90,7 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
         >   
             <div className="h-full w-full rounded-lg bg-gray-200/50 py-6 px-4 transition-colors
                 hover:bg-gray-200/70 ">
-                <div className="text-red-500">
+                <div className="text-xs font-semibold text-red-500 uppercase tracking-wider mb-1">
                     Featured
                 </div>
                 <div className="text-lg md:text-xl font-bold">  

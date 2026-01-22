@@ -22,7 +22,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
             <div 
                 className="group relative rounded-xl bg-white border-2 border-gray-300 shadow-md 
                 p-4 hover:shadow-xl hover:border-gray-400 hover:-translate-y-1 transition-all 
-                duration-300 cursor-pointer flex  gap-4"
+                duration-300 cursor-pointer flex gap-4"
                 onClick={handleImgClick}
             >
                 {/* Image Container */}
@@ -43,13 +43,13 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0 flex flex-col">
-                    <div className="flex-grow flex items-center">
+                    <div className="flex-grow flex items-center ">
                         <h3 className="text-base sm:text-lg font-semibold text-gray-900 
-                            leading-tight">  
+                            leading-tight truncate">  
                             {title}
                         </h3>
                     </div>
-                    <p className="text-xs sm:text-sm text-gray-500 font-medium">  
+                    <p className="text-xs sm:text-sm text-gray-500 font-medium truncate">  
                         {date}
                     </p>
                 </div>

@@ -88,7 +88,7 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
             onClick={handleCardClick}
             className="cursor-pointer hover:shadow-lg transition-shadow"
         >   
-            <div className="h-full w-full rounded-lg bg-gray-200/50 py-6 px-4 transition-colors
+            <div className="h-full w-full flex flex-col rounded-lg bg-gray-200/50 py-6 px-4 transition-colors
                 hover:bg-gray-200/70 ">
                 <div className="text-xs font-semibold text-red-500 uppercase tracking-wider mb-1">
                     Featured
@@ -96,12 +96,12 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
                 <div className="text-lg md:text-xl font-bold">  
                     {title}
                 </div>
-                <div className="text-sm mt-3">  
+                <div className="text-sm mt-3 mb-2">  
                     <p>
                         {content}
                     </p>
                 </div>
-                <div className="flex flex-wrap justify-start items-center gap-2 my-2 text-xs">
+                <div className="flex flex-wrap justify-start items-center gap-2 mt-2 mb-4 text-xs">
                     {selectedTags.map((tag, idx) => (
                         <Tag
                             key={`${tag.name}-${idx}`}  
@@ -110,9 +110,9 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
                         />
                     ))}
                 </div>
-                <div className="flex items-center mt-3">
+                <div className="flex items-center justify-end mt-auto">
+                    <span className="mr-2 text-sm text-gray-600">View Source</span>
                     <FaGithub className="text-2xl text-gray-600 hover:text-black transition-colors" />
-                    <span className="ml-2 text-sm text-gray-600">View on GitHub</span>
                 </div>
             </div>
         </div>

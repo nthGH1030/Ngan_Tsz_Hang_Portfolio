@@ -23,9 +23,21 @@ const ExperienceTabs: React.FC = () => {
             period: "2018 - Present",
             isCurrentCareer: true,
             responsibilities: [
-                "Analyzed team workflows to identify inefficiencies in project expenditure tracking; proposed and developed a desktop application to automate data extraction and payment form generation from Excel files, designed user workflows, gathered user feedback, and iteratively improved the tool to centralize tracking and enhance team efficiency.",
-                "Collaborated with internal IT teams and end users to identify and suggest use cases for adopting automation and AI agents to enhance workflow efficiency; drafted presentations and architecture diagrams, developed technical demos, and utilized concepts such as user journeys and happy paths to illustrate how the software could be integrated into existing workflow.",
-                "Managed multiple properties as a project manager, overseeing technical aspects and coordinating with leasing and property management teams to deliver construction projects on schedule and within budget, while ensuring full compliance with relevant regulations and standards."
+                `Analyzed team workflows to identify inefficiencies in project expenditure tracking; 
+                proposed and developed a desktop application to automate data extraction and payment 
+                form generation from Excel files, designed user workflows, gathered user feedback, 
+                and iteratively improved the tool to centralize tracking and enhance team efficiency.`,
+                
+                `Collaborated with internal IT teams and end users to identify and suggest use cases 
+                for adopting automation and AI agents to enhance workflow efficiency; drafted 
+                presentations and architecture diagrams, developed technical demos, and utilized 
+                concepts such as user journeys and happy paths to illustrate how the software could 
+                be integrated into existing workflow.`,
+                
+                `Managed multiple properties as a project manager, overseeing technical aspects 
+                and coordinating with leasing and property management teams to deliver construction 
+                projects on schedule and within budget, while ensuring full compliance with relevant 
+                regulations and standards.`
             ]
         },
         {

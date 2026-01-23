@@ -4,59 +4,70 @@ import "../styles/global.css";
 import { IoIosArrowForward } from "react-icons/io";
 ---
 
-<section id="about" class = "h-screen snap-start max-w-2xl pt-32 overflow-y-auto" >
+<section id="about" class = "h-screen snap-start  pt-32 overflow-y-auto" >
     <div class = "mx-8 md:mx-24 flex items-center">
         <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">1. About me</h1>
         <div class = "w-full bg-gray-300 h-px ml-2"></div>
     </div>
-    <p class = "mx-8 mt-8 md:mx-24 text-[clamp(0.9rem,2.5vw,1rem)]"> 
-        I am a chartered building surveyor turned software engineer, 
-        passionate about leveraging technology to solve real-world problems. 
-        In my free time, I have developed and deployed solutions that address 
-        challenges encountered in my professional work, some of which have been 
-        adopted to enhance productivity and support educational initiatives. 
-        I actively contribute to brainstorming sessions focused on automation and 
-        AI adoption within the enterprise, identifying practical use cases 
-        and creating technical demos to drive innovation and efficiency.
-    </p>
-    <br/>
-    <p class = "mx-8 md:mx-24"> I had work with the following technologies recently:</p>
-    <div class = "grid grid-cols-2 gap-2 mt-4 mb-16 mx-8 md:mx-24">
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>Javascript</p>
+    <div class = "flex gap-16 mx-8 mt-8 md:mx-24">
+        <div class = "flex-1 min-w-0">
+            <p class = "text-[clamp(0.9rem,2.5vw,1rem)]"> 
+                I am a chartered building surveyor turned software engineer, 
+                passionate about leveraging technology to solve real-world problems. 
+                In my free time, I have developed and deployed solutions that address 
+                challenges encountered in my professional work, some of which have been 
+                adopted to enhance productivity and support educational initiatives. 
+                I actively contribute to brainstorming sessions focused on automation and 
+                AI adoption within the enterprise, identifying practical use cases 
+                and creating technical demos to drive innovation and efficiency.
+            </p>
+            <br/>
+            <p> I had work with the following technologies recently:</p>
+            <div class = "grid grid-cols-2 gap-2 mt-4 mb-16">
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>Javascript</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>Typescript</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>Node.js</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>ReactJS</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>Tailwind</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>astro</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>HTML</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>CSS</p>
+                </div>
+                <div class = "flex items-center justify-start">
+                    <IoIosArrowForward/>
+                    <p>openAI</p>
+                </div>
+            </div>
         </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>Typescript</p>
-        </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>Node.js</p>
-        </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>ReactJS</p>
-        </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>Tailwind</p>
-        </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>astro</p>
-        </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>HTML</p>
-        </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>CSS</p>
-        </div>
-        <div class = "flex items-center justify-start">
-            <IoIosArrowForward/>
-            <p>openAI</p>
+        <div class = "flex-shrink-0 w-[clamp(12rem,25vw,20rem)]">
+            <img
+                src = "./portrait.JPG"
+                alt = "portrait"
+                class = "w-full h-auto object-cover rounded-lg"
+            />
         </div>
     </div>
 </section>

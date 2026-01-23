@@ -42,8 +42,8 @@ const ExperienceTabs: React.FC = () => {
         },
         {
             id: 1,
-            role: "Assistant Surveyor",
-            company: "Company Name 1",
+            role: "Assistant Building Surveyor",
+            company: "United Consultancy Limited",
             period: "2017 - 2018",
             isCurrentCareer: false,
             responsibilities: [
@@ -54,21 +54,9 @@ const ExperienceTabs: React.FC = () => {
         },
         {
             id: 2,
-            role: "Surveyor",
-            company: "Company Name 2",
-            period: "2016 - 2017",
-            isCurrentCareer: false,
-            responsibilities: [
-                "Add your surveying experience and responsibilities here...",
-                "Additional responsibility details...",
-                "More accomplishments and duties..."
-            ]
-        },
-        {
-            id: 3,
-            role: "Junior Surveyor",
-            company: "Company Name 3",
-            period: "2015 - 2016",
+            role: "Assistant Building Surveyor",
+            company: "ISS Building Consultancy",
+            period: "2015 - 2017",
             isCurrentCareer: false,
             responsibilities: [
                 "Add your surveying experience and responsibilities here...",
@@ -100,7 +88,7 @@ const ExperienceTabs: React.FC = () => {
                             }`}
                     >
                         <div className="flex flex-col">
-                            <span className="font-semibold">Current - Software PM</span>
+                            <span className="font-semibold">Assistant Project Manager</span>
                             <span className="text-xs opacity-70">{exp.company}</span>
                         </div>
                     </button>
@@ -111,7 +99,7 @@ const ExperienceTabs: React.FC = () => {
                         {/* Divider */}
                         <div className="my-2 flex items-center gap-2 px-4">
                             <div className="h-px bg-gray-300 flex-1"></div>
-                            <span className="text-xs text-gray-400 font-medium">Previous Career</span>
+                            <span className="text-xs text-gray-400 font-medium">Previous</span>
                             <div className="h-px bg-gray-300 flex-1"></div>
                         </div>
 

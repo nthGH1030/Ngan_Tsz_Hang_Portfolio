@@ -43,8 +43,32 @@ const ExperienceTabs: React.FC = () => {
         {
             id: 1,
             role: "Assistant Surveyor",
-            company: "Previous Company Name",
-            period: "2015 - 2018",
+            company: "Company Name 1",
+            period: "2017 - 2018",
+            isCurrentCareer: false,
+            responsibilities: [
+                "Add your surveying experience and responsibilities here...",
+                "Additional responsibility details...",
+                "More accomplishments and duties..."
+            ]
+        },
+        {
+            id: 2,
+            role: "Surveyor",
+            company: "Company Name 2",
+            period: "2016 - 2017",
+            isCurrentCareer: false,
+            responsibilities: [
+                "Add your surveying experience and responsibilities here...",
+                "Additional responsibility details...",
+                "More accomplishments and duties..."
+            ]
+        },
+        {
+            id: 3,
+            role: "Junior Surveyor",
+            company: "Company Name 3",
+            period: "2015 - 2016",
             isCurrentCareer: false,
             responsibilities: [
                 "Add your surveying experience and responsibilities here...",
@@ -75,7 +99,10 @@ const ExperienceTabs: React.FC = () => {
                                 : 'border-gray-300 text-gray-600 hover:bg-blue-50/50 hover:text-blue-600'
                             }`}
                     >
-                        <span>Current - Software Engineering</span>
+                        <div className="flex flex-col">
+                            <span className="font-semibold">Current - Software PM</span>
+                            <span className="text-xs opacity-70">{exp.company}</span>
+                        </div>
                     </button>
                 ))}
 
@@ -102,7 +129,10 @@ const ExperienceTabs: React.FC = () => {
                                         : 'border-gray-300 text-gray-500 hover:bg-gray-50 hover:text-gray-700'
                                     }`}
                             >
-                                <span>Surveyor</span>
+                                <div className="flex flex-col">
+                                    <span className="font-semibold">{exp.role}</span>
+                                    <span className="text-xs opacity-70">{exp.company}</span>
+                                </div>
                             </button>
                         ))}
                     </>

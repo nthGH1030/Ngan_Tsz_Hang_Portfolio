@@ -81,7 +81,7 @@ const ExperienceTabs: React.FC = () => {
                         aria-selected={activeTab === exp.id}
                         aria-controls={`panel-${exp.id}`}
                         onClick={() => setActiveTab(exp.id)}
-                        className={`text-left px-4 py-3 text-sm font-medium border-l-2 transition-all
+                        className={`text-left px-4 py-3 text-sm font-medium border-l-2 transition-all cursor-pointer
                             ${activeTab === exp.id
                                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                                 : 'border-gray-300 text-gray-600 hover:bg-blue-50/50 hover:text-blue-600'
@@ -111,7 +111,7 @@ const ExperienceTabs: React.FC = () => {
                                 aria-selected={activeTab === exp.id}
                                 aria-controls={`panel-${exp.id}`}
                                 onClick={() => setActiveTab(exp.id)}
-                                className={`text-left px-4 py-3 text-sm font-medium border-l-2 transition-all
+                                className={`text-left px-4 py-3 text-sm font-medium border-l-2 transition-all cursor-pointer
                                     ${activeTab === exp.id
                                         ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                                         : 'border-gray-300 text-gray-500 hover:bg-gray-50 hover:text-gray-700'
@@ -128,7 +128,7 @@ const ExperienceTabs: React.FC = () => {
             </div>
 
             {/* Tab Panels */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 min-h-[500px]">
                 {experiences.map((exp) => (
                     <div
                         key={exp.id}

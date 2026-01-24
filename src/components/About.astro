@@ -62,13 +62,13 @@ import { IoIosArrowForward } from "react-icons/io";
                 </div>
             </div>
         </div>
-        <div class = "flex-shrink-0 w-[clamp(150px,25vw,300px)] mx-auto md:mx-0">
-            <div class = ></div>
+        <div class = "relative flex-shrink-0 mx-auto md:mx-0 self-start">
             <img
                 src = "./portrait.jpg"
                 alt = "portrait"
-                class = "w-full h-auto object-cover rounded-lg"
+                class = "w-[clamp(150px,25vw,300px)] h-auto object-cover rounded-lg block"
             />
+            <div class = "absolute inset-0 bg-blue-500/30 rounded-lg pointer-events-none"></div>
         </div>
     </div>
 </section>

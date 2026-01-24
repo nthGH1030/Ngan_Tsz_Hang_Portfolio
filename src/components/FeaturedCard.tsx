@@ -66,24 +66,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
         } 
     }
 
-    const colorMap = {
-        language : {
-            base : "blue",
-            variants: ["bg-blue-300" , "bg-blue-400" , "bg-blue-500" , "bg-blue-600"]
-        },
-        framework : {
-            base : "green",
-            variants: ["bg-green-300" , "bg-green-400" , "bg-green-500" , "bg-green-600"]
-        },
-        deployment: {
-            base: "purple",
-            variants: ["bg-purple-300" , "bg-purple-400" , "bg-purple-500" , "bg-purple-600"]
-        },
-        api : {
-            base: "orange",
-            variants: ["bg-orange-300" , "bg-orange-400" , "bg-orange-500" , "bg-orange-600"]
-        }
-    }
+    // Uniform tag styling - no color categorization
 
     function getSelectedTag(tagNames: string[]) {
 
@@ -98,14 +81,8 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
 
     }
 
-    function getTagColor(tag: TagData, idx : number){
-        //handle non-valid tag
-        //divide the leng of the array with the index and get the remainder.
-        //assign the color array using the remainder as index.
-        const categoryColors = colorMap[tag.category as keyof typeof colorMap];
-        if(!categoryColors) return "gray-500"
-        const variantIdx = idx % categoryColors.variants.length;
-        return categoryColors.variants[variantIdx]
+    function getTagColor() {
+        return "bg-blue-50 text-blue-700 border border-blue-200"
     }
 
     const handleCardClick = () => {
@@ -175,7 +152,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                         {selectedTags.map((tag, idx) => (
                             <Tag
                                 key={`${tag.name}-${idx}`}
-                                color={getTagColor(tag, idx)}
+                                color={getTagColor()}
                                 content={tag.name}
                             />
                         ))}
@@ -269,7 +246,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
                             {selectedTags.map((tag, idx) => (
                                 <Tag
                                     key={`${tag.name}-${idx}`}
-                                    color={getTagColor(tag, idx)}
+                                    color={getTagColor()}
                                     content={tag.name}
                                 />
                             ))}

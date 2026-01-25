@@ -18,8 +18,14 @@ import HamMenu from "./HamMenu";
     <div class = "hidden md:block">
         <nav class = "flex justify-between">
             <div class = "flex items-center gap-2 md:gap-5 md:ml-8">
-                <a href = "#icon">
-                    <img src = "" alt = "icon"/>
+               <a href="#icon" class="relative flex items-center justify-center w-10 h-10 group">
+                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors z-10">N</span>
+                    <div class="absolute inset-0 border-2 border-blue-600 rounded transition-opacity">
+                        <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-blue-600
+                                    group-hover:top-1 group-hover:left-1"></div>
+                        <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-blue-600
+                                    group-hover:bottom-1 group-hover:right-1"></div>
+                    </div>
                 </a>
                 <p class = "">My Name</p>
             </div>

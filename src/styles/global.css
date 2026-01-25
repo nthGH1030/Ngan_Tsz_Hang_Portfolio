@@ -6,6 +6,15 @@ body {
 	width: 100%;
 	height: 100%;
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	/* Grey-dominant gradient with subtle blue accent */
+	background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 25%, #f8fafc 50%, #e5e7eb 75%, #f3f4f6 100%);
+	background-attachment: fixed;
+}
+
+/* Ensure content is above background pattern */
+body > * {
+	position: relative;
+	z-index: 1;
 }
 
 /* Smooth scrolling for anchor links */

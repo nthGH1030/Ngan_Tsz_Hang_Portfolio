@@ -5,6 +5,9 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow:wght@500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
 		<title>Astro Basics</title>
 	</head>
 	<body>
@@ -17,6 +20,13 @@
 	body {
 		width: 100%;
 		height: 100%;
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	}
+
+	/* TopBar Navigation Font */
+	#top-bar,
+	#top-bar * {
+		font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	}
 
 	/* Sequential Loading Animation */

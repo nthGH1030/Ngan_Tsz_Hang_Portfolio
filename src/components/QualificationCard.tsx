@@ -20,7 +20,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
     return (
         <div>
             <div 
-                className="group relative rounded-lg hover:bg-gray-50/50 
+                className="group relative rounded-lg hover:bg-white/50
                 p-3 transition-all duration-300 cursor-pointer flex items-center gap-3"
                 onClick={handleImgClick}
             >

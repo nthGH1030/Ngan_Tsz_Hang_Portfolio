@@ -114,7 +114,7 @@ const ExperienceTabs: React.FC = () => {
                                 className={`text-left px-4 py-3 text-sm font-medium border-l-2 transition-all cursor-pointer
                                     ${activeTab === exp.id
                                         ? 'border-blue-600 text-blue-600 bg-blue-50/50'
-                                        : 'border-gray-300 text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                                        : 'border-gray-300 text-gray-500 hover:bg-gray-50/50 hover:text-gray-700'
                                     }`}
                             >
                                 <div className="flex flex-col">

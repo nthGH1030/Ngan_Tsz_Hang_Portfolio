@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+/* Base Styles */
+html,
+body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* TopBar Navigation Font */
+#top-bar,
+#top-bar * {
+	font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Icon Font - Rajdhani */
+#top-bar a[href="/"] {
+	font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
 @layer utilities {
     @keyframes slide-in {
         from {transform: translateX(100%)}
@@ -93,5 +112,30 @@
     .animate-play-out {
         animation : play-out 0.4s both;
     }
+
+    /* Sequential Loading Animation */
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideIn 0.6s ease-out forwards;
+        will-change: opacity, transform;
+    }
+
+    /* Staggered delays for sequential appearance */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-700 { animation-delay: 0.7s; }
+    .delay-800 { animation-delay: 0.8s; }
 }
 

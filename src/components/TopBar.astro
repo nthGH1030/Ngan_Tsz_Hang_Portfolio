@@ -19,15 +19,23 @@ import HamMenu from "./HamMenu";
         <nav class = "flex justify-between">
             <div class = "flex items-center gap-2 md:gap-5 md:ml-8">
                <a href="#icon" class="relative flex items-center justify-center w-10 h-10 group">
-                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors z-10">N</span>
-                    <div class="absolute inset-0 border-2 border-blue-600 rounded transition-opacity">
-                        <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-blue-600
-                                    group-hover:top-1 group-hover:left-1"></div>
-                        <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-blue-600
-                                    group-hover:bottom-1 group-hover:right-1"></div>
+                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10">N</span>
+                    <div class="absolute inset-0 border-2 border-blue-600 rounded-sm transition-all duration-200 group-hover:scale-105">
+                        <div class="absolute top-0.5 left-0.5 w-2 h-2 border-t-2 border-l-2 border-blue-600 rounded-tl-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                        <div class="absolute top-0.5 right-0.5 w-2 h-2 border-t-2 border-r-2 border-blue-600 rounded-tr-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:-translate-x-1 group-hover:translate-y-1"></div>
+                        <div class="absolute bottom-0.5 left-0.5 w-2 h-2 border-b-2 border-l-2 border-blue-600 rounded-bl-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:translate-x-1 group-hover:-translate-y-1"></div>
+                        <div class="absolute bottom-0.5 right-0.5 w-2 h-2 border-b-2 border-r-2 border-blue-600 rounded-br-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
                     </div>
                 </a>
-                <p class = "">My Name</p>
+                <p class = "text-sm text-gray-500 font-semibold uppercase tracking-wide whitespace-nowrap">Kelvin Ngan</p>
             </div>
             <div class = "flex gap-8 items-center justify-end text-base md:mr-8">
                 <a href = "#about" class = "nav-link" >About</a>

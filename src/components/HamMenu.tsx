@@ -63,32 +63,27 @@ const HamMenu: React.FC = () => {
                             onClick={handleClose}
                         />
                     </div>
-                    <div className = {`${blur} fixed top-0 left-0 z-20 top-0 h-full w-full`}></div>
-                    <aside className = {`fixed top-0 right-0 z-20 top-0 h-full w-3/4 bg-gray-300 ${menuSlide}`}>
-                        <div className ="flex flex-col items-center justify-center gap-8 
-                            text-4xl my-64 mx-6 scrool-smooth">
+                    <div className = {`${blur} fixed top-0 left-0 z-20 h-full w-full`} onClick={handleClose}></div>
+                    <aside className = {`fixed top-0 right-0 z-20 h-full w-3/4 bg-gradient-to-bl from-slate-50 via-gray-50 to-slate-100 shadow-2xl ${menuSlide}`}>
+                        <div className ="flex flex-col items-center justify-center h-full gap-8 px-12">
                             <a href = "#about" 
-                                className = "nav-link" 
+                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#about")}>
-                                <span>1. </span>
                                 About</a>
                             <a href = "#experience" 
-                                className = "nav-link" 
+                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#experience")}>
-                                <span>2. </span>
                                 Experience</a>
                             <a href = "#qualification" 
-                                className = "nav-link" 
+                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#qualification")}>
-                                <span>3. </span>
                                 Qualification</a>
                             <a href = "#work" 
-                                className = "nav-link" 
+                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#work")}>
-                                <span>4. </span>
                                 Work</a>
                             <a href = "#contact" 
-                                className = "nav-link" 
+                                className = "nav-link inline-block px-6 py-3 rounded-lg font-semibold text-3xl bg-blue-600 text-white hover:-translate-y-1 hover:-translate-x-1 hover:bg-blue-700 hover:shadow-[4px_4px_0px_0px_rgba(37,99,235,0.4)] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all duration-200 will-change-transform" 
                                 onClick = {(e) => handleNavClick(e, "#contact")}>
                                 Contact</a>
                         </div>

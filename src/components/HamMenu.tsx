@@ -32,10 +32,10 @@ const HamMenu: React.FC = () => {
     const blur = isVisible ? "backdrop-blur" : ""
 
     return (
-        <div> 
+        <div className="w-10 h-10 flex items-center justify-center"> 
             <div>
                 <GiHamburgerMenu 
-                    className = {`text-2xl z-20
+                    className = {`text-3xl z-20 cursor-pointer
                         ${isOpen 
                             ? isVisible ? `opacity-0 scale-90 pointer-events-none animate-spin-fade-out` 
                             : 'opacity-0 scale-90 pointer-events-none'
@@ -47,20 +47,22 @@ const HamMenu: React.FC = () => {
             </div>
             {isVisible && createPortal( 
                 <div>
-                    <IoClose 
-                        className = {`fixed top-8 right-8 text-2xl z-30 cursor-pointer
+                    <div className="fixed top-8 right-8 w-10 h-10 z-30 flex items-center justify-center">
+                        <IoClose 
+                            className = {`text-3xl cursor-pointer
                             ${isOpen 
                                 ? isVisible ? `opacity-100 animate-spin-fade-in ` 
                                 :  'opacity-100'
                                 : isVisible ? 'opacity-0 scale-90 pointer-events-none animate-spin-fade-out' : 
                                 'opacity-0 scale-90 pointer-events-none'
-                        }`} 
-                        //Click -> !isOpen -> Trigger Animation -> setIsvisible(false)
-                        onAnimationEnd = {() => {
-                            if(!isOpen) setIsVisible(false)
-                        }}
-                        onClick={handleClose}
-                    />
+                            }`} 
+                            //Click -> !isOpen -> Trigger Animation -> setIsvisible(false)
+                            onAnimationEnd = {() => {
+                                if(!isOpen) setIsVisible(false)
+                            }}
+                            onClick={handleClose}
+                        />
+                    </div>
                     <div className = {`${blur} fixed top-0 left-0 z-20 top-0 h-full w-full`}></div>
                     <aside className = {`fixed top-0 right-0 z-20 top-0 h-full w-3/4 bg-gray-300 ${menuSlide}`}>
                         <div className ="flex flex-col items-center justify-center gap-8 

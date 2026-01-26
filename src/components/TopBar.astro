@@ -50,9 +50,23 @@ import HamMenu from "./HamMenu";
     {/* This is the mobile version */ }
     <div class = "md:hidden">
         <nav class = "flex justify-between mx-2 sm:mx-4 ">
-            <div class = "text-base ">
-                <a href = "#icon">
-                    <img src = "" alt = "icon"/>
+            <div>
+                <a href="/" class="relative flex items-center justify-center w-10 h-10 group">
+                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10">N</span>
+                    <div class="absolute inset-0 border-2 border-blue-600 rounded-sm transition-all duration-200 group-hover:scale-105">
+                        <div class="absolute top-0.5 left-0.5 w-2 h-2 border-t-2 border-l-2 border-blue-600 rounded-tl-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                        <div class="absolute top-0.5 right-0.5 w-2 h-2 border-t-2 border-r-2 border-blue-600 rounded-tr-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:-translate-x-1 group-hover:translate-y-1"></div>
+                        <div class="absolute bottom-0.5 left-0.5 w-2 h-2 border-b-2 border-l-2 border-blue-600 rounded-bl-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:translate-x-1 group-hover:-translate-y-1"></div>
+                        <div class="absolute bottom-0.5 right-0.5 w-2 h-2 border-b-2 border-r-2 border-blue-600 rounded-br-sm
+                                    transition-all duration-200 ease-out
+                                    group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
+                    </div>
                 </a>
             </div>
             <div class = "fixed top-8 right-8 text-2xl">

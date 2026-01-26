@@ -64,26 +64,34 @@ const HamMenu: React.FC = () => {
                         />
                     </div>
                     <div className = {`${blur} fixed top-0 left-0 z-20 h-full w-full`} onClick={handleClose}></div>
-                    <aside className = {`fixed top-0 right-0 z-20 h-full w-3/4 bg-gradient-to-bl from-slate-50 via-gray-50 to-slate-100 shadow-2xl ${menuSlide}`}>
-                        <div className ="flex flex-col items-center justify-center h-full gap-8 px-12">
+                    <aside className = {`fixed top-0 right-0 z-20 h-full w-3/4 
+                        bg-gradient-to-br from-white via-blue-50/30 to-slate-100 
+                        backdrop-blur-xl shadow-[-20px_0_60px_rgba(59,130,246,0.15)]
+                        border-l border-blue-600/10 ${menuSlide}`}>
+                        <div className ="flex flex-col items-center justify-center h-full gap-8 px-12 font-semibold text-xl">
                             <a href = "#about" 
-                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
+                                className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#about")}>
                                 About</a>
                             <a href = "#experience" 
-                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
+                                className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#experience")}>
                                 Experience</a>
                             <a href = "#qualification" 
-                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
+                                className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#qualification")}>
                                 Qualification</a>
                             <a href = "#work" 
-                                className = "nav-link text-3xl font-semibold transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
+                                className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#work")}>
                                 Work</a>
                             <a href = "#contact" 
-                                className = "nav-link inline-block px-6 py-3 rounded-lg font-semibold text-3xl bg-blue-600 text-white hover:-translate-y-1 hover:-translate-x-1 hover:bg-blue-700 hover:shadow-[4px_4px_0px_0px_rgba(37,99,235,0.4)] focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 cursor-pointer transition-all duration-200 will-change-transform" 
+                                className ="nav-link inline-block px-6 py-3 rounded-xl font-bold text-lg
+                                                border-2 border-blue-600 text-blue-600 bg-transparent
+                                                hover:-translate-y-1 hover:-translate-x-1
+                                                hover:border-blue-700 hover:text-blue-700
+                                                hover:shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]
+                                                cursor-pointer transition-all duration-200 will-change-transform" 
                                 onClick = {(e) => handleNavClick(e, "#contact")}>
                                 Contact</a>
                         </div>

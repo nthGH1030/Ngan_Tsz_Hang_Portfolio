@@ -48,7 +48,7 @@ const HamMenu: React.FC = () => {
             {isVisible && createPortal( 
                 <div>
                     <IoClose 
-                        className = {`fixed top-12 right-12 text-5xl z-30
+                        className = {`fixed top-8 right-8 text-2xl z-[60] cursor-pointer
                             ${isOpen 
                                 ? isVisible ? `opacity-100 animate-spin-fade-in ` 
                                 :  'opacity-100'

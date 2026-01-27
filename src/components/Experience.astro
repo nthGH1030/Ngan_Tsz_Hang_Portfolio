@@ -12,7 +12,19 @@ import ExperienceTabs from './ExperienceTabs'
         <ExperienceTabs client:load />
     </div>
     
-    <div class = "mx-8 md:mx-24">
+    <div class = "mx-8 md:mx-24 pb-8">
         <Qualification/>
     </div>
 </section>
+
+<script>
+    // Reset scroll position when section comes into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.scrollTop = 0;
+        });
+    }, { threshold: 0.5 });
+    
+    const section = document.getElementById('experience');
+    if (section) observer.observe(section);
+</script>

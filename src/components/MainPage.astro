@@ -3,7 +3,6 @@ import TopBar from './TopBar.astro'
 import About from './About.astro'
 import Introduction from './Introduction.astro'
 import Experience from './Experience.astro'
-import Qualification from './Qualification.astro'
 import Work from './Work.astro'
 import Contact from './Contact.astro'
 import BottomBar from './BottomBar.tsx'
@@ -30,30 +29,46 @@ import FeaturedWork from './FeaturedWork.astro'
 <script>
     let lastState = false;
     let lastYCoor = 0
+    
+    const handleScroll = (scrollY: number) => {
+        const bar = document.getElementById('top-bar');
+        if(!bar) return;
+        
+        if(scrollY > lastYCoor){
+            if(!lastState){
+                bar.classList.remove('topbar-slide-in')
+                bar.classList.add('topbar-slide-out')
+                lastState = true
+            } 
+        } else if (scrollY < lastYCoor) {
+            if(lastState ){
+                bar.classList.remove('topbar-slide-out')
+                bar.classList.add('topbar-slide-in')
+                lastState = false
+            }
+        }
+        lastYCoor = scrollY;
+    }
+    
     window.addEventListener('DOMContentLoaded' , () => {
         const snapContainer = document.getElementById('snapContainer');
         const bar = document.getElementById('top-bar');
         if(!snapContainer || !bar) return
         
+        // Track main container scroll
         snapContainer.addEventListener('scroll' , () => {
-            const bar = document.getElementById('top-bar');
-            const scrollY = snapContainer.scrollTop
-            if(!bar) return
-            if(scrollY > lastYCoor){
-                if(!lastState){
-                    bar.classList.remove('topbar-slide-in')
-                    bar.classList.add('topbar-slide-out')
-                    lastState = true
-                } 
-            } else if (scrollY < lastYCoor) {
-                if(lastState ){
-                    bar.classList.remove('topbar-slide-out')
-                    bar.classList.add('topbar-slide-in')
-                    lastState = false
-                }
-            }
-            lastYCoor = scrollY;
+            handleScroll(snapContainer.scrollTop);
         })
+        
+        // Track overflow sections scroll
+        const overflowSections = document.querySelectorAll('.overflow-y-auto');
+        overflowSections.forEach(section => {
+            section.addEventListener('scroll', () => {
+                // Combine main scroll + section's internal scroll
+                const totalScroll = snapContainer.scrollTop + section.scrollTop;
+                handleScroll(totalScroll);
+            });
+        });
     })
 
 </script>

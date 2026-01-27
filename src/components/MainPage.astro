@@ -29,6 +29,7 @@ import FeaturedWork from './FeaturedWork.astro'
 <script>
     let lastState = false;
     let lastYCoor = 0
+    const sectionScrollMap = new Map<Element, number>();
     
     const handleScroll = (scrollY: number) => {
         const bar = document.getElementById('top-bar');
@@ -49,6 +50,30 @@ import FeaturedWork from './FeaturedWork.astro'
         }
         lastYCoor = scrollY;
     }
+
+    const handleOverflowScroll = (section: Element) => {
+        const bar = document.getElementById('top-bar');
+        if(!bar) return;
+        
+        const currentScroll = section.scrollTop;
+        const lastSectionScroll = sectionScrollMap.get(section) || 0;
+        
+        // Always allow slide-out (scrolling down)
+        if (currentScroll > lastSectionScroll && !lastState) {
+            bar.classList.remove('topbar-slide-in')
+            bar.classList.add('topbar-slide-out')
+            lastState = true
+        }
+        // Only allow slide-in when at the top (scrolling up to top)
+        else if (currentScroll === 0 && lastState) {
+            bar.classList.remove('topbar-slide-out')
+            bar.classList.add('topbar-slide-in')
+            lastState = false
+        }
+        
+        // Track last coor of the overflow section
+        sectionScrollMap.set(section, currentScroll);
+    }
     
     window.addEventListener('DOMContentLoaded' , () => {
         const snapContainer = document.getElementById('snapContainer');
@@ -63,10 +88,9 @@ import FeaturedWork from './FeaturedWork.astro'
         // Track overflow sections scroll
         const overflowSections = document.querySelectorAll('.overflow-y-auto');
         overflowSections.forEach(section => {
+            sectionScrollMap.set(section, 0); // Initialize
             section.addEventListener('scroll', () => {
-                // Combine main scroll + section's internal scroll
-                const totalScroll = snapContainer.scrollTop + section.scrollTop;
-                handleScroll(totalScroll);
+                handleOverflowScroll(section);
             });
         });
     })

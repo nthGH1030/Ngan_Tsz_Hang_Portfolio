@@ -33,8 +33,6 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
         {name: "openAI", category: "api"},
     ];
 
-    // Uniform tag styling - blue theme
-
     function getSelectedTag(tagNames: string[]) {
 
         const selectedTags = allTags.map(tag => {

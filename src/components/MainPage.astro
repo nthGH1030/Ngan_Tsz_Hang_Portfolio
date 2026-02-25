@@ -88,7 +88,7 @@ import FeaturedWork from './FeaturedWork.astro'
         // Track overflow sections scroll
         const overflowSections = document.querySelectorAll('.overflow-y-auto');
         overflowSections.forEach(section => {
-            sectionScrollMap.set(section, 0); // Initialize
+            sectionScrollMap.set(section, 0); 
             section.addEventListener('scroll', () => {
                 handleOverflowScroll(section);
             });

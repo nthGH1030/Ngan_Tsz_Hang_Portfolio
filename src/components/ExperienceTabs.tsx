@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { IoIosArrowForward } from "react-icons/io";
 
+interface SubExperience {
+    id: string;
+    title: string;
+    period: string;
+    scope: string;
+    highlights: string[];
+}
+
 interface ExperienceData {
     id: number;
     role: string;
     company: string;
     companyUrl?: string;
     period: string;
+    summary?: string;
     responsibilities: string[];
+    subExperiences?: SubExperience[];
     isCurrentCareer: boolean;
 }
 
@@ -21,23 +31,36 @@ const ExperienceTabs: React.FC = () => {
             company: "Gaw Capital Asset Management Limited",
             companyUrl: "https://www.gawcapital.com/",
             period: "2018 - Present",
+            summary: "Cross-functional project delivery with an internal software-innovation track.",
             isCurrentCareer: true,
             responsibilities: [
-                `Analyzed team workflows to identify inefficiencies in project expenditure tracking; 
-                proposed and developed a desktop application to automate data extraction and payment 
-                form generation from Excel files, designed user workflows, gathered user feedback, 
-                and iteratively improved the tool to centralize tracking and enhance team efficiency.`,
-                
-                `Collaborated with internal IT teams and end users to identify and suggest use cases 
-                for adopting automation and AI agents to enhance workflow efficiency; drafted 
-                presentations and architecture diagrams, developed technical demos, and utilized 
-                concepts such as user journeys and happy paths to illustrate how the software could 
-                be integrated into existing workflow.`,
-                
-                `Managed multiple properties as a project manager, overseeing technical aspects 
-                and coordinating with leasing and property management teams to deliver construction 
-                projects on schedule and within budget, while ensuring full compliance with relevant 
-                regulations and standards.`
+                "Managed multiple properties as a project manager, coordinating leasing and property-management teams to deliver construction projects on schedule and within budget while maintaining compliance.",
+                "Led technical planning and vendor coordination for project execution, balancing operational constraints with delivery quality and cost control.",
+                "Acted as a bridge between operations and IT to identify practical opportunities where software could remove recurring friction in day-to-day work."
+            ],
+            subExperiences: [
+                {
+                    id: "internal-tools",
+                    title: "Internal Tooling and Workflow Automation",
+                    period: "2022 - Present",
+                    scope: "Software Development Initiative",
+                    highlights: [
+                        "Designed and built a desktop workflow tool to automate Excel data extraction and payment-form generation, reducing repetitive manual steps for the team.",
+                        "Mapped user journeys with stakeholders, translated bottlenecks into product requirements, and iterated the tool from user feedback.",
+                        "Created reusable process logic that centralized tracking and made project-expenditure status easier to audit and communicate."
+                    ]
+                },
+                {
+                    id: "ai-solutioning",
+                    title: "AI and Automation Solution Prototyping",
+                    period: "2023 - Present",
+                    scope: "Software Development Initiative",
+                    highlights: [
+                        "Worked with end users and internal IT to identify high-value use cases for AI agents and automation in existing workflows.",
+                        "Prepared architecture diagrams and technical demos to compare multiple implementation options before committing engineering resources.",
+                        "Positioned software concepts in business language so non-technical teams could evaluate risk, feasibility, and adoption path."
+                    ]
+                }
             ]
         },
         {
@@ -68,6 +91,7 @@ const ExperienceTabs: React.FC = () => {
 
     const currentCareerExperiences = experiences.filter(exp => exp.isCurrentCareer);
     const previousCareerExperiences = experiences.filter(exp => !exp.isCurrentCareer);
+    const activeExperience = experiences.find(exp => exp.id === activeTab);
 
     return (
         <div className="flex flex-col md:flex-row gap-6">
@@ -88,7 +112,7 @@ const ExperienceTabs: React.FC = () => {
                             }`}
                     >
                         <div className="flex flex-col">
-                            <span className="font-semibold">Assistant Project Manager</span>
+                            <span className="font-semibold">{exp.role}</span>
                             <span className="text-xs opacity-70">{exp.company}</span>
                         </div>
                     </button>
@@ -129,47 +153,78 @@ const ExperienceTabs: React.FC = () => {
 
             {/* Tab Panels */}
             <div className="flex-1 min-w-0 min-h-[500px]">
-                {experiences.map((exp) => (
+                {activeExperience && (
                     <div
-                        key={exp.id}
-                        id={`panel-${exp.id}`}
+                        id={`panel-${activeExperience.id}`}
                         role="tabpanel"
-                        aria-labelledby={`tab-${exp.id}`}
-                        className={activeTab === exp.id ? '' : 'hidden'}
+                        aria-labelledby={`tab-${activeExperience.id}`}
                     >
                         <h3 className="flex flex-wrap items-baseline gap-1">
-                            <span className="font-semibold text-gray-900">{exp.role}</span>
+                            <span className="font-semibold text-gray-900">{activeExperience.role}</span>
                             <span className="text-gray-500">&nbsp;@&nbsp;</span>
-                            {exp.companyUrl ? (
+                            {activeExperience.companyUrl ? (
                                 <a
-                                    href={exp.companyUrl}
+                                    href={activeExperience.companyUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-blue-600 font-medium hover:underline"
                                 >
-                                    {exp.company}
+                                    {activeExperience.company}
                                 </a>
                             ) : (
-                                <span className="text-gray-600 font-medium">{exp.company}</span>
+                                <span className="text-gray-600 font-medium">{activeExperience.company}</span>
                             )}
                         </h3>
-                        <p className="text-sm text-gray-400 mt-1">{exp.period}</p>
-                        <div className="max-w-xl mt-4 flex flex-col gap-4">
-                            {exp.responsibilities.map((responsibility, idx) => (
-                                <div key={idx} className="flex items-start gap-4">
-                                    <div className="mt-1">
-                                        <IoIosArrowForward />
-                                    </div>
-                                    <div>
-                                        <p className="text-[clamp(0.9rem,2.5vw,1rem)]">
+                        <p className="text-sm text-gray-400 mt-1">{activeExperience.period}</p>
+
+                        {activeExperience.summary && (
+                            <p className="mt-3 text-sm text-gray-600 max-w-2xl">{activeExperience.summary}</p>
+                        )}
+
+                        <div className="max-w-2xl mt-5">
+                            <h4 className="text-xs font-semibold tracking-wider text-gray-500 uppercase">Core Role</h4>
+                            <div className="mt-3 flex flex-col gap-4">
+                                {activeExperience.responsibilities.map((responsibility, idx) => (
+                                    <div key={idx} className="flex items-start gap-4">
+                                        <div className="mt-1 text-gray-600">
+                                            <IoIosArrowForward />
+                                        </div>
+                                        <p className="text-[clamp(0.9rem,2.5vw,1rem)] text-gray-700">
                                             {responsibility}
                                         </p>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
+
+                        {activeExperience.subExperiences && activeExperience.subExperiences.length > 0 && (
+                            <div className="mt-8 max-w-3xl">
+                                <h4 className="text-xs font-semibold tracking-wider text-gray-500 uppercase">Software Engineering Contributions</h4>
+                                <div className="mt-3 border-l-2 border-blue-200 pl-4 md:pl-6 space-y-4">
+                                    {activeExperience.subExperiences.map((subExp) => (
+                                        <article key={subExp.id} className="rounded-lg border border-blue-100 bg-blue-50/40 p-4">
+                                            <div className="flex flex-wrap items-center gap-2">
+                                                <h5 className="font-semibold text-gray-900">{subExp.title}</h5>
+                                                <span className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full">
+                                                    {subExp.scope}
+                                                </span>
+                                            </div>
+                                            <p className="text-xs text-gray-500 mt-1">{subExp.period}</p>
+                                            <ul className="mt-3 space-y-2">
+                                                {subExp.highlights.map((highlight, idx) => (
+                                                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                                                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                                                        <span>{highlight}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </article>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
-                ))}
+                )}
             </div>
         </div>
     );

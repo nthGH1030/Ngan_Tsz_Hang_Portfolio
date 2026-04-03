@@ -57,8 +57,8 @@ const ExperienceTabs: React.FC = () => {
                     scope: "Software Development Initiative",
                     highlights: [
                         "Worked with end users and internal IT to identify high-value use cases for AI agents and automation in existing workflows.",
-                        "Prepared architecture diagrams and technical demos to compare multiple implementation options before committing engineering resources.",
-                        "Positioned software concepts in business language so non-technical teams could evaluate risk, feasibility, and adoption path."
+                        "Independently developed architecture diagrams and lightweight demos to help stakeholders visualize and compare practical implementation options.",
+                        "Proactively introduced software ideas beyond my formal remit, translating them into business-focused proposals so non-technical stakeholders could assess value, feasibility, and next steps."
                     ]
                 }
             ]

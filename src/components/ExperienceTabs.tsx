@@ -7,6 +7,9 @@ interface SubExperience {
     period: string;
     scope: string;
     highlights: string[];
+    ctaLabel?: string;
+    ctaTargetId?: string;
+    ctaSectionId?: string;
 }
 
 interface ExperienceData {
@@ -48,7 +51,10 @@ const ExperienceTabs: React.FC = () => {
                         "Designed and built a desktop workflow tool to automate Excel data extraction and payment-form generation, reducing repetitive manual steps for the team.",
                         "Mapped user journeys with stakeholders, translated bottlenecks into product requirements, and iterated the tool from user feedback.",
                         "Created reusable process logic that centralized tracking and made project-expenditure status easier to audit and communicate."
-                    ]
+                    ],
+                    ctaLabel: "View Payment Form filler",
+                    ctaTargetId: "payment-form-filler",
+                    ctaSectionId: "work"
                 },
                 {
                     id: "ai-solutioning",
@@ -92,6 +98,43 @@ const ExperienceTabs: React.FC = () => {
     const currentCareerExperiences = experiences.filter(exp => exp.isCurrentCareer);
     const previousCareerExperiences = experiences.filter(exp => !exp.isCurrentCareer);
     const activeExperience = experiences.find(exp => exp.id === activeTab);
+
+    const handleCtaClick = (targetId: string, sectionId?: string) => {
+        const target = document.getElementById(targetId);
+
+        if (!target) {
+            return;
+        }
+
+        const section = sectionId ? document.getElementById(sectionId) : target.closest('section');
+        const snapContainer = document.getElementById('snapContainer');
+
+        if (snapContainer && section) {
+            snapContainer.scrollTo({
+                top: section.offsetTop,
+                behavior: 'smooth'
+            });
+
+            window.setTimeout(() => {
+                const overflowContainer = target.closest('.overflow-y-auto');
+
+                if (overflowContainer instanceof HTMLElement) {
+                    const targetTop = target.offsetTop - overflowContainer.offsetTop;
+                    overflowContainer.scrollTo({
+                        top: Math.max(targetTop - 16, 0),
+                        behavior: 'smooth'
+                    });
+                    return;
+                }
+
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 450);
+
+            return;
+        }
+
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     return (
         <div className="flex flex-col md:flex-row gap-6">
@@ -218,6 +261,18 @@ const ExperienceTabs: React.FC = () => {
                                                     </li>
                                                 ))}
                                             </ul>
+
+                                            {subExp.ctaTargetId && subExp.ctaLabel && (
+                                                <div className="mt-4">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => handleCtaClick(subExp.ctaTargetId!, subExp.ctaSectionId)}
+                                                        className="inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-medium text-blue-700 transition-colors hover:border-blue-300 hover:bg-blue-100/70"
+                                                    >
+                                                        {subExp.ctaLabel}
+                                                    </button>
+                                                </div>
+                                            )}
                                         </article>
                                     ))}
                                 </div>

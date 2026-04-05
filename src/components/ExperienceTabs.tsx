@@ -59,7 +59,7 @@ const ExperienceTabs: React.FC = () => {
                 {
                     id: "ai-solutioning",
                     title: "AI and Automation Solution Prototyping",
-                    period: "2023 - Present",
+                    period: "2025 - Present",
                     scope: "Software Development Initiative",
                     highlights: [
                         "Worked with end users and internal IT to identify high-value use cases for AI agents and automation in existing workflows.",

@@ -81,10 +81,14 @@ const HamMenu: React.FC = () => {
                                 className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#qualification")}>
                                 Qualification</a>
-                            <a href = "#work" 
+                            <a href = "#featured-work" 
                                 className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
-                                onClick = {(e) => handleNavClick(e, "#work")}>
-                                Work</a>
+                                onClick = {(e) => handleNavClick(e, "#featured-work")}>
+                                Featured Work</a>
+                            <a href = "#other-projects" 
+                                className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
+                                onClick = {(e) => handleNavClick(e, "#other-projects")}>
+                                Projects</a>
                             <a href = "#contact" 
                                 className ="nav-link inline-block px-6 py-3 rounded-xl font-bold text-lg
                                                 border-2 border-blue-600 text-blue-600 bg-transparent

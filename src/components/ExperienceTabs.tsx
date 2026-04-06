@@ -54,7 +54,7 @@ const ExperienceTabs: React.FC = () => {
                     ],
                     ctaLabel: "View Payment Form filler",
                     ctaTargetId: "payment-form-filler",
-                    ctaSectionId: "work"
+                    ctaSectionId: "other-projects"
                 },
                 {
                     id: "ai-solutioning",

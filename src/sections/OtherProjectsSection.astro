@@ -1,6 +1,5 @@
 ---
-import Card from './Card'
-import FeaturedCard from './FeaturedCard'
+import ProjectCard from '../components/project/ProjectCard'
 ---
 
 <section id="other-projects" class = "snap-start h-screen pt-24" >
@@ -19,7 +18,7 @@ import FeaturedCard from './FeaturedCard'
         max-h-[calc(100vh-theme(spacing.24))]
         ">
         
-        <Card
+        <ProjectCard
             client:visible
             title = "Lunch Roulette"
             content = {`A web app that recommand restaurants, categories by location, crusines
@@ -28,7 +27,7 @@ import FeaturedCard from './FeaturedCard'
             href = {"https://lunch-roulette-phi.vercel.app/"}
             gitHref = {"placeholder"}
         />
-        <Card
+        <ProjectCard
             client:visible
             title = "Landlord Provision Chatbot"
             content = {`A chatbot that recommand industry standard premise provision for 
@@ -37,7 +36,7 @@ import FeaturedCard from './FeaturedCard'
             href = {"placeholder"}
             gitHref = {"placeholder"}
         />
-        <Card
+        <ProjectCard
             client:visible
             title = "LLM-Token-Checker"
             content = {`A chrome extension that tracks the amount of free token you have
@@ -47,7 +46,7 @@ import FeaturedCard from './FeaturedCard'
             gitHref = {"https://github.com/nthGH1030/LLM-Token-Tracker.git"}
         />
         <div id="payment-form-filler">
-            <Card
+            <ProjectCard
                 client:visible
                 title = "Payment Form filler"
                 content = {`An desktop Application that takes in a master table in an excel file,

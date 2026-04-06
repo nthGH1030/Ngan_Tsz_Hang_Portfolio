@@ -3,7 +3,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import {createPortal} from 'react-dom'
 
-const HamMenu: React.FC = () => {
+const MobileMenu: React.FC = () => {
     const [isOpen , setisOpen] = useState(false)
     const [isVisible, setIsVisible] = useState(false);
 
@@ -107,4 +107,4 @@ const HamMenu: React.FC = () => {
     )
 }
 
-export default HamMenu
+export default MobileMenu

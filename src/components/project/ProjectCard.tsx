@@ -16,7 +16,7 @@ export interface TagData{
     category : string;
 }
 
-const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) => {
+const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -106,4 +106,4 @@ const Card: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) =>
     );
 }
 
-export default Card;
+export default ProjectCard;

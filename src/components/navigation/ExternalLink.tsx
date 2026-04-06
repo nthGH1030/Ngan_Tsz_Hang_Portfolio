@@ -5,7 +5,7 @@ export interface LinkProps{
     icon: React.ReactNode
 }
 
-const ExtLink: React.FC <LinkProps> = ({href , icon}) => {
+const ExternalLink: React.FC <LinkProps> = ({href , icon}) => {
     const handleClick = () => {
         window.open(href)
     }
@@ -19,4 +19,4 @@ const ExtLink: React.FC <LinkProps> = ({href , icon}) => {
     )
 }
 
-export default ExtLink
+export default ExternalLink

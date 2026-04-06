@@ -1,5 +1,5 @@
 ---
-import FeaturedCard from './FeaturedCard'
+import FeaturedProjectCard from '../islands/FeaturedProjectCard'
 ---
 
 <section id="featured-work" class = "snap-start min-h-screen pt-24 overflow:hidden" >
@@ -12,7 +12,7 @@ import FeaturedCard from './FeaturedCard'
         mx-[clamp(1rem,6vw,6rem)]
         mx-2 ">
         <div class="relative w-full flex flex-col items-center justify-center">
-            <FeaturedCard
+            <FeaturedProjectCard
                 client:visible
                 title="Lunch Roulette"
                 content={`A web app that recommends restaurants, categories by location, cuisines. Spin the roulette to decide what to get for lunch!`}

@@ -1,7 +1,7 @@
 import React from 'react';
-import Tag from './Tag';
+import Tag from '../components/project/Tag';
 import { FaGithub } from "react-icons/fa"
-import ImgSlider from './ImgSlider';
+import ProjectMediaSlider from './ProjectMediaSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { FaRegPlayCircle , FaRegPauseCircle } from "react-icons/fa";
 
@@ -20,7 +20,7 @@ export interface TagData{
     category : string;
 }
 
-const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) => {
+const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -217,7 +217,7 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     
                             </div>
                             <div className="w-[300px] flex items-center justify-center">
-                                <ImgSlider/>
+                                <ProjectMediaSlider/>
                             </div>
                         </div>
                         
@@ -277,4 +277,4 @@ const FeaturedCard: React.FC<CardProps> = ({title, content, tagNames, href, gitH
     );
 }
 
-export default FeaturedCard;
+export default FeaturedProjectCard;

@@ -1,12 +1,12 @@
 ---
-import TopBar from './TopBar.astro'
-import About from './About.astro'
-import Introduction from './Introduction.astro'
-import Experience from './Experience.astro'
-import Work from './Work.astro'
-import Contact from './Contact.astro'
-import BottomBar from './BottomBar.tsx'
-import FeaturedWork from './FeaturedWork.astro'
+import TopBar from './navigation/TopBar.astro'
+import BottomBar from './navigation/BottomBar.tsx'
+import HomeSection from '../sections/HomeSection.astro'
+import AboutSection from '../sections/AboutSection.astro'
+import ExperienceSection from '../sections/ExperienceSection.astro'
+import FeaturedWorkSection from '../sections/FeaturedWorkSection.astro'
+import OtherProjectsSection from '../sections/OtherProjectsSection.astro'
+import ContactSection from '../sections/ContactSection.astro'
 ---
 
 <div >
@@ -16,12 +16,12 @@ import FeaturedWork from './FeaturedWork.astro'
     <div 
         id = 'snapContainer'
         class="snap-y snap-mandatory h-screen overflow-y-scroll">
-        <Introduction/>
-        <About/>
-        <Experience/>
-        <FeaturedWork/>
-        <Work/>
-        <Contact/>
+        <HomeSection/>
+        <AboutSection/>
+        <ExperienceSection/>
+        <FeaturedWorkSection/>
+        <OtherProjectsSection/>
+        <ContactSection/>
         <BottomBar/>
     </div>
 </div>

@@ -2,7 +2,7 @@ import React , {useState , useEffect} from 'react';
 import { IoIosArrowDropleft } from "react-icons/io";
 import { IoIosArrowDropright } from "react-icons/io";
 
-const ImgSlider: React.FC = () => {
+const ProjectMediaSlider: React.FC = () => {
 
     const imgSrc = ["Demo_address.png",
         "Demo_cuisine.png",
@@ -142,4 +142,4 @@ const ImgSlider: React.FC = () => {
     )
 }
 
-export default ImgSlider
+export default ProjectMediaSlider

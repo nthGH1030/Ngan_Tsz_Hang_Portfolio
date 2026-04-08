@@ -15,7 +15,7 @@ import ContactSection from '../../sections/ContactSection.astro'
     </div>
     <div 
         id = 'snapContainer'
-        class="snap-y snap-mandatory h-screen overflow-y-scroll">
+        class="h-screen overflow-y-scroll overscroll-y-contain scroll-smooth snap-y snap-mandatory">
         <HomeSection/>
         <AboutSection/>
         <ExperienceSection/>
@@ -27,72 +27,111 @@ import ContactSection from '../../sections/ContactSection.astro'
 </div>
 
 <script>
-    let lastState = false;
-    let lastYCoor = 0
-    const sectionScrollMap = new Map<Element, number>();
-    
-    const handleScroll = (scrollY: number) => {
-        const bar = document.getElementById('top-bar');
-        if(!bar) return;
-        
-        if(scrollY > lastYCoor){
-            if(!lastState){
-                bar.classList.remove('topbar-slide-in')
-                bar.classList.add('topbar-slide-out')
-                lastState = true
-            } 
-        } else if (scrollY < lastYCoor) {
-            if(lastState ){
-                bar.classList.remove('topbar-slide-out')
-                bar.classList.add('topbar-slide-in')
-                lastState = false
-            }
-        }
-        lastYCoor = scrollY;
-    }
-
-    const handleOverflowScroll = (section: Element) => {
-        const bar = document.getElementById('top-bar');
-        if(!bar) return;
-        
-        const currentScroll = section.scrollTop;
-        const lastSectionScroll = sectionScrollMap.get(section) || 0;
-        
-        // Always allow slide-out (scrolling down)
-        if (currentScroll > lastSectionScroll && !lastState) {
-            bar.classList.remove('topbar-slide-in')
-            bar.classList.add('topbar-slide-out')
-            lastState = true
-        }
-        // Only allow slide-in when at the top (scrolling up to top)
-        else if (currentScroll === 0 && lastState) {
-            bar.classList.remove('topbar-slide-out')
-            bar.classList.add('topbar-slide-in')
-            lastState = false
-        }
-        
-        // Track last coor of the overflow section
-        sectionScrollMap.set(section, currentScroll);
-    }
-    
-    window.addEventListener('DOMContentLoaded' , () => {
+    const initializeSnapContainer = () => {
         const snapContainer = document.getElementById('snapContainer');
-        const bar = document.getElementById('top-bar');
-        if(!snapContainer || !bar) return
-        
-        // Track main container scroll
-        snapContainer.addEventListener('scroll' , () => {
-            handleScroll(snapContainer.scrollTop);
-        })
-        
-        // Track overflow sections scroll
-        const overflowSections = document.querySelectorAll('.overflow-y-auto');
-        overflowSections.forEach(section => {
-            sectionScrollMap.set(section, 0); 
-            section.addEventListener('scroll', () => {
-                handleOverflowScroll(section);
-            });
-        });
-    })
 
+        if (!(snapContainer instanceof HTMLElement)) {
+            return;
+        }
+
+        const mainSections = Array.from(
+            snapContainer.querySelectorAll<HTMLElement>(':scope > [data-main-section]')
+        );
+
+        if (mainSections.length === 0) {
+            return;
+        }
+
+        const orderedSectionIds = mainSections
+            .map((section) => section.id)
+
+        let activeSectionId = orderedSectionIds[0] ?? '';
+        let isSnappingBetweenSections = false;
+        let snapDirection: 'up' | 'down' | null = null;
+        let lastScrollTop = snapContainer.scrollTop;
+        let settleTimer = 0;
+
+        const emitSnapState = (eventName: string) => {
+            snapContainer.dataset.activeSection = activeSectionId;
+            snapContainer.dataset.isSnapping = String(isSnappingBetweenSections);
+
+            if (snapDirection) {
+                snapContainer.dataset.snapDirection = snapDirection;
+            } else {
+                delete snapContainer.dataset.snapDirection;
+            }
+
+            mainSections.forEach((section) => {
+                section.dataset.active = String(section.id === activeSectionId);
+            });
+
+            window.dispatchEvent(new CustomEvent(eventName, {
+                detail: {
+                    orderedSectionIds,
+                    activeSectionId,
+                    isSnappingBetweenSections,
+                    snapDirection,
+                },
+            }));
+        };
+
+        const getClosestSection = () => {
+            return mainSections.reduce((closestSection, section) => {
+                if (!(section instanceof HTMLElement) || !(closestSection instanceof HTMLElement)) {
+                    return closestSection;
+                }
+
+                const currentDistance = Math.abs(section.offsetTop - snapContainer.scrollTop);
+                const closestDistance = Math.abs(closestSection.offsetTop - snapContainer.scrollTop);
+
+                return currentDistance < closestDistance ? section : closestSection;
+            }, mainSections[0]);
+        };
+
+        const settleActiveSection = () => {
+            const nextSection = getClosestSection();
+
+            if (!(nextSection instanceof HTMLElement)) {
+                return;
+            }
+
+            const settledDirection = snapDirection;
+
+            activeSectionId = nextSection.id;
+            isSnappingBetweenSections = false;
+            snapDirection = settledDirection;
+            emitSnapState('main-section-settled');
+            snapDirection = null;
+            delete snapContainer.dataset.snapDirection;
+        };
+
+        emitSnapState('main-section-ready');
+
+        snapContainer.addEventListener('scroll', () => {
+            const nextScrollTop = snapContainer.scrollTop;
+            const nextDirection = nextScrollTop > lastScrollTop
+                ? 'down'
+                : nextScrollTop < lastScrollTop
+                    ? 'up'
+                    : snapDirection;
+
+            if (!nextDirection) {
+                return;
+            }
+
+            snapDirection = nextDirection;
+            isSnappingBetweenSections = true;
+            emitSnapState('main-section-snap-start');
+
+            window.clearTimeout(settleTimer);
+            settleTimer = window.setTimeout(settleActiveSection, 140);
+            lastScrollTop = nextScrollTop;
+        }, { passive: true });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeSnapContainer, { once: true });
+    } else {
+        initializeSnapContainer();
+    }
 </script>

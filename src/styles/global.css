@@ -23,7 +23,7 @@ html {
 }
 
 #snapContainer {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 /* TopBar Navigation Font */

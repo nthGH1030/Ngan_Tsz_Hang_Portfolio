@@ -2,33 +2,37 @@
 import Reference from "../components/contact/Reference.astro"
 ---
 
-<section id = "contact" data-main-section class = "h-screen snap-start snap-always flex flex-col " >
-    <div class = "flex-1 flex flex-col justify-center mx-48 my-16 gap-4">
-        <div class = "text-3xl text-center">
-            Let's Connect
+<section id = "contact" data-main-section class = "h-screen snap-start snap-always" >
+    <div class = "h-full overflow-hidden">
+        <div data-section-scroll-body class = "h-full overflow-y-auto flex flex-col">
+            <div class = "flex-1 flex flex-col justify-center mx-48 my-16 gap-4">
+                <div class = "text-3xl text-center">
+                    Let's Connect
+                </div>
+                <div class = "text-center">
+                    I am actively seeking new opportunities to work, 
+                    learn, and collaborate with others. 
+                    If you have a project, position, or idea where we can grow together, 
+                    feel free to reach out!
+                </div>
+                <div class = "text-center h-16 mt-8">
+                    <a 
+                        href="mailto:nth.dev@icloud.com"
+                        class = "inline-block px-6 py-3 rounded-xl font-bold text-lg
+                                border-2 border-blue-600 text-blue-600 bg-transparent
+                                hover:-translate-y-1 hover:-translate-x-1
+                                hover:border-blue-700 hover:text-blue-700
+                                hover:shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]
+                                cursor-pointer transition-all duration-200 will-change-transform"
+                        >
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class = "shrink-0">
+                <Reference/>
+            </div>
         </div>
-        <div class = "text-center">
-            I am actively seeking new opportunities to work, 
-            learn, and collaborate with others. 
-            If you have a project, position, or idea where we can grow together, 
-            feel free to reach out!
-        </div>
-        <div class = "text-center h-16 mt-8">
-            <a 
-                href="mailto:nth.dev@icloud.com"
-                class = "inline-block px-6 py-3 rounded-xl font-bold text-lg
-                        border-2 border-blue-600 text-blue-600 bg-transparent
-                        hover:-translate-y-1 hover:-translate-x-1
-                        hover:border-blue-700 hover:text-blue-700
-                        hover:shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]
-                        cursor-pointer transition-all duration-200 will-change-transform"
-                >
-                Contact Me
-            </a>
-        </div>
-    </div>
-    <div>
-        <Reference/>
     </div>
 </section>
 

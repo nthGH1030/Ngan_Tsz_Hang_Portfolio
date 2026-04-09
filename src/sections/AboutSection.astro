@@ -2,75 +2,79 @@
 import { IoIosArrowForward } from "react-icons/io";
 ---
 
-<section id="about" data-main-section class = "h-screen snap-start snap-always pt-32 overflow-y-auto max-w-screen-xl mx-auto" >
-    <div class = "px-[clamp(2rem,15vw,24rem)] flex items-center">
-        <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">1. About me</h1>
-        <div class = "w-full bg-gray-300 h-px ml-2"></div>
-    </div>
-    <div class = "flex flex-col gap-4 px-[clamp(2rem,15vw,24rem)] mt-8 md:gap-8 md:flex-row">
-        <div class = "flex-1 min-w-0">
-            <p class = "text-[clamp(0.8rem,2.5vw,1.1rem)]"> 
-                I am a chartered building surveyor turned software engineer, 
-                passionate about leveraging technology to solve real-world problems. 
-                In my free time, I have developed and deployed solutions that address 
-                challenges encountered in my professional work, some of which have been 
-                adopted to enhance productivity and support educational initiatives. 
-                I actively contribute to brainstorming sessions focused on automation and 
-                AI adoption within the enterprise, identifying practical use cases 
-                and creating technical demos to drive innovation and efficiency.
-            </p>
-            <br/>
-            <p class = "text-base text-gray-600 mb-3">Technologies I work with:</p>
-            <div class = "grid grid-cols-2 gap-x-6 gap-y-2 mt-2 mb-4">
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward/>
-                    <span class="text-sm text-gray-700">Javascript</span>
+<section id="about" data-main-section class = "h-screen snap-start snap-always" >
+    <div class = "h-full max-w-screen-xl mx-auto overflow-hidden flex flex-col pt-32">
+        <div class = "shrink-0 px-[clamp(2rem,15vw,24rem)] flex items-center">
+            <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">1. About me</h1>
+            <div class = "w-full bg-gray-300 h-px ml-2"></div>
+        </div>
+        <div data-section-scroll-body class = "flex-1 min-h-0 overflow-y-auto">
+            <div class = "flex flex-col gap-4 px-[clamp(2rem,15vw,24rem)] pt-8 pb-8 md:gap-8 md:flex-row">
+                <div class = "flex-1 min-w-0">
+                    <p class = "text-[clamp(0.8rem,2.5vw,1.1rem)]"> 
+                        I am a chartered building surveyor turned software engineer, 
+                        passionate about leveraging technology to solve real-world problems. 
+                        In my free time, I have developed and deployed solutions that address 
+                        challenges encountered in my professional work, some of which have been 
+                        adopted to enhance productivity and support educational initiatives. 
+                        I actively contribute to brainstorming sessions focused on automation and 
+                        AI adoption within the enterprise, identifying practical use cases 
+                        and creating technical demos to drive innovation and efficiency.
+                    </p>
+                    <br/>
+                    <p class = "text-base text-gray-600 mb-3">Technologies I work with:</p>
+                    <div class = "grid grid-cols-2 gap-x-6 gap-y-2 mt-2 mb-4">
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward/>
+                            <span class="text-sm text-gray-700">Javascript</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward/>
+                            <span class="text-sm text-gray-700">Typescript</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward />
+                            <span class="text-sm text-gray-700">Node.js</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward />
+                            <span class="text-sm text-gray-700">ReactJS</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward/>
+                            <span class="text-sm text-gray-700">Tailwind</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward/>
+                            <span class="text-sm text-gray-700">Astro</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward/>
+                            <span class="text-sm text-gray-700">HTML & CSS</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward/>
+                            <span class="text-sm text-gray-700">OpenAI</span>
+                        </div>
+                        <div class = "flex items-center gap-2 text-blue-600">
+                            <IoIosArrowForward/>
+                            <span class="text-sm text-gray-700">Azure</span>
+                        </div>
+                    </div>
                 </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward/>
-                    <span class="text-sm text-gray-700">Typescript</span>
-                </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward />
-                    <span class="text-sm text-gray-700">Node.js</span>
-                </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward />
-                    <span class="text-sm text-gray-700">ReactJS</span>
-                </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward/>
-                    <span class="text-sm text-gray-700">Tailwind</span>
-                </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward/>
-                    <span class="text-sm text-gray-700">Astro</span>
-                </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward/>
-                    <span class="text-sm text-gray-700">HTML & CSS</span>
-                </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward/>
-                    <span class="text-sm text-gray-700">OpenAI</span>
-                </div>
-                <div class = "flex items-center gap-2 text-blue-600">
-                    <IoIosArrowForward/>
-                    <span class="text-sm text-gray-700">Azure</span>
+                <div class = "relative flex-shrink-0 mx-auto md:mx-0 self-start group">
+                    <div class = "absolute top-3 left-3 w-full h-full rounded-lg border-2 border-blue-500 -z-10
+                                  group-hover:translate-y-1 group-hover:translate-x-1 transition-all"></div>
+                    <img
+                        src = "./portrait.jpg"
+                        alt = "portrait"
+                        class = "relative w-[clamp(200px,25vw,300px)] h-auto object-cover rounded-lg block 
+                                shadow-lg shadow-blue-500/25 transition-all
+                                group-hover:-translate-y-1 group-hover:-translate-x-1 "
+                    />
+                    <div class = "absolute inset-0 bg-blue-500/30 rounded-lg pointer-events-none group-hover:hidden"></div>
                 </div>
             </div>
-        </div>
-        <div class = "relative flex-shrink-0 mx-auto md:mx-0 self-start group">
-            <div class = "absolute top-3 left-3 w-full h-full rounded-lg border-2 border-blue-500 -z-10
-                          group-hover:translate-y-1 group-hover:translate-x-1 transition-all"></div>
-            <img
-                src = "./portrait.jpg"
-                alt = "portrait"
-                class = "relative w-[clamp(200px,25vw,300px)] h-auto object-cover rounded-lg block 
-                        shadow-lg shadow-blue-500/25 transition-all
-                        group-hover:-translate-y-1 group-hover:-translate-x-1 "
-            />
-            <div class = "absolute inset-0 bg-blue-500/30 rounded-lg pointer-events-none group-hover:hidden"></div>
         </div>
     </div>
 </section>

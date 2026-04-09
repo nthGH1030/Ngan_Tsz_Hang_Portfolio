@@ -2,17 +2,21 @@
 import Qualification from '../components/experience/Qualification.astro'
 import ExperienceTabs from '../islands/ExperienceTabs'
 ---
-<section id="experience" data-main-section class="h-screen snap-start snap-always pt-24 overflow-y-auto">
-    <div class = "mx-8 md:mx-24 flex items-center">
-        <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">2. Experience</h1>
-        <div class = "w-full bg-gray-300 h-px ml-2"></div>
-    </div>
-    
-    <div class = "mx-8 md:mx-24 mt-8">
-        <ExperienceTabs client:load />
-    </div>
-    
-    <div class = "mx-8 md:mx-24 pb-8">
-        <Qualification/>
+<section id="experience" data-main-section class="h-screen snap-start snap-always">
+    <div class = "h-full overflow-hidden flex flex-col pt-24">
+        <div class = "shrink-0 mx-8 md:mx-24 flex items-center">
+            <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl">2. Experience</h1>
+            <div class = "w-full bg-gray-300 h-px ml-2"></div>
+        </div>
+        
+        <div data-section-scroll-body class = "flex-1 min-h-0 overflow-y-auto">
+            <div class = "mx-8 md:mx-24 mt-8">
+                <ExperienceTabs client:load />
+            </div>
+            
+            <div class = "mx-8 md:mx-24 pb-8">
+                <Qualification/>
+            </div>
+        </div>
     </div>
 </section>

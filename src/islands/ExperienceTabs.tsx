@@ -102,38 +102,17 @@ const ExperienceTabs: React.FC = () => {
     const handleCtaClick = (targetId: string, sectionId?: string) => {
         const target = document.getElementById(targetId);
 
-        if (!target) {
+        if (!(target instanceof HTMLElement)) {
             return;
         }
 
-        const section = sectionId ? document.getElementById(sectionId) : target.closest('section');
-        const snapContainer = document.getElementById('snapContainer');
+        const section = sectionId ? document.getElementById(sectionId) : target.closest('[data-main-section]');
 
-        if (snapContainer && section) {
-            snapContainer.scrollTo({
-                top: section.offsetTop,
-                behavior: 'smooth'
-            });
-
-            window.setTimeout(() => {
-                const overflowContainer = target.closest('.overflow-y-auto');
-
-                if (overflowContainer instanceof HTMLElement) {
-                    const targetTop = target.offsetTop - overflowContainer.offsetTop;
-                    overflowContainer.scrollTo({
-                        top: Math.max(targetTop - 16, 0),
-                        behavior: 'smooth'
-                    });
-                    return;
-                }
-
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 450);
-
-            return;
+        if (section instanceof HTMLElement) {
+            section.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
 
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
     };
 
     return (

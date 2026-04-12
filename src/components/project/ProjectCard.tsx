@@ -59,10 +59,12 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
     const selectedTags = getSelectedTag(tagNames)
 
     return (
-        <div 
-            onClick={handleCardClick}
-            className="group cursor-pointer h-full p-2"
-        >   
+        <div className="h-full p-2">
+            <button
+                type="button"
+                onClick={handleCardClick}
+                className="group cursor-pointer h-full w-full text-left bg-transparent border-0 p-0"
+            >
             <div className="h-full flex flex-col rounded-xl bg-white border-2 border-gray-300 
                 shadow-md p-6 transition-all duration-300 hover:shadow-2xl hover:border-gray-400 hover:-translate-y-1">
                 
@@ -102,6 +104,7 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
                     </div>
                 </div>
             </div>
+            </button>
         </div>
     );
 }

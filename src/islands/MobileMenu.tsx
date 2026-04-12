@@ -63,7 +63,12 @@ const MobileMenu: React.FC = () => {
                             onClick={handleClose}
                         />
                     </div>
-                    <div className = {`${blur} fixed top-0 left-0 z-20 h-full w-full`} onClick={handleClose}></div>
+                    <button
+                        type="button"
+                        className = {`${blur} fixed top-0 left-0 z-20 h-full w-full bg-transparent border-0 p-0`}
+                        onClick={handleClose}
+                        aria-label="Close mobile menu"
+                    ></button>
                     <aside className = {`fixed top-0 right-0 z-20 h-full w-3/4 
                         bg-gradient-to-br from-white via-blue-50/30 to-slate-100 
                         backdrop-blur-xl shadow-[-20px_0_60px_rgba(59,130,246,0.15)]

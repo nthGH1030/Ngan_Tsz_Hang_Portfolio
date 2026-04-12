@@ -10,12 +10,13 @@ const ExternalLink: React.FC <LinkProps> = ({href , icon}) => {
         window.open(href)
     }
     return (
-        <div
-            className = "hover:text-black transition-colors cursor-pointer"
+        <button
+            type="button"
+            className = "hover:text-black transition-colors cursor-pointer bg-transparent border-0 p-0"
             onClick = {handleClick}
         >
             {icon}
-        </div>
+        </button>
     )
 }
 

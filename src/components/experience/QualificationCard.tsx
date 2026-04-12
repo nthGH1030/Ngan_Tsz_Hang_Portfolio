@@ -19,9 +19,10 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
 
     return (
         <div>
-            <div 
+            <button
+                type="button"
                 className="group relative rounded-lg hover:bg-white/50
-                p-3 transition-all duration-300 cursor-pointer flex items-center gap-3"
+                p-3 transition-all duration-300 cursor-pointer flex items-center gap-3 w-full text-left bg-transparent border-0"
                 onClick={handleImgClick}
             >
                 {/* Image Container */}
@@ -50,7 +51,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                         {date}
                     </span>
                 </div>
-            </div>
+            </button>
 
             {/* Modal */}
             {isImgOpen && (

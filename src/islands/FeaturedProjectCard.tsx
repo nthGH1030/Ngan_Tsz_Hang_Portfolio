@@ -104,33 +104,42 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                 <div className="relative mb-4 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
                      <div className="flex-1 relative">
                         {showPlayBtn && (
-                            <div
+                            <button
+                                type="button"
                                 onClick = {handlePlay}
                                 className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                     rounded-full text-white bg-transparent text-4xl cursor-pointer
                                     ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                                aria-label="Play project video"
                             >
                                 <FaRegPlayCircle/>
-                            </div>
+                            </button>
                         )}
                         {showPauseBtn && (
-                            <div
+                            <button
+                                type="button"
                                 onClick = {handlePlay}
                                 className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                     rounded-full text-white bg-transparent text-4xl cursor-pointer
                                     ${animatePauseBtn ? 'animate-play-out' : ''}`}
+                                aria-label="Pause project video"
                             >
                                 <FaRegPauseCircle/>
-                            </div>
+                            </button>
                         )}
-                        <div onClick = {handlePlay}>
+                        <button
+                            type="button"
+                            onClick = {handlePlay}
+                            className="block w-full bg-transparent border-0 p-0"
+                            aria-label="Toggle project video playback"
+                        >
                             <video
                                 src="lunch_demo.mp4"
                                 loop
                                 className="rounded-lg w-full h-[450px] object-contain"
                                 ref = {videoRef}
                             />
-                        </div>
+                        </button>
                         
                     </div>
 
@@ -165,8 +174,9 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                         <FaGithub className="text-2xl text-gray-600 group-hover:text-black transition-colors" />
                         <span className="ml-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
                     </a>
-                    <div 
-                        className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group"
+                    <button
+                        type="button"
+                        className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group bg-transparent border-0 p-0"
                         onClick={handleCardClick}
                     >
                         <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
@@ -174,7 +184,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                             className="text-2xl text-gray-600 group-hover:text-black transition-colors"
                             title="Open Project"
                         />
-                    </div>
+                    </button>
                 </div>
             </div>
 
@@ -185,27 +195,34 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                         <div className="flex gap-4 pb-10">
                             <div className="flex-1 relative">
                                 {showPlayBtn && (
-                                    <div
+                                    <button
+                                        type="button"
                                         onClick = {handlePlay}
                                         className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                             rounded-full text-white bg-transparent text-4xl cursor-pointer
                                             ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                                        aria-label="Play project video"
                                     >
                                         <FaRegPlayCircle/>
-                                    </div>
+                                    </button>
                                 )}
                                  {showPauseBtn && (
-                                    <div
+                                    <button
+                                        type="button"
                                         onClick = {handlePlay}
                                         className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
                                             rounded-full text-white bg-transparent text-4xl cursor-pointer
                                             ${animatePauseBtn ? 'animate-play-out' : ''}`}
+                                        aria-label="Pause project video"
                                     >
                                         <FaRegPauseCircle/>
-                                    </div>
+                                    </button>
                                 )}
-                                <div
+                                <button
+                                    type="button"
                                     onClick = {handlePlay}
+                                    className="block w-full bg-transparent border-0 p-0"
+                                    aria-label="Toggle project video playback"
                                 >
                                     <video
                                         src="lunch_demo.mp4"
@@ -213,7 +230,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                                         className="rounded-lg w-full h-[450px] object-contain"
                                         ref = {videoRef}
                                     />
-                                </div>
+                                </button>
     
                             </div>
                             <div className="w-[300px] flex items-center justify-center">
@@ -259,8 +276,9 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                             <span className="mr-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
                             <FaGithub className="text-2xl text-gray-600 group-hover:text-black transition-colors" />
                         </a>
-                        <div 
-                            className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group"
+                        <button
+                            type="button"
+                            className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group bg-transparent border-0 p-0"
                             onClick={handleCardClick}
                         >
                             <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
@@ -268,7 +286,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                                 className="text-2xl text-gray-600 group-hover:text-black transition-colors"
                                 title="Open Project"
                             />
-                        </div>
+                        </button>
                     </div>
                 </div>
 

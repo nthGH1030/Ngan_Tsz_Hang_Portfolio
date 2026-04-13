@@ -126,6 +126,7 @@ const ExperienceTabs: React.FC = () => {
                                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                                 : 'border-gray-300 text-gray-600 hover:bg-blue-50/50 hover:text-blue-600'
                             }`}
+                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
                     >
                         <div className="flex flex-col">
                             <span className="font-semibold">{exp.role}</span>
@@ -156,6 +157,7 @@ const ExperienceTabs: React.FC = () => {
                                         ? 'border-blue-600 text-blue-600 bg-blue-50/50'
                                         : 'border-gray-300 text-gray-500 hover:bg-gray-50/50 hover:text-gray-700'
                                     }`}
+                                style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
                             >
                                 <div className="flex flex-col">
                                     <span className="font-semibold">{exp.role}</span>
@@ -175,7 +177,10 @@ const ExperienceTabs: React.FC = () => {
                         role="tabpanel"
                         aria-labelledby={`tab-${activeExperience.id}`}
                     >
-                        <h3 className="flex flex-wrap items-baseline gap-1">
+                        <h3
+                            className="flex flex-wrap items-baseline gap-1"
+                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                        >
                             <span className="font-semibold text-gray-900">{activeExperience.role}</span>
                             <span className="text-gray-500">&nbsp;@&nbsp;</span>
                             {activeExperience.companyUrl ? (
@@ -198,7 +203,10 @@ const ExperienceTabs: React.FC = () => {
                         )}
 
                         <div className="max-w-2xl mt-5">
-                            <h4 className="text-xs font-semibold tracking-wider text-gray-500 uppercase">Core Role</h4>
+                            <h4
+                                className="text-xs font-semibold tracking-wider text-gray-500 uppercase"
+                                style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                            >Core Role</h4>
                             <div className="mt-3 flex flex-col gap-4">
                                 {activeExperience.responsibilities.map((responsibility, idx) => (
                                     <div key={idx} className="flex items-start gap-4">
@@ -215,13 +223,22 @@ const ExperienceTabs: React.FC = () => {
 
                         {activeExperience.subExperiences && activeExperience.subExperiences.length > 0 && (
                             <div className="mt-8 max-w-3xl">
-                                <h4 className="text-xs font-semibold tracking-wider text-gray-500 uppercase">Software Engineering Contributions</h4>
+                                <h4
+                                    className="text-xs font-semibold tracking-wider text-gray-500 uppercase"
+                                    style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                >Software Engineering Contributions</h4>
                                 <div className="mt-3 border-l-2 border-blue-200 pl-4 md:pl-6 space-y-4">
                                     {activeExperience.subExperiences.map((subExp) => (
                                         <article key={subExp.id} className="rounded-lg border border-blue-100 bg-blue-50/40 p-4">
                                             <div className="flex flex-wrap items-center gap-2">
-                                                <h5 className="font-semibold text-gray-900">{subExp.title}</h5>
-                                                <span className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full">
+                                                <h5
+                                                    className="font-semibold text-gray-900"
+                                                    style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                                >{subExp.title}</h5>
+                                                <span
+                                                    className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
+                                                    style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                                >
                                                     {subExp.scope}
                                                 </span>
                                             </div>

@@ -72,7 +72,8 @@ const MobileMenu: React.FC = () => {
                     <aside className = {`fixed top-0 right-0 z-20 h-full w-3/4 
                         bg-gradient-to-br from-white via-blue-50/30 to-slate-100 
                         backdrop-blur-xl shadow-[-20px_0_60px_rgba(59,130,246,0.15)]
-                        border-l border-blue-600/10 ${menuSlide}`}>
+                        border-l border-blue-600/10 ${menuSlide}`}
+                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
                         <div className ="flex flex-col items-center justify-center h-full gap-8 px-12 font-semibold text-xl">
                             <a href = "#about" 
                                 className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
@@ -100,7 +101,8 @@ const MobileMenu: React.FC = () => {
                                                 hover:-translate-y-1 hover:-translate-x-1
                                                 hover:border-blue-700 hover:text-blue-700
                                                 hover:shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]
-                                                cursor-pointer transition-all duration-200 will-change-transform" 
+                                                cursor-pointer transition-all duration-200 will-change-transform"
+                                style={{ fontFamily: "'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", letterSpacing: '0.02em' }}
                                 onClick = {(e) => handleNavClick(e, "#contact")}>
                                 Contact</a>
                         </div>

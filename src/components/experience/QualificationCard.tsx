@@ -44,10 +44,15 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 {/* Content */}
                 <div className="flex-1 min-w-0 flex items-baseline justify-between gap-2">
                     <h3 className="text-sm sm:text-base font-medium text-gray-700 
-                        leading-tight">  
+                        leading-tight"
+                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                    >  
                         {title}
                     </h3>
-                    <span className="text-xs text-gray-400 font-normal whitespace-nowrap self-center">  
+                    <span
+                        className="text-xs text-gray-400 font-normal whitespace-nowrap self-center"
+                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                    >  
                         {date}
                     </span>
                 </div>

@@ -21,20 +21,20 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
         <div>
             <button
                 type="button"
-                className="group relative rounded-lg hover:bg-white/50
-                p-3 transition-all duration-300 cursor-pointer flex items-center gap-3 w-full text-left bg-transparent border-0"
+                className="group relative rounded-lg border border-blue-100 bg-blue-50/40
+                p-4 transition-colors duration-300 cursor-pointer flex items-center gap-3 w-full text-left"
                 onClick={handleImgClick}
             >
                 {/* Image Container */}
                 <div className="relative flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 
-                    rounded overflow-hidden bg-white shadow-sm">
+                    rounded overflow-hidden bg-white border border-blue-100">
                     <img 
                         src={img} 
                         alt={title}
                         className="w-full h-full object-contain p-1.5"
                     />
                     {/* Zoom icon overlay on hover */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 
+                    <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/15
                         transition-all duration-300 flex items-center justify-center">
                         <HiOutlineZoomIn className="text-white text-xl opacity-0 
                             group-hover:opacity-100 transition-opacity duration-300" />
@@ -42,19 +42,22 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 min-w-0 flex items-baseline justify-between gap-2">
-                    <h3 className="text-sm sm:text-base font-medium text-gray-700 
-                        leading-tight"
-                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                    >  
-                        {title}
-                    </h3>
-                    <span
-                        className="text-xs text-gray-400 font-normal whitespace-nowrap self-center"
-                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                    >  
-                        {date}
-                    </span>
+                <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <h3
+                            className="font-semibold text-gray-900 leading-tight"
+                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                        >
+                            {title}
+                        </h3>
+                        <span
+                            className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
+                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                        >
+                            Certification
+                        </span>
+                    </div>
+                    <p className="text-xs text-gray-500 mt-1">{date}</p>
                 </div>
             </button>
 

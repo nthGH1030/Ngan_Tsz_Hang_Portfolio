@@ -13,11 +13,11 @@ import ExperienceTabs from '../islands/ExperienceTabs'
         </div>
         
         <div data-section-scroll-body class = "flex-1 min-h-0 overflow-y-auto">
-            <div class = "mx-8 md:mx-24 mt-8">
+            <div class = "mx-8 md:mx-24 mt-8 [--experience-rail:16rem]">
                 <ExperienceTabs client:load />
             </div>
             
-            <div class = "mx-8 md:mx-24 pb-8">
+            <div class = "mx-8 md:mx-24 pb-8 md:pl-[calc(var(--experience-rail)+1.5rem)]">
                 <Qualification/>
             </div>
         </div>

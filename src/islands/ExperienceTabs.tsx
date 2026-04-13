@@ -110,9 +110,9 @@ const ExperienceTabs: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col gap-6 md:grid md:grid-cols-[16rem_minmax(0,1fr)] md:gap-6">
             {/* Vertical Tab List */}
-            <div role="tablist" aria-label="Job tabs" className="flex flex-col relative min-w-max">
+            <div role="tablist" aria-label="Job tabs" className="flex flex-col relative min-w-0">
                 {currentCareerExperiences.map((exp) => (
                     <button
                         key={exp.id}

@@ -19,6 +19,9 @@ interface ExperienceData {
     companyUrl?: string;
     period: string;
     summary?: string;
+    roleContext?: string;
+    primaryTrackLabel?: string;
+    secondaryTrackLabel?: string;
     responsibilities: string[];
     subExperiences?: SubExperience[];
     isCurrentCareer: boolean;
@@ -26,6 +29,7 @@ interface ExperienceData {
 
 const ExperienceTabs: React.FC = () => {
     const [activeTab, setActiveTab] = useState(0);
+    const [activeSoftwareIndex, setActiveSoftwareIndex] = useState(0);
 
     const experiences: ExperienceData[] = [
         {
@@ -34,7 +38,10 @@ const ExperienceTabs: React.FC = () => {
             company: "Gaw Capital Asset Management Limited",
             companyUrl: "https://www.gawcapital.com/",
             period: "2018 - Present",
-            summary: "Cross-functional project delivery with an internal software-innovation track.",
+            summary: "Primary role in building and surveying project delivery, with a separate internal software initiative stream developed alongside that work.",
+            roleContext: "This role should be read as project management in the built-environment domain first. The software work below is a parallel initiative introduced within that role, not eight years of software project management.",
+            primaryTrackLabel: "Primary role: Building and surveying project delivery",
+            secondaryTrackLabel: "Parallel software initiatives within this role",
             isCurrentCareer: true,
             responsibilities: [
                 "Managed multiple properties as a project manager, coordinating leasing and property-management teams to deliver construction projects on schedule and within budget while maintaining compliance.",
@@ -74,6 +81,7 @@ const ExperienceTabs: React.FC = () => {
             role: "Assistant Building Surveyor",
             company: "United Consultancy Limited",
             period: "2017 - 2018",
+            primaryTrackLabel: "Role focus",
             isCurrentCareer: false,
             responsibilities: [
                 "Add your surveying experience and responsibilities here...",
@@ -86,6 +94,7 @@ const ExperienceTabs: React.FC = () => {
             role: "Assistant Building Surveyor",
             company: "ISS Building Consultancy",
             period: "2015 - 2017",
+            primaryTrackLabel: "Role focus",
             isCurrentCareer: false,
             responsibilities: [
                 "Add your surveying experience and responsibilities here...",
@@ -98,6 +107,11 @@ const ExperienceTabs: React.FC = () => {
     const currentCareerExperiences = experiences.filter(exp => exp.isCurrentCareer);
     const previousCareerExperiences = experiences.filter(exp => !exp.isCurrentCareer);
     const activeExperience = experiences.find(exp => exp.id === activeTab);
+
+    const handleExperienceTabChange = (experienceId: number) => {
+        setActiveTab(experienceId);
+        setActiveSoftwareIndex(0);
+    };
 
     const handleCtaClick = (targetId: string) => {
         const target = document.getElementById(targetId);
@@ -120,7 +134,7 @@ const ExperienceTabs: React.FC = () => {
                         role="tab"
                         aria-selected={activeTab === exp.id}
                         aria-controls={`panel-${exp.id}`}
-                        onClick={() => setActiveTab(exp.id)}
+                        onClick={() => handleExperienceTabChange(exp.id)}
                         className={`text-left px-4 py-3 text-sm font-medium border-l-2 transition-all cursor-pointer
                             ${activeTab === exp.id
                                 ? 'border-blue-600 text-blue-600 bg-blue-50/50'
@@ -151,7 +165,7 @@ const ExperienceTabs: React.FC = () => {
                                 role="tab"
                                 aria-selected={activeTab === exp.id}
                                 aria-controls={`panel-${exp.id}`}
-                                onClick={() => setActiveTab(exp.id)}
+                                onClick={() => handleExperienceTabChange(exp.id)}
                                 className={`text-left px-4 py-3 text-sm font-medium border-l-2 transition-all cursor-pointer
                                     ${activeTab === exp.id
                                         ? 'border-blue-600 text-blue-600 bg-blue-50/50'
@@ -199,71 +213,151 @@ const ExperienceTabs: React.FC = () => {
                         <p className="text-sm text-gray-400 mt-1">{activeExperience.period}</p>
 
                         {activeExperience.summary && (
-                            <p className="mt-3 text-sm text-gray-600 max-w-2xl">{activeExperience.summary}</p>
+                            <p className="mt-3 text-sm text-gray-600 max-w-3xl">{activeExperience.summary}</p>
                         )}
 
-                        <div className="max-w-2xl mt-5">
-                            <h4
-                                className="text-xs font-semibold tracking-wider text-gray-500 uppercase"
-                                style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                            >Core Role</h4>
-                            <div className="mt-3 flex flex-col gap-4">
-                                {activeExperience.responsibilities.map((responsibility, idx) => (
-                                    <div key={idx} className="flex items-start gap-4">
-                                        <div className="mt-1 text-gray-600">
-                                            <IoIosArrowForward />
-                                        </div>
-                                        <p className="text-[clamp(0.9rem,2.5vw,1rem)] text-gray-700">
-                                            {responsibility}
-                                        </p>
+                        {activeExperience.subExperiences && activeExperience.subExperiences.length > 0 ? (
+                            <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+                                <section className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                                    <div className="flex items-center gap-3">
+                                        <span
+                                            className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white"
+                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                        >
+                                            Core
+                                        </span>
+                                        <p className="text-sm font-medium text-slate-500">Primary responsibility</p>
                                     </div>
-                                ))}
-                            </div>
-                        </div>
+                                    <div className="mt-5 space-y-4">
+                                        {activeExperience.responsibilities.map((responsibility, idx) => (
+                                            <div key={idx} className="flex items-start gap-3">
+                                                <span className="mt-2 h-2 w-2 rounded-full bg-slate-400"></span>
+                                                <p className="text-[clamp(0.9rem,2.5vw,1rem)] leading-7 text-slate-700">
+                                                    {responsibility}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
 
-                        {activeExperience.subExperiences && activeExperience.subExperiences.length > 0 && (
-                            <div className="mt-8 max-w-3xl">
+                                <section className="rounded-2xl border border-blue-100 bg-blue-50/50 p-5">
+                                    <div className="flex flex-wrap items-center justify-between gap-3">
+                                        <div className="flex items-center gap-3">
+                                            <span
+                                                className="inline-flex rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white"
+                                                style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                            >
+                                                Software
+                                            </span>
+                                            <p className="text-sm font-medium text-blue-700">Parallel initiative track</p>
+                                        </div>
+
+                                        <div className="flex items-center gap-2">
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveSoftwareIndex((prev) => Math.max(prev - 1, 0))}
+                                                disabled={activeSoftwareIndex === 0}
+                                                className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-sm text-blue-700 transition disabled:cursor-not-allowed disabled:opacity-40"
+                                            >
+                                                Prev
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveSoftwareIndex((prev) => Math.min(prev + 1, activeExperience.subExperiences!.length - 1))}
+                                                disabled={activeSoftwareIndex === activeExperience.subExperiences.length - 1}
+                                                className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-sm text-blue-700 transition disabled:cursor-not-allowed disabled:opacity-40"
+                                            >
+                                                Next
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-5 overflow-hidden pb-2">
+                                        <div
+                                            className="flex gap-4 transition-transform duration-300 ease-out"
+                                            style={{ transform: `translateX(calc(${activeSoftwareIndex * -100}% - ${activeSoftwareIndex}rem))` }}
+                                        >
+                                            {activeExperience.subExperiences.map((subExp, idx) => (
+                                                <article
+                                                    key={subExp.id}
+                                                    className={`min-w-full rounded-xl border p-4 transition-all ${
+                                                        activeSoftwareIndex === idx
+                                                            ? 'border-blue-200 bg-white shadow-sm'
+                                                            : 'border-blue-100 bg-white/80'
+                                                    }`}
+                                                >
+                                                    <div className="flex flex-wrap items-center gap-2">
+                                                        <h5
+                                                            className="font-semibold text-gray-900"
+                                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                                        >{subExp.title}</h5>
+                                                        <span
+                                                            className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
+                                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                                        >
+                                                            {subExp.scope}
+                                                        </span>
+                                                    </div>
+                                                    <p className="mt-2 text-xs uppercase tracking-[0.16em] text-slate-500">{subExp.period}</p>
+                                                    <ul className="mt-4 space-y-2">
+                                                        {subExp.highlights.map((highlight, idx) => (
+                                                            <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                                                                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                                                                <span>{highlight}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+
+                                                    {subExp.ctaTargetId && subExp.ctaLabel && (
+                                                        <div className="mt-4">
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => handleCtaClick(subExp.ctaTargetId!)}
+                                                                className="inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-medium text-blue-700 transition-colors hover:border-blue-300 hover:bg-blue-100/70"
+                                                            >
+                                                                {subExp.ctaLabel}
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </article>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-4 flex flex-wrap gap-2">
+                                        {activeExperience.subExperiences.map((subExp, idx) => (
+                                            <button
+                                                key={subExp.id}
+                                                type="button"
+                                                onClick={() => setActiveSoftwareIndex(idx)}
+                                                className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
+                                                    activeSoftwareIndex === idx
+                                                        ? 'bg-blue-600 text-white'
+                                                        : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-100/70'
+                                                }`}
+                                            >
+                                                {idx + 1}. {subExp.title}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </section>
+                            </div>
+                        ) : (
+                            <div className="max-w-2xl mt-5">
                                 <h4
                                     className="text-xs font-semibold tracking-wider text-gray-500 uppercase"
                                     style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                                >Software Engineering Contributions</h4>
-                                <div className="mt-3 border-l-2 border-blue-200 pl-4 md:pl-6 space-y-4">
-                                    {activeExperience.subExperiences.map((subExp) => (
-                                        <article key={subExp.id} className="rounded-lg border border-blue-100 bg-blue-50/40 p-4">
-                                            <div className="flex flex-wrap items-center gap-2">
-                                                <h5
-                                                    className="font-semibold text-gray-900"
-                                                    style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                                                >{subExp.title}</h5>
-                                                <span
-                                                    className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
-                                                    style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                                                >
-                                                    {subExp.scope}
-                                                </span>
+                                >{activeExperience.primaryTrackLabel ?? 'Role focus'}</h4>
+                                <div className="mt-3 flex flex-col gap-4">
+                                    {activeExperience.responsibilities.map((responsibility, idx) => (
+                                        <div key={idx} className="flex items-start gap-4">
+                                            <div className="mt-1 text-gray-600">
+                                                <IoIosArrowForward />
                                             </div>
-                                            <p className="text-xs text-gray-500 mt-1">{subExp.period}</p>
-                                            <ul className="mt-3 space-y-2">
-                                                {subExp.highlights.map((highlight, idx) => (
-                                                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
-                                                        <span>{highlight}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-
-                                            {subExp.ctaTargetId && subExp.ctaLabel && (
-                                                <div className="mt-4">
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => handleCtaClick(subExp.ctaTargetId!)}
-                                                        className="inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-medium text-blue-700 transition-colors hover:border-blue-300 hover:bg-blue-100/70"
-                                                    >
-                                                        {subExp.ctaLabel}
-                                                    </button>
-                                                </div>
-                                            )}
-                                        </article>
+                                            <p className="text-[clamp(0.9rem,2.5vw,1rem)] text-gray-700">
+                                                {responsibility}
+                                            </p>
+                                        </div>
                                     ))}
                                 </div>
                             </div>

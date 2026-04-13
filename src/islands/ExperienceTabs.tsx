@@ -41,7 +41,7 @@ const ExperienceTabs: React.FC = () => {
             summary: "Primary role in building and surveying project delivery, with a separate internal software initiative stream developed alongside that work.",
             roleContext: "This role should be read as project management in the built-environment domain first. The software work below is a parallel initiative introduced within that role, not eight years of software project management.",
             primaryTrackLabel: "Primary role: Building and surveying project delivery",
-            secondaryTrackLabel: "Parallel software initiatives within this role",
+            secondaryTrackLabel: "Self-initiatives",
             isCurrentCareer: true,
             responsibilities: [
                 "Managed multiple properties as a project manager, coordinating leasing and property-management teams to deliver construction projects on schedule and within budget while maintaining compliance.",
@@ -249,7 +249,7 @@ const ExperienceTabs: React.FC = () => {
                                             >
                                                 Software
                                             </span>
-                                            <p className="text-sm font-medium text-blue-700">Parallel initiative track</p>
+                                            <p className="text-sm font-medium text-blue-700">Self-initiatives</p>
                                         </div>
 
                                         <div className="flex items-center gap-2">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import { BsFillCircleFill } from "react-icons/bs";
 
 interface SubExperience {
     id: string;
@@ -72,7 +73,7 @@ const ExperienceTabs: React.FC = () => {
                     scope: "Internal Initiative (Confidential)",
                     publicOverview: "Built and tested practical AI/automation concepts for internal workflows, focusing on high-friction operational tasks and clear business value.",
                     exampleOfWork: [
-                        "Built a custom chatbot demo to automate team inquiries. Mapped out a guided FAQ logic and converted legacy 'hard copy' data into callable backend tools, allowing the assistant to provide data-driven answers from internal domain knowledge"
+                        "Built a custom chatbot demo to automate team inquiries. Mapped out a guided FAQ logic and converted legacy 'hard copy' data into callable function tools, allowing the assistant to provide data-driven answers from internal domain knowledge"
                     ],
                     highlights: [],
                 }
@@ -308,7 +309,7 @@ const ExperienceTabs: React.FC = () => {
                                                         <ul className="mt-4 space-y-2">
                                                             {subExp.highlights.map((highlight, idx) => (
                                                                 <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                                                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                                                                    <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
                                                                     <span>{highlight}</span>
                                                                 </li>
                                                             ))}
@@ -326,7 +327,7 @@ const ExperienceTabs: React.FC = () => {
                                                             <ul className="mt-3 space-y-2">
                                                                 {subExp.exampleOfWork.map((example, idx) => (
                                                                     <li key={idx} className="flex items-start gap-2 text-sm text-slate-700">
-                                                                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500"></span>
+                                                                        <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
                                                                         <span>{example}</span>
                                                                     </li>
                                                                 ))}

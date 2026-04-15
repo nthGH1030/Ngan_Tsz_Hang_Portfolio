@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BsFillCircleFill } from "react-icons/bs";
 
+interface ExampleOfWorkItem {
+    key: string;
+    value: string;
+}
+
 interface SubExperience {
     id: string;
     title: string;
     period: string;
     scope: string;
     publicOverview?: string;
-    exampleOfWork?: string[];
+    exampleOfWork?: ExampleOfWorkItem[];
     highlights: string[];
-    ctaLabel?: string;
-    ctaTargetId?: string;
-    ctaSectionId?: string;
 }
 
 interface ExperienceData {
@@ -32,7 +34,6 @@ interface ExperienceData {
 
 const ExperienceTabs: React.FC = () => {
     const [activeTab, setActiveTab] = useState(0);
-    const [activeSoftwareIndex, setActiveSoftwareIndex] = useState(0);
 
     const experiences: ExperienceData[] = [
         {
@@ -53,29 +54,22 @@ const ExperienceTabs: React.FC = () => {
             ],
             subExperiences: [
                 {
-                    id: "internal-tools",
-                    title: "Internal Tooling and Workflow Automation",
-                    period: "2022 - Present",
-                    scope: "Software Development Initiative",
-                    highlights: [
-                        "Designed and built a desktop workflow tool to automate Excel data extraction and payment-form generation, reducing repetitive manual steps for the team.",
-                        "Mapped user journeys with stakeholders, translated bottlenecks into product requirements, and iterated the tool from user feedback.",
-                        "Created reusable process logic that centralized tracking and made project-expenditure status easier to audit and communicate."
-                    ],
-                    ctaLabel: "View Payment Form filler",
-                    ctaTargetId: "payment-form-filler",
-                    ctaSectionId: "other-projects"
-                },
-                {
                     id: "ai-solutioning",
                     title: "AI and Automation Solution Prototyping",
-                    period: "2025",
-                    scope: "Internal Initiative (Confidential)",
-                    publicOverview: "Built and tested practical AI/automation concepts for internal workflows, focusing on high-friction operational tasks and clear business value.",
-                    exampleOfWork: [
-                        "Built a custom chatbot demo to automate team inquiries. Mapped out a guided FAQ logic and converted legacy 'hard copy' data into callable function tools, allowing the assistant to provide data-driven answers from internal domain knowledge"
+                    period: "2025 - PRESENT",
+                    scope: "Internal Initiative",
+                    highlights:[ "Developed and piloted prototypes to streamline internal workflows, minimizing task redundancy and reducing manual work",
                     ],
-                    highlights: [],
+                    exampleOfWork: [
+                        {
+                            key: "Workflow automation tool",
+                            value: "Designed and built a desktop workflow tool to automate Excel data extraction and payment-form generation, reducing repetitive manual steps for the team."
+                        },
+                        {
+                            key: "FAQ tool with chat interface",
+                            value: "Built a custom chatbot demo to automate team inquiries. Mapped out a guided FAQ logic and converted legacy 'hard copy' data into callable function tools, allowing the assistant to provide data-driven answers from internal domain knowledge"
+                        },
+                    ],
                 }
             ]
         },
@@ -113,17 +107,6 @@ const ExperienceTabs: React.FC = () => {
 
     const handleExperienceTabChange = (experienceId: number) => {
         setActiveTab(experienceId);
-        setActiveSoftwareIndex(0);
-    };
-
-    const handleCtaClick = (targetId: string) => {
-        const target = document.getElementById(targetId);
-
-        if (!(target instanceof HTMLElement)) {
-            return;
-        }
-
-        target.scrollIntoView({ behavior: 'auto', block: 'start' });
     };
 
     return (
@@ -244,127 +227,68 @@ const ExperienceTabs: React.FC = () => {
                                 </section>
 
                                 <section className="rounded-2xl border border-blue-100 bg-blue-50/50 p-5">
-                                    <div className="flex flex-wrap items-center justify-between gap-3">
-                                        <div className="flex items-center gap-3">
-                                            <span
-                                                className="inline-flex rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white"
-                                                style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                                            >
-                                                Software
-                                            </span>
-                                            <p className="text-sm font-medium text-blue-700">Self-initiatives</p>
-                                        </div>
-
-                                        <div className="flex items-center gap-2">
-                                            <button
-                                                type="button"
-                                                onClick={() => setActiveSoftwareIndex((prev) => Math.max(prev - 1, 0))}
-                                                disabled={activeSoftwareIndex === 0}
-                                                className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-sm text-blue-700 transition disabled:cursor-not-allowed disabled:opacity-40"
-                                            >
-                                                Prev
-                                            </button>
-                                            <button
-                                                type="button"
-                                                onClick={() => setActiveSoftwareIndex((prev) => Math.min(prev + 1, activeExperience.subExperiences!.length - 1))}
-                                                disabled={activeSoftwareIndex === activeExperience.subExperiences.length - 1}
-                                                className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-sm text-blue-700 transition disabled:cursor-not-allowed disabled:opacity-40"
-                                            >
-                                                Next
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div className="mt-5 overflow-hidden pb-2">
-                                        <div
-                                            className="flex gap-4 transition-transform duration-300 ease-out"
-                                            style={{ transform: `translateX(calc(${activeSoftwareIndex * -100}% - ${activeSoftwareIndex}rem))` }}
+                                    <div className="flex items-center gap-3">
+                                        <span
+                                            className="inline-flex rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white"
+                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
                                         >
-                                            {activeExperience.subExperiences.map((subExp, idx) => (
-                                                <article
-                                                    key={subExp.id}
-                                                    className={`min-w-full rounded-xl border p-4 transition-all ${
-                                                        activeSoftwareIndex === idx
-                                                            ? 'border-blue-200 bg-white shadow-sm'
-                                                            : 'border-blue-100 bg-white/80'
-                                                    }`}
-                                                >
-                                                    <div className="flex flex-wrap items-center gap-2">
-                                                        <h5
-                                                            className="font-semibold text-gray-900"
-                                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                                                        >{subExp.title}</h5>
-                                                        <span
-                                                            className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
-                                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                                                        >
-                                                            {subExp.scope}
-                                                        </span>
-                                                    </div>
-                                                    <p className="mt-2 text-xs uppercase tracking-[0.16em] text-slate-500">{subExp.period}</p>
-                                                    {subExp.publicOverview && (
-                                                        <p className="mt-3 text-sm leading-6 text-slate-700">{subExp.publicOverview}</p>
-                                                    )}
-                                                    {subExp.highlights.length > 0 && (
-                                                        <ul className="mt-4 space-y-2">
-                                                            {subExp.highlights.map((highlight, idx) => (
-                                                                <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                                                    <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
-                                                                    <span>{highlight}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    )}
-
-                                                    {subExp.exampleOfWork && subExp.exampleOfWork.length > 0 && (
-                                                        <details className="mt-4 rounded-lg border border-blue-100 bg-blue-50/40 p-3">
-                                                            <summary className="cursor-pointer text-sm font-medium text-blue-700 list-none">
-                                                                <span className="flex w-full items-center justify-between gap-3">
-                                                                    <span className="inline-block">Domain FAQ tool with chat interface</span>
-                                                                    <IoIosArrowDown className="shrink-0" />
-                                                                </span>
-                                                            </summary>
-                                                            <ul className="mt-3 space-y-2">
-                                                                {subExp.exampleOfWork.map((example, idx) => (
-                                                                    <li key={idx} className="flex items-start gap-2 text-sm text-slate-700">
-                                                                        <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
-                                                                        <span>{example}</span>
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
-                                                        </details>
-                                                    )}
-
-                                                    {subExp.ctaTargetId && subExp.ctaLabel && (
-                                                        <div className="mt-4">
-                                                            <button
-                                                                type="button"
-                                                                onClick={() => handleCtaClick(subExp.ctaTargetId!)}
-                                                                className="inline-flex items-center rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-medium text-blue-700 transition-colors hover:border-blue-300 hover:bg-blue-100/70"
-                                                            >
-                                                                {subExp.ctaLabel}
-                                                            </button>
-                                                        </div>
-                                                    )}
-                                                </article>
-                                            ))}
-                                        </div>
+                                            Software
+                                        </span>
+                                        <p className="text-sm font-medium text-blue-700">Self-initiatives</p>
                                     </div>
 
-                                    <div className="mt-4 flex flex-wrap gap-2">
-                                        {activeExperience.subExperiences.map((subExp, idx) => (
-                                            <button
+                                    <div className="mt-5 space-y-4">
+                                        {activeExperience.subExperiences.map((subExp) => (
+                                            <article
                                                 key={subExp.id}
-                                                type="button"
-                                                onClick={() => setActiveSoftwareIndex(idx)}
-                                                className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
-                                                    activeSoftwareIndex === idx
-                                                        ? 'bg-blue-600 text-white'
-                                                        : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-100/70'
-                                                }`}
+                                                className="rounded-xl border border-blue-200 bg-white p-4 shadow-sm"
                                             >
-                                                {idx + 1}. {subExp.title}
-                                            </button>
+                                                <div className="flex flex-wrap items-center gap-2">
+                                                    <h5
+                                                        className="font-semibold text-gray-900"
+                                                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                                    >{subExp.title}</h5>
+                                                    <span
+                                                        className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
+                                                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+                                                    >
+                                                        {subExp.scope}
+                                                    </span>
+                                                </div>
+                                                <p className="mt-2 text-xs uppercase tracking-[0.16em] text-slate-500">{subExp.period}</p>
+                                                {subExp.publicOverview && (
+                                                    <p className="mt-3 text-sm leading-6 text-slate-700">{subExp.publicOverview}</p>
+                                                )}
+                                                {subExp.highlights.length > 0 && (
+                                                    <ul className="mt-4 space-y-2">
+                                                        {subExp.highlights.map((highlight, idx) => (
+                                                            <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                                                                <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
+                                                                <span>{highlight}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+
+                                                {subExp.exampleOfWork && subExp.exampleOfWork.length > 0 && (
+                                                    <div className="mt-4 space-y-3">
+                                                        {subExp.exampleOfWork.map((example, idx) => (
+                                                            <details key={`${subExp.id}-${idx}`} className="rounded-lg border border-blue-100 bg-blue-50/40 p-3">
+                                                                <summary className="cursor-pointer text-sm font-medium text-blue-700 list-none">
+                                                                    <span className="flex w-full items-center justify-between gap-3">
+                                                                        <span className="inline-block">{example.key}</span>
+                                                                        <IoIosArrowDown className="shrink-0" />
+                                                                    </span>
+                                                                </summary>
+                                                                <div className="mt-3 flex items-start gap-2 text-sm text-slate-700">
+                                                                    <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
+                                                                    <p className="leading-6">{example.value}</p>
+                                                                </div>
+                                                            </details>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </article>
                                         ))}
                                     </div>
                                 </section>

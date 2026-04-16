@@ -56,19 +56,23 @@ const ExperienceTabs: React.FC = () => {
                 {
                     id: "ai-solutioning",
                     title: "AI and Automation Solution Prototyping",
-                    period: "2025 - PRESENT",
+                    period: "2022 - PRESENT",
                     scope: "Internal Initiative",
                     highlights:[ "Developed and piloted prototypes to streamline internal workflows, minimizing task redundancy and reducing manual work",
                     ],
                     exampleOfWork: [
                         {
-                            key: "Workflow automation tool",
+                            key: "Excel Form automation tool",
                             value: "Designed and built a desktop workflow tool to automate Excel data extraction and payment-form generation, reducing repetitive manual steps for the team."
                         },
                         {
                             key: "FAQ tool with chat interface",
                             value: "Built a custom chatbot demo to automate team inquiries. Mapped out a guided FAQ logic and converted legacy 'hard copy' data into callable function tools, allowing the assistant to provide data-driven answers from internal domain knowledge"
                         },
+                        {
+                            key: "Automated receipt processor",
+                            value: "Developed a cloud-based solution to batch-process receipts and extract key data points into structured Excel row, eliminating manual data entry"
+                        }
                     ],
                 }
             ]

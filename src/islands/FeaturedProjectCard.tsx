@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa"
 import ProjectMediaSlider from './ProjectMediaSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { FaRegPlayCircle , FaRegPauseCircle } from "react-icons/fa";
+import ExternalLink from '../components/navigation/ExternalLink';
 
 
 
@@ -86,9 +87,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
     }
 
     const handleCardClick = () => {
-        if (href) {
-            window.open(href, '_blank');
-        }
+        window.open(href, '_blank', 'noopener,noreferrer');
     };
 
     const selectedTags = getSelectedTag(tagNames)
@@ -170,13 +169,18 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
 
                 {/* Action buttons */}
                 <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
-                    <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors group">
-                        <FaGithub className="text-2xl text-gray-600 group-hover:text-black transition-colors" />
-                        <span className="ml-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
-                    </a>
+                    <ExternalLink
+                        href={gitHref ?? ''}
+                        icon={(
+                            <span className="flex items-center text-gray-600 transition-colors hover:text-black">
+                                <FaGithub className="text-2xl" />
+                                <span className="ml-2 text-sm">View Source</span>
+                            </span>
+                        )}
+                    />
                     <button
                         type="button"
-                        className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group bg-transparent border-0 p-0"
+                        className="flex items-center gap-2 hover:text-black transition-colors group bg-transparent border-0 p-0"
                         onClick={handleCardClick}
                     >
                         <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
@@ -272,13 +276,18 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                     
                     {/* Action buttons with divider */}
                     <div className="flex items-center justify-end gap-6 ">
-                        <a href={gitHref} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-black transition-colors group">
-                            <span className="mr-2 text-sm text-gray-600 group-hover:text-black transition-colors">View Source</span>
-                            <FaGithub className="text-2xl text-gray-600 group-hover:text-black transition-colors" />
-                        </a>
+                        <ExternalLink
+                            href={gitHref ?? ''}
+                            icon={(
+                                <span className="flex items-center text-gray-600 transition-colors hover:text-black">
+                                    <span className="mr-2 text-sm">View Source</span>
+                                    <FaGithub className="text-2xl" />
+                                </span>
+                            )}
+                        />
                         <button
                             type="button"
-                            className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors group bg-transparent border-0 p-0"
+                            className="flex items-center gap-2 hover:text-black transition-colors group bg-transparent border-0 p-0"
                             onClick={handleCardClick}
                         >
                             <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>

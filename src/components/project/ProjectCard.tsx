@@ -1,6 +1,7 @@
 import React from 'react';
 import Tag from './Tag';
 import { FaGithub } from "react-icons/fa"
+import ExternalLink from '../navigation/ExternalLink';
 
 
 export interface CardProps{
@@ -99,8 +100,15 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
                 <div className="pt-4 border-t border-gray-100">
                     <div className="flex items-center justify-end text-gray-500 
                         group-hover:text-gray-900 transition-colors">
-                        <span className="text-xs font-medium mr-2">View Source</span>
-                        <FaGithub className="text-lg" />
+                        <ExternalLink
+                            href={gitHref ?? ''}
+                            icon={(
+                                <span className="flex items-center text-gray-600 transition-colors hover:text-black">
+                                    <FaGithub className="text-2xl" />
+                                    <span className="ml-2 text-sm">View Source</span>
+                                </span>
+                            )}
+                        />
                     </div>
                 </div>
             </div>

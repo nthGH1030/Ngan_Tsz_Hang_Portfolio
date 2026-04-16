@@ -18,7 +18,7 @@ const BottomBar: React.FC = () => {
                             icon = {<FaGithub/>}
                         />
                         <ExternalLink
-                            href = "www.linkedin.com/in/kelvin-ngan-3b098a1a3"
+                            href = "https://www.linkedin.com/in/kelvin-ngan-3b098a1a3"
                             icon = {<FaLinkedin/>}
                         />
                     </div>
@@ -32,7 +32,7 @@ const BottomBar: React.FC = () => {
                     icon = {<FaGithub/>}
                 />
                 <ExternalLink
-                    href = "www.linkedin.com/in/kelvin-ngan-3b098a1a3"
+                    href = "https://www.linkedin.com/in/kelvin-ngan-3b098a1a3"
                     icon = {<FaLinkedin/>}
                 />
             </div>

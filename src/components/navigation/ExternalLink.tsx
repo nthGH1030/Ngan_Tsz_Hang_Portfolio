@@ -6,17 +6,16 @@ export interface LinkProps{
 }
 
 const ExternalLink: React.FC <LinkProps> = ({href , icon}) => {
-    const handleClick = () => {
-        window.open(href)
-    }
+
     return (
-        <button
-            type="button"
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             className = "hover:text-black transition-colors cursor-pointer bg-transparent border-0 p-0"
-            onClick = {handleClick}
         >
             {icon}
-        </button>
+        </a>
     )
 }
 

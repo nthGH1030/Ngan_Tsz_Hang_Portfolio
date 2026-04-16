@@ -221,7 +221,7 @@ const ExperienceTabs: React.FC = () => {
                                     <div className="mt-5 space-y-4">
                                         {activeExperience.responsibilities.map((responsibility, idx) => (
                                             <div key={idx} className="flex items-start gap-3">
-                                                <span className="mt-2 h-2 w-2 rounded-full bg-slate-400"></span>
+                                                <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
                                                 <p className="text-[clamp(0.9rem,2.5vw,1rem)] leading-7 text-slate-700">
                                                     {responsibility}
                                                 </p>

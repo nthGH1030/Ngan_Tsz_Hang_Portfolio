@@ -267,7 +267,7 @@ const ExperienceTabs: React.FC = () => {
                                                     <ul className="mt-4 space-y-2">
                                                         {subExp.highlights.map((highlight, idx) => (
                                                             <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                                                <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
+                                                                <BsFillCircleFill className="mt-[7px] shrink-0 text-[6px] text-blue-400" />
                                                                 <span>{highlight}</span>
                                                             </li>
                                                         ))}
@@ -285,7 +285,7 @@ const ExperienceTabs: React.FC = () => {
                                                                     </span>
                                                                 </summary>
                                                                 <div className="mt-3 flex items-start gap-2 text-sm text-slate-700">
-                                                                    <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
+                                                                    <BsFillCircleFill className="mt-[7px] shrink-0 text-[6px] text-blue-400" />
                                                                     <p className="leading-6">{example.value}</p>
                                                                 </div>
                                                             </details>

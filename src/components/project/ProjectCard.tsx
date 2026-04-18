@@ -32,6 +32,8 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
         {name: "Azure", category: "deployment"},
         {name: "Google Map API", category: "api"},
         {name: "openAI", category: "api"},
+        {name: "DATA.GOV.HK API" , category: "api"},
+        {name: "Node.js" , category: "runtime"}
     ];
 
     function getSelectedTag(tagNames: string[]) {

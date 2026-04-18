@@ -44,7 +44,6 @@ const ExperienceTabs: React.FC = () => {
             period: "2018 - Present",
             summary: "Primary role in delivering real estate renovation projects, with a separate internal software initiative stream developed alongside.",
             roleContext: "This role should be read as project management in the built-environment domain first. The software work below is a parallel initiative introduced within that role, not eight years of software project management.",
-            primaryTrackLabel: "Primary role: Building and surveying project delivery",
             secondaryTrackLabel: "Self-initiatives",
             isCurrentCareer: true,
             responsibilities: [
@@ -82,12 +81,11 @@ const ExperienceTabs: React.FC = () => {
             role: "Assistant Building Surveyor",
             company: "United Consultancy Limited",
             period: "2017 - 2018",
-            primaryTrackLabel: "Role focus",
             isCurrentCareer: false,
             responsibilities: [
-                "Add your surveying experience and responsibilities here...",
-                "Additional responsibility details...",
-                "More accomplishments and duties..."
+                "Managed large-scale Asset Enhancement Initiatives (AEI) for major institutional clients, including Link REIT, overseeing full-lifecycle renovation projects from technical planning to final delivery",
+                "Led technical coordination and stakeholder liaison, balancing client requirements with contractor capabilities to maintain high delivery quality and strict cost control.",
+                "Acted as a primary bridge between clients, contractors, and statutory bodies to navigate complex regulatory requirements and smoothen project workflows",
             ]
         },
         {
@@ -95,7 +93,6 @@ const ExperienceTabs: React.FC = () => {
             role: "Assistant Building Surveyor",
             company: "ISS Building Consultancy",
             period: "2015 - 2017",
-            primaryTrackLabel: "Role focus",
             isCurrentCareer: false,
             responsibilities: [
                 "Add your surveying experience and responsibilities here...",

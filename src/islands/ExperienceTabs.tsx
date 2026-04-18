@@ -42,7 +42,7 @@ const ExperienceTabs: React.FC = () => {
             company: "Gaw Capital Asset Management Limited",
             companyUrl: "https://www.gawcapital.com/",
             period: "2018 - Present",
-            summary: "Primary role in building and surveying project delivery, with a separate internal software initiative stream developed alongside that work.",
+            summary: "Primary role in delivering real estate renovation projects, with a separate internal software initiative stream developed alongside.",
             roleContext: "This role should be read as project management in the built-environment domain first. The software work below is a parallel initiative introduced within that role, not eight years of software project management.",
             primaryTrackLabel: "Primary role: Building and surveying project delivery",
             secondaryTrackLabel: "Self-initiatives",
@@ -50,7 +50,7 @@ const ExperienceTabs: React.FC = () => {
             responsibilities: [
                 "Managed multiple properties as a project manager, coordinating leasing and property-management teams to deliver construction projects on schedule and within budget while maintaining compliance.",
                 "Led technical planning and vendor coordination for project execution, balancing operational constraints with delivery quality and cost control.",
-                "Acted as a bridge between operations and IT to identify practical opportunities where software could remove recurring friction in day-to-day work."
+                "Acted as a bridge between operations and Management to smoothen property operation"
             ],
             subExperiences: [
                 {
@@ -221,7 +221,7 @@ const ExperienceTabs: React.FC = () => {
                                     <div className="mt-5 space-y-4">
                                         {activeExperience.responsibilities.map((responsibility, idx) => (
                                             <div key={idx} className="flex items-start gap-3">
-                                                <BsFillCircleFill className="mt-[5px] shrink-0 text-[6px] text-blue-400" />
+                                                <BsFillCircleFill className="mt-[7px] shrink-0 text-[6px] text-blue-400" />
                                                 <p className="text-sm leading-6 text-slate-700">
                                                     {responsibility}
                                                 </p>

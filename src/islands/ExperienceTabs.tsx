@@ -95,9 +95,11 @@ const ExperienceTabs: React.FC = () => {
             period: "2015 - 2017",
             isCurrentCareer: false,
             responsibilities: [
-                "Add your surveying experience and responsibilities here...",
-                "Additional responsibility details...",
-                "More accomplishments and duties..."
+                "Managed government term contracts for large-scale building operations",
+                "Produced and managed detailed technical drawings using AutoCAD, and submit for clients review",
+                "Led Mandatory Building Inspection Scheme (MBIS) projects for private developers",
+                "Conducted comprehensive building condition surveys for private property owners, identifying structural defects and providing professional maintenance recommendations to preserve long-term asset value"
+
             ]
         }
     ];
@@ -296,10 +298,7 @@ const ExperienceTabs: React.FC = () => {
                             </div>
                         ) : (
                             <div className="max-w-2xl mt-5">
-                                <h4
-                                    className="text-xs font-semibold tracking-wider text-gray-500 uppercase"
-                                    style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                                >{activeExperience.primaryTrackLabel ?? 'Role focus'}</h4>
+                                
                                 <div className="mt-3 flex flex-col gap-4">
                                     {activeExperience.responsibilities.map((responsibility, idx) => (
                                         <div key={idx} className="flex items-start gap-4">

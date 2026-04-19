@@ -1,5 +1,8 @@
 ---
 import QualficationCard from './QualificationCard'
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
 ---
 
 <section id="qualification" class="mt-8"> 
@@ -13,13 +16,13 @@ import QualficationCard from './QualificationCard'
         <QualficationCard
             client:visible
             title = "AWS Certified Solutions Architect - Associate"
-            img = "/AWS badge.png"
+            img = {`${baseUrl}AWS%20badge.png`}
             date = "Nov 2024"
         />
         <QualficationCard
             client:visible
             title = "CS50"
-            img = "/CS50x.png"
+            img = {`${baseUrl}CS50x.png`}
             date = "Oct 2023"
         />
     </div>

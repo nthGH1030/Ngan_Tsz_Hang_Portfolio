@@ -1,5 +1,8 @@
 ---
 import { IoIosArrowForward } from "react-icons/io";
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
 
 ---
 
@@ -67,7 +70,7 @@ import { IoIosArrowForward } from "react-icons/io";
                     <div class = "absolute top-3 left-3 w-full h-full rounded-lg border-2 border-blue-500 -z-10
                                   group-hover:translate-y-1 group-hover:translate-x-1 transition-all"></div>
                     <img
-                        src = "./portrait.jpg"
+                        src = {`${baseUrl}portrait.jpg`}
                         alt = "portrait"
                         class = "relative w-[clamp(200px,25vw,300px)] h-auto object-cover rounded-lg block 
                                 shadow-lg shadow-blue-500/25 transition-all

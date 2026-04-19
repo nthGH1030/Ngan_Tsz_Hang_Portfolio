@@ -2,12 +2,14 @@ import React , {useState , useEffect} from 'react';
 import { IoIosArrowDropleft } from "react-icons/io";
 import { IoIosArrowDropright } from "react-icons/io";
 
+const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 const ProjectMediaSlider: React.FC = () => {
 
-    const imgSrc = ["Demo_address.png",
-        "Demo_cuisine.png",
-        "Demo_location.png",
-        "Demo_Restaurants.png"
+    const imgSrc = [`${BASE}Demo_address.png`,
+        `${BASE}Demo_cuisine.png`,
+        `${BASE}Demo_location.png`,
+        `${BASE}Demo_Restaurants.png`
     ]
 
     const [imgIdx , setImgIdx] = useState(0)

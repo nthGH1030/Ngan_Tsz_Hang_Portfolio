@@ -6,6 +6,8 @@ import { RxOpenInNewWindow } from "react-icons/rx";
 import { FaRegPlayCircle , FaRegPauseCircle } from "react-icons/fa";
 import ExternalLink from '../components/navigation/ExternalLink';
 
+const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
 
 
 export interface CardProps{
@@ -133,7 +135,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                             aria-label="Toggle project video playback"
                         >
                             <video
-                                src="lunch_demo.mp4"
+                                src={`${BASE}lunch_demo.mp4`}
                                 loop
                                 className="rounded-lg w-full h-[450px] object-contain"
                                 ref = {videoRef}
@@ -220,7 +222,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                                     aria-label="Toggle project video playback"
                                 >
                                     <video
-                                        src="lunch_demo.mp4"
+                                        src={`${BASE}lunch_demo.mp4`}
                                         loop
                                         className="rounded-lg w-full h-[450px] object-contain"
                                         ref = {videoRef}

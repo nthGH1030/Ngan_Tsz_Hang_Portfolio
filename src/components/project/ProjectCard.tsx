@@ -76,10 +76,6 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
                     <h3 className="text-xl font-bold text-gray-900 leading-tight pr-2">  
                         {title}
                     </h3>
-                    <span className="px-2 py-1 rounded-md bg-red-50 text-red-600 text-[10px] 
-                        font-semibold uppercase tracking-wide whitespace-nowrap">
-                        Featured
-                    </span>
                 </div>
 
                 {/* Description */}

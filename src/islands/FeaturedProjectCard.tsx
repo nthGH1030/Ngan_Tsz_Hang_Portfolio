@@ -169,15 +169,6 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
 
                 {/* Action buttons */}
                 <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
-                    <ExternalLink
-                        href={gitHref ?? ''}
-                        icon={(
-                            <span className="flex items-center text-gray-600 transition-colors hover:text-black">
-                                <FaGithub className="text-2xl" />
-                                <span className="ml-2 text-sm">View Source</span>
-                            </span>
-                        )}
-                    />
                     <button
                         type="button"
                         className="flex items-center gap-2 hover:text-black transition-colors group bg-transparent border-0 p-0"
@@ -276,15 +267,6 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                     
                     {/* Action buttons with divider */}
                     <div className="flex items-center justify-end gap-6 ">
-                        <ExternalLink
-                            href={gitHref ?? ''}
-                            icon={(
-                                <span className="flex items-center text-gray-600 transition-colors hover:text-black">
-                                    <span className="mr-2 text-sm">View Source</span>
-                                    <FaGithub className="text-2xl" />
-                                </span>
-                            )}
-                        />
                         <button
                             type="button"
                             className="flex items-center gap-2 hover:text-black transition-colors group bg-transparent border-0 p-0"

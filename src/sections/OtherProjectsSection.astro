@@ -18,43 +18,34 @@ import ProjectCard from '../components/project/ProjectCard'
                 gap-4
                 ">
                 
-                <ProjectCard
-                    client:visible
-                    title = "HK Car Park Revenue Analysis"
-                    content = {`A Node.js tool that fetches real-time data from DATA.GOV.HK to analyze car park occupancy. 
-                    It visualizes the relationship between parking rates, EV charging availability, and vacancy rates across HK districts.`}
-                    tagNames = {["Node.js", "JavaScript", "DATA.GOV.HK API", "Data Visualization", "Chart.js"]}
-                    gitHref = {"https://github.com/nthGH1030/CarParkRevenue.git"}
-                />
-                <ProjectCard
-                    client:visible
-                    title = "Landlord Provision Chatbot"
-                    content = {`A chatbot that recommand industry standard premise provision for 
-                    leasing commercial real estate, such as retail, restaurant`}
-                    tagNames = {["TypeScript" , "openAI" , "Azure"]}
-                    href = {"placeholder"}
-                    gitHref = {"placeholder"}
-                />
+
                 <ProjectCard
                     client:visible
                     title = "LLM-Token-Checker"
                     content = {`A chrome extension that tracks the amount of free token you have
                     and refresh time for LLM chatbot such as POE.com, Grok`}
                     tagNames = {["JavaScript" , "React" , "Chrome Extension"]}
-                    href = {"https://github.com/nthGH1030/LLM-Token-Tracker.git"}
+                    href = {"https://chromewebstore.google.com/detail/llm-token-tracker/cmgmgngefbcehlhfknkciifjfcfgbbpc?hl=en-GB&utm_source=ext_sidebar"}
                     gitHref = {"https://github.com/nthGH1030/LLM-Token-Tracker.git"}
                 />
                 <div id="payment-form-filler">
                     <ProjectCard
                         client:visible
                         title = "Payment Form filler"
-                        content = {`An desktop Application that takes in a master table in an excel file,
-                        extract its content, check the format and paste onto a separate excel form`}
+                        content = {`A desktop Application that takes in a master table in an excel file,
+                        extract its content, and generate form for submitting payment request`}
                         tagNames = {["JavaScript" , "Electron", "React", "CSS" , "HTML"]}
-                        href = {"placeholder"}
-                        gitHref = {"placeholder"}
+                        gitHref = {"https://github.com/nthGH1030/POPRFiller_Electron.git"}
                     />
                 </div>
+                <ProjectCard
+                    client:visible
+                    title = "HK Car Park Revenue Analysis"
+                    content = {`A Node.js tool that fetches real-time data from DATA.GOV.HK to analyze car park occupancy. 
+                    It visualizes the relationship between parking rates, EV charging availability, and vacancy rates across HK districts.`}
+                    tagNames = {["Node.js", "JavaScript", "DATA.GOV.HK API"]}
+                    gitHref = {"https://github.com/nthGH1030/CarParkRevenue.git"}
+                />
             </div>
         </div>
     </div>

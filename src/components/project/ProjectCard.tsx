@@ -98,15 +98,18 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
                 <div className="pt-4 border-t border-gray-100">
                     <div className="flex items-center justify-end text-gray-500 
                         group-hover:text-gray-900 transition-colors">
-                        <ExternalLink
-                            href={gitHref ?? ''}
-                            icon={(
-                                <span className="flex items-center text-gray-600 transition-colors hover:text-black">
-                                    <FaGithub className="text-2xl" />
-                                    <span className="ml-2 text-sm">View Source</span>
-                                </span>
-                            )}
-                        />
+                        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+                        <div onClick={(e) => e.stopPropagation()}>
+                            <ExternalLink
+                                href={gitHref ?? ''}
+                                icon={(
+                                    <span className="flex items-center text-gray-600 transition-colors hover:text-black">
+                                        <FaGithub className="text-2xl" />
+                                        <span className="ml-2 text-sm">View Source</span>
+                                    </span>
+                                )}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://nthGH1030.github.io',
+    site: 'https://nthgh1030.github.io',
+    base: '/Ngan_Tsz_Hang_Portfolio',
     vite: {
         plugins: [tailwindcss()],
     },

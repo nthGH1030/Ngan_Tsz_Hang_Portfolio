@@ -1,5 +1,50 @@
 ---
 import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	noindex?: boolean;
+}
+
+const {
+	title = 'Ngan Tsz Hang | Portfolio',
+	description = 'Portfolio of Ngan Tsz Hang, covering real estate project delivery, workflow automation, AI prototyping, and software projects built with modern web tools.',
+	noindex = false,
+} = Astro.props;
+
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Ngan Tsz Hang',
+	alternateName: 'Kelvin Ngan',
+	description,
+	jobTitle: 'Project Manager and Software Builder',
+	sameAs: [
+		'https://github.com/nthGH1030',
+		'https://www.linkedin.com/in/kelvin-ngan-3b098a1a3',
+	],
+	knowsAbout: [
+		'Real estate project delivery',
+		'Building surveying',
+		'Workflow automation',
+		'AI prototyping',
+		'React',
+		'Astro',
+		'Node.js',
+	],
+	...(canonicalUrl ? { url: canonicalUrl } : {}),
+};
+
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: title,
+	description,
+	...(canonicalUrl ? { url: canonicalUrl } : {}),
+};
 ---
 
 <!doctype html>
@@ -9,10 +54,21 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow:wght@500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
-		<title>Ngan Tsz Hang - Portfolio</title>
+		<title>{title}</title>
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>
 	</head>
 	<body>
 		<slot />

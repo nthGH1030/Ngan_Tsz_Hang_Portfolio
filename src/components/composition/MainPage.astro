@@ -73,15 +73,6 @@ import ContactSection from '../../sections/ContactSection.astro'
 
         lastScrollMap.set(snapContainer, snapContainer.scrollTop);
         snapContainer.addEventListener('scroll', () => handleDirectionalScroll(snapContainer), { passive: true });
-
-        const sectionBodies = Array.from(
-            snapContainer.querySelectorAll<HTMLElement>('[data-section-scroll-body]')
-        );
-
-        sectionBodies.forEach((body) => {
-            lastScrollMap.set(body, body.scrollTop);
-            body.addEventListener('scroll', () => handleDirectionalScroll(body), { passive: true });
-        });
     };
 
     if (document.readyState === 'loading') {

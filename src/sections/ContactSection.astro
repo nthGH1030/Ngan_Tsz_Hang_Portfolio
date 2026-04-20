@@ -2,10 +2,9 @@
 import Reference from "../components/contact/Reference.astro"
 ---
 
-<section id = "contact" data-main-section class = "h-screen snap-start snap-always" >
-    <div class = "h-full overflow-hidden">
-        <div data-section-scroll-body class = "h-full overflow-y-auto flex flex-col">
-            <div class = "flex-1 flex flex-col justify-center mx-8 md:mx-24 my-16 gap-4">
+<section id = "contact" data-main-section class = "min-h-screen snap-start snap-always" >
+    <div class = "min-h-screen flex flex-col">
+        <div class = "flex-1 flex flex-col justify-center mx-8 md:mx-24 my-16 gap-4">
                 <div class = "text-3xl text-center">
                     Let's Connect
                 </div>
@@ -29,10 +28,9 @@ import Reference from "../components/contact/Reference.astro"
                         Contact Me
                     </a>
                 </div>
-            </div>
-            <div class = "shrink-0">
-                <Reference/>
-            </div>
+        </div>
+        <div class = "shrink-0">
+            <Reference/>
         </div>
     </div>
 </section>

@@ -2,8 +2,8 @@
 import Qualification from '../components/experience/Qualification.astro'
 import ExperienceTabs from '../islands/ExperienceTabs'
 ---
-<section id="experience" data-main-section class="h-screen snap-start snap-always">
-    <div class = "h-full overflow-hidden flex flex-col pt-24">
+<section id="experience" data-main-section class="min-h-screen snap-start snap-always">
+    <div class = "flex flex-col pt-24 pb-8 min-h-screen">
         <div class = "shrink-0 mx-8 md:mx-24 flex items-center">
             <h1
                 class = "whitespace-nowrap font-bold text-xl md:text-2xl"
@@ -12,12 +12,12 @@ import ExperienceTabs from '../islands/ExperienceTabs'
             <div class = "w-full bg-gray-300 h-px ml-2"></div>
         </div>
         
-        <div data-section-scroll-body class = "flex-1 min-h-0 overflow-y-auto">
+        <div class = "flex-1">
             <div class = "mx-8 md:mx-24 mt-8 [--experience-rail:16rem]">
                 <ExperienceTabs client:load />
             </div>
             
-            <div class = "mx-8 md:mx-24 pb-8 md:pl-[calc(var(--experience-rail)+1.5rem)]">
+            <div class = "mx-8 md:mx-24 md:pl-[calc(var(--experience-rail)+1.5rem)]">
                 <Qualification/>
             </div>
         </div>

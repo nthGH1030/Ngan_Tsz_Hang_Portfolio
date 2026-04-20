@@ -83,10 +83,6 @@ const MobileMenu: React.FC = () => {
                                 className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#experience")}>
                                 Experience</a>
-                            <a href = "#qualification" 
-                                className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
-                                onClick = {(e) => handleNavClick(e, "#qualification")}>
-                                Qualification</a>
                             <a href = "#featured-work" 
                                 className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#featured-work")}>
@@ -94,7 +90,7 @@ const MobileMenu: React.FC = () => {
                             <a href = "#other-projects" 
                                 className = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" 
                                 onClick = {(e) => handleNavClick(e, "#other-projects")}>
-                                Projects</a>
+                                Other Projects</a>
                             <a href = "#contact" 
                                 className ="nav-link inline-block px-6 py-3 rounded-xl font-bold text-lg
                                                 border-2 border-blue-600 text-blue-600 bg-transparent

@@ -10,12 +10,12 @@ import ContactSection from '../../sections/ContactSection.astro'
 ---
 
 <div >
-    <div id = "top-bar">
+    <div id = "top-bar" class="relative z-[200]">
         <TopBar/>
     </div>
     <div 
         id = 'snapContainer'
-        class="h-screen overflow-y-scroll overscroll-y-contain snap-y snap-mandatory">
+        class="relative z-0 h-screen overflow-y-scroll overscroll-y-contain snap-y snap-mandatory">
         <HomeSection/>
         <AboutSection/>
         <ExperienceSection/>

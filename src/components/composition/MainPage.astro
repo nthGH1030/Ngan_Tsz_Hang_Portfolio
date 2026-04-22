@@ -18,24 +18,24 @@ import ContactSection from '../../sections/ContactSection.astro'
         <div class="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-slate-100/25 to-transparent"></div>
     </div>
     <div 
-        id = 'snapContainer'
-        class="relative z-0 h-screen overflow-y-scroll snap-y scroll-smooth">
-        <HomeSection class="snap-normal"/>
-        <AboutSection class="snap-normal"/>
-        <ExperienceSection class="snap-normal"/>
-        <FeaturedWorkSection class="snap-normal"/>
-        <OtherProjectsSection class="snap-normal"/>
-        <ContactSection class="snap-normal"/>
+        id = 'scrollContainer'
+        class="relative z-0 h-screen overflow-y-scroll">
+        <HomeSection/>
+        <AboutSection/>
+        <ExperienceSection/>
+        <FeaturedWorkSection/>
+        <OtherProjectsSection/>
+        <ContactSection/>
         <BottomBar/>
     </div>
 </div>
 
 <script>
     const initializeSnapContainer = () => {
-        const snapContainer = document.getElementById('snapContainer');
+        const scrollContainer = document.getElementById('scrollContainer');
         const topBar = document.getElementById('top-bar');
 
-        if (!(snapContainer instanceof HTMLElement) || !(topBar instanceof HTMLElement)) {
+        if (!(scrollContainer instanceof HTMLElement) || !(topBar instanceof HTMLElement)) {
             return;
         }
 

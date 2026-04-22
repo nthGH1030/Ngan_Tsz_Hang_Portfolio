@@ -31,7 +31,7 @@ import ContactSection from '../../sections/ContactSection.astro'
 </div>
 
 <script>
-    const initializeSnapContainer = () => {
+    const initializeScrollContainer = () => {
         const scrollContainer = document.getElementById('scrollContainer');
         const topBar = document.getElementById('top-bar');
 
@@ -75,13 +75,13 @@ import ContactSection from '../../sections/ContactSection.astro'
             lastScrollMap.set(source, next);
         };
 
-        lastScrollMap.set(snapContainer, snapContainer.scrollTop);
-        snapContainer.addEventListener('scroll', () => handleDirectionalScroll(snapContainer), { passive: true });
+        lastScrollMap.set(scrollContainer, scrollContainer.scrollTop);
+        scrollContainer.addEventListener('scroll', () => handleDirectionalScroll(scrollContainer), { passive: true });
     };
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeSnapContainer, { once: true });
+        document.addEventListener('DOMContentLoaded', initializeScrollContainer, { once: true });
     } else {
-        initializeSnapContainer();
+        initializeScrollContainer();
     }
 </script>

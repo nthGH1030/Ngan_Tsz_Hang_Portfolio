@@ -7,14 +7,14 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
 
 
 <div class = 
-    "z-[400] fixed top-0 w-full text-xs md:text-base px-8 py-8 md:pt-8
+    "z-[400] fixed top-0 w-full text-xs px-[clamp(25px,3vw+10px,50px)] py-8 md:pt-8 
     bg-gradient-to-br from-white/50 via-blue-50/40 to-slate-100/35
     shadow-[0_20px_60px_rgba(59,130,246,0.15)] border-b border-blue-600/20
     topbar-slide-in">
-    {/* This is the desktop version */ }
+    
     <div class = "hidden md:block">
         <nav class = "flex justify-between">
-            <div class = "flex items-center gap-2 md:gap-5 md:ml-8">
+            <div class = "flex items-center gap-4 md:ml-8">
                <a href={homeHref} class="relative flex items-center justify-center w-10 h-10 group">
                     <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10">N</span>
                     <div class="absolute inset-0 border-2 border-blue-600 rounded-sm transition-all duration-200 group-hover:scale-105">
@@ -34,7 +34,8 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
                 </a>
                 <p class = "text-sm text-gray-500 font-semibold uppercase tracking-wide whitespace-nowrap">Kelvin Ngan</p>
             </div>
-            <div class = "flex gap-8 items-center justify-end text-base md:mr-8">
+            {/* This is the desktop version */ }
+            <div class = "flex gap-6 items-center justify-end text-base ">
                 <a href = "#about" class = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" >About</a>
                 <a href = "#experience" class = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" >Experience</a>
                 <a href = "#featured-work" class = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" >Featured Work</a>
@@ -55,7 +56,7 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
     </div>
     {/* This is the mobile version */ }
     <div class = "md:hidden">
-        <nav class = "flex justify-between mx-2 sm:mx-4 ">
+        <nav class = "flex justify-between  ">
             <div>
                 <a href={homeHref} class="relative flex items-center justify-center w-10 h-10 group">
                     <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10">N</span>

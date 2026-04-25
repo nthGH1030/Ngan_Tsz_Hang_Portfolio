@@ -57,7 +57,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                             Certification
                         </span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">{date}</p>
+                    <p className="text-sm text-gray-400 mt-1">{date}</p>
                 </div>
             </button>
 

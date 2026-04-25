@@ -211,7 +211,6 @@ const ExperienceTabs: React.FC = () => {
                                     <div className="flex items-center gap-3">
                                         <span
                                             className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white"
-                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
                                         >
                                             Core
                                         </span>
@@ -260,7 +259,7 @@ const ExperienceTabs: React.FC = () => {
                                                         {subExp.scope}
                                                     </span>
                                                 </div>
-                                                <p className="mt-2 text-xs uppercase tracking-[0.16em] text-slate-500">{subExp.period}</p>
+                                                <p className="text-sm text-gray-400 mt-1">{subExp.period}</p>
                                                 {subExp.publicOverview && (
                                                     <p className="mt-3 text-sm leading-6 text-gray-700">{subExp.publicOverview}</p>
                                                 )}

@@ -10,6 +10,7 @@ export interface CardProps{
     tagNames: string[];
     href?: string;
     gitHref?: string;
+    paragraphClass?: string;
 }
 
 export interface TagData{
@@ -17,7 +18,7 @@ export interface TagData{
     category : string;
 }
 
-const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) => {
+const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref, paragraphClass = "text-gray-700"}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -73,13 +74,13 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
                 
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 leading-tight pr-2">  
+                    <h3 className="text-xl font-bold text-gray-800 leading-tight pr-2">  
                         {title}
                     </h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
+                    <p className="text-sm text-gray-700 leading-relaxed mb-4 flex-grow">
                     {content}
                 </p>
 

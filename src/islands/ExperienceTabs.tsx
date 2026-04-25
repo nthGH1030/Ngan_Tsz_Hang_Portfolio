@@ -202,7 +202,7 @@ const ExperienceTabs: React.FC = () => {
                         <p className="text-sm text-gray-400 mt-1">{activeExperience.period}</p>
 
                         {activeExperience.summary && (
-                            <p className="mt-3 text-sm text-gray-600 max-w-3xl">{activeExperience.summary}</p>
+                            <p className="mt-3 text-sm text-gray-700 max-w-3xl">{activeExperience.summary}</p>
                         )}
 
                         {activeExperience.subExperiences && activeExperience.subExperiences.length > 0 ? (
@@ -211,17 +211,18 @@ const ExperienceTabs: React.FC = () => {
                                     <div className="flex items-center gap-3">
                                         <span
                                             className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white"
-                                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
                                         >
                                             Core
                                         </span>
-                                        <p className="text-sm font-medium text-slate-500">Primary responsibility</p>
+                                        <p className="text-sm font-medium text-gray-800">Primary responsibility</p>
                                     </div>
                                     <div className="mt-5 space-y-4">
                                         {activeExperience.responsibilities.map((responsibility, idx) => (
                                             <div key={idx} className="flex items-start gap-3">
-                                                <BsFillCircleFill className="mt-[7px] shrink-0 text-[6px] text-blue-400" />
-                                                <p className="text-sm leading-6 text-slate-700">
+                                                <span className="relative top-[0.2em]">
+                                                    <IoIosArrowForward className="text-blue-600 text-base" />
+                                                </span>
+                                                <p className="text-sm leading-6 text-gray-700">
                                                     {responsibility}
                                                 </p>
                                             </div>
@@ -258,15 +259,17 @@ const ExperienceTabs: React.FC = () => {
                                                         {subExp.scope}
                                                     </span>
                                                 </div>
-                                                <p className="mt-2 text-xs uppercase tracking-[0.16em] text-slate-500">{subExp.period}</p>
+                                                <p className="text-sm text-gray-400 mt-1">{subExp.period}</p>
                                                 {subExp.publicOverview && (
-                                                    <p className="mt-3 text-sm leading-6 text-slate-700">{subExp.publicOverview}</p>
+                                                    <p className="mt-3 text-sm leading-6 text-gray-700">{subExp.publicOverview}</p>
                                                 )}
                                                 {subExp.highlights.length > 0 && (
                                                     <ul className="mt-4 space-y-2">
                                                         {subExp.highlights.map((highlight, idx) => (
                                                             <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                                                <BsFillCircleFill className="mt-[7px] shrink-0 text-[6px] text-blue-400" />
+                                                                    <span className="relative top-[0.2em]">
+                                                                        <IoIosArrowForward className="text-blue-600 text-base" />
+                                                                    </span>
                                                                 <span>{highlight}</span>
                                                             </li>
                                                         ))}
@@ -283,9 +286,11 @@ const ExperienceTabs: React.FC = () => {
                                                                         <IoIosArrowDown className="shrink-0" />
                                                                     </span>
                                                                 </summary>
-                                                                <div className="mt-3 flex items-start gap-2 text-sm text-slate-700">
-                                                                    <BsFillCircleFill className="mt-[7px] shrink-0 text-[6px] text-blue-400" />
-                                                                    <p className="leading-6">{example.value}</p>
+                                                                <div className="mt-3 flex items-start gap-3 ">
+                                                                        <span className="relative top-[0.2em]">
+                                                                            <IoIosArrowForward className="text-blue-600 text-base" />
+                                                                        </span>
+                                                                    <p className="text-sm leading-6 text-gray-700">{example.value}</p>
                                                                 </div>
                                                             </details>
                                                         ))}
@@ -302,7 +307,7 @@ const ExperienceTabs: React.FC = () => {
                                 <div className="mt-3 flex flex-col gap-4">
                                     {activeExperience.responsibilities.map((responsibility, idx) => (
                                         <div key={idx} className="flex items-start gap-4">
-                                            <div className="mt-1 text-gray-600">
+                                            <div className="mt-1 text-blue-600">
                                                 <IoIosArrowForward />
                                             </div>
                                             <p className="text-[clamp(0.9rem,2.5vw,1rem)] text-gray-700">

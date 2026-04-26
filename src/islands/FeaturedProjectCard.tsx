@@ -1,14 +1,11 @@
 import React from 'react';
 import Tag from '../components/project/Tag';
-import { FaGithub } from "react-icons/fa"
 import ProjectMediaSlider from './ProjectMediaSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { FaRegPlayCircle , FaRegPauseCircle } from "react-icons/fa";
-import ExternalLink from '../components/navigation/ExternalLink';
+
 
 const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-
-
 
 export interface CardProps{
     title : string;
@@ -68,9 +65,6 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
             setIsPlaying(prev => !prev)
         } 
     }
-
-    // Uniform tag styling - no color categorization
-
     function getSelectedTag(tagNames: string[]) {
 
         const selectedTags = allTags.map(tag => {
@@ -276,7 +270,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                         >
                             <span className="text-sm text-gray-600 group-hover:text-black transition-colors group-hover:cursor-pointer">Open Project</span>
                             <RxOpenInNewWindow 
-                                className="text-2xl text-gray-600 group-hover:text-black transition-colors"
+                                className="text-2xl text-gray-600 group-hover:text-black transition-colors group-hover:cursor-pointer"
                                 title="Open Project"
                             />
                         </button>

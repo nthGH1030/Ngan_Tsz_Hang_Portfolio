@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from 'react';
+import React , {useState} from 'react';
 import { IoIosArrowDropleft } from "react-icons/io";
 import { IoIosArrowDropright } from "react-icons/io";
 
@@ -50,13 +50,6 @@ const ProjectMediaSlider: React.FC = () => {
             setIsSlidingOut(false);
         }
     };
-    /*
-     useEffect(() => {
-        console.log('direction is now' , direction)
-        console.log('isSlidingOut is now' , isSlidingOut)
-    }, [direction , isSlidingOut ])
-    */
-
     
     return (
         <div

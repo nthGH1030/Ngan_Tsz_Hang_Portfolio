@@ -274,7 +274,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                             className="flex items-center gap-2 hover:text-black transition-colors group bg-transparent border-0 p-0"
                             onClick={handleCardClick}
                         >
-                            <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
+                            <span className="text-sm text-gray-600 group-hover:text-black transition-colors group-hover:cursor-pointer">Open Project</span>
                             <RxOpenInNewWindow 
                                 className="text-2xl text-gray-600 group-hover:text-black transition-colors"
                                 title="Open Project"

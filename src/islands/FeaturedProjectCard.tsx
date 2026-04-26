@@ -99,7 +99,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
             className="hover:shadow-lg transition-shadow flex flex-col md:flex-row 
                 items-center md:items-stretch justify-center gap-6"
             >
-            <div className="w-full max-w-4xl mx-auto  rounded-lg shadow-2xl p-4 md:p-8">
+            <div className="w-full rounded-lg shadow-2xl p-4 md:p-8">
             {/* Mobile: Single centered media */}
             <div className="sm:hidden md:hidden ">
                 <div className="relative mb-4 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">

@@ -3,25 +3,21 @@ import FeaturedProjectCard from '../islands/FeaturedProjectCard'
 ---
 
 <section id="featured-work" data-main-section class = "min-h-screen snap-start" >
-    <div class = "flex flex-col pt-24 pb-8 min-h-screen">
-        <div class = "shrink-0 mx-8 md:mx-24 flex items-center">
+    <div class = "flex flex-col pt-24 pb-8 min-h-screen max-w-2xl mx-auto ">
+        <div class = "shrink-0 flex items-center ">
             <h1 class = "whitespace-nowrap font-bold text-xl md:text-2xl text-gray-800">3. Featured Work</h1>
             <div class = "w-full bg-gray-300 h-px ml-2"></div>
         </div>
         <div class = "flex-1">
-            <div class = " 
-                pt-4 pb-8
-                mx-8 md:mx-24 ">
-                <div class="relative w-full flex flex-col items-center justify-center">
-                    <FeaturedProjectCard
-                        client:visible
-                        title="Lunch Roulette"
-                        content={`A web app that recommends restaurants, categories by location, cuisines. Spin the roulette to decide what to get for lunch!`}
-                        tagNames={["JavaScript", "Next.js", "React", "Tailwind", "Vercel", "Google Map API"]}
-                        href={"https://lunch-roulette-phi.vercel.app/"}
-                        gitHref={"https://github.com/nthGH1030"}
-                    />
-                </div>
+            <div class = " pt-4 pb-8  ">
+                <FeaturedProjectCard
+                    client:visible
+                    title="Lunch Roulette"
+                    content={`A web app that recommends restaurants, categories by location, cuisines. Spin the roulette to decide what to get for lunch!`}
+                    tagNames={["JavaScript", "Next.js", "React", "Tailwind", "Vercel", "Google Map API"]}
+                    href={"https://lunch-roulette-phi.vercel.app/"}
+                    gitHref={"https://github.com/nthGH1030"}
+                />
             </div>
         </div>
     </div>

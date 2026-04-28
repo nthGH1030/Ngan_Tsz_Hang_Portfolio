@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
-import { BsFillCircleFill } from "react-icons/bs";
 
 interface ExampleOfWorkItem {
     key: string;

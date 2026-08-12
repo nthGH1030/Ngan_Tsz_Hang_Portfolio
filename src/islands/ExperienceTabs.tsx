@@ -10,7 +10,7 @@ interface SubExperience {
     id: string;
     title: string;
     period: string;
-    scope: string;
+    scope: string;                           
     publicOverview?: string;
     exampleOfWork?: ExampleOfWorkItem[];
     highlights: string[];

@@ -28,3 +28,8 @@ pnpm-debug.log*
 
 # local notes
 .notes/
+docs/
+
+# lighthouse reports (regenerate with npx lighthouse)
+docs/lighthouse-*.json
+docs/lighthouse-*.html

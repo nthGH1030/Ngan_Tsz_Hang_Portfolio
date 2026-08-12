@@ -30,6 +30,7 @@ pnpm-debug.log*
 .notes/
 docs/
 
-# lighthouse reports (regenerate with npx lighthouse)
+# lighthouse reports (regenerate with npm run lighthouse:*)
 docs/lighthouse-*.json
 docs/lighthouse-*.html
+!docs/LIGHTHOUSE_BASELINE.md

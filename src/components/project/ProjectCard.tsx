@@ -54,37 +54,34 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
         return "bg-blue-50 text-blue-700 border border-blue-200"
     }
 
-    const handleCardClick = () => {
-        if (href) {
-            window.open(href, '_blank');
-        }
-    };
-
     const selectedTags = getSelectedTag(tagNames)
 
     return (
-        <div className="h-full p-2">
-            <button
-                type="button"
-                onClick={handleCardClick}
-                className="group cursor-pointer h-full w-full text-left bg-transparent border-0 p-0"
-            >
+        <article className="h-full p-2">
             <div className="h-full flex flex-col rounded-xl bg-white border-2 border-gray-300 
                 shadow-md p-6 transition-all duration-300 hover:shadow-2xl hover:border-gray-400 hover:-translate-y-1">
                 
-                {/* Header */}
                 <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-800 leading-tight pr-2">  
-                        {title}
+                    <h3 className="text-xl font-bold text-gray-800 leading-tight pr-2">
+                        {href ? (
+                            <a
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-blue-700"
+                            >
+                                {title}
+                            </a>
+                        ) : (
+                            title
+                        )}
                     </h3>
                 </div>
 
-                {/* Description */}
-                    <p className="text-sm text-gray-700 leading-relaxed mb-4 flex-grow">
+                    <p className={`text-sm leading-relaxed mb-4 flex-grow ${paragraphClass}`}>
                     {content}
                 </p>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4 text-xs">
                     {selectedTags.map((tag, idx) => (
                         <Tag
@@ -95,27 +92,25 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
                     ))}
                 </div>
 
-                {/* Footer */}
-                <div className="pt-4 border-t border-gray-100">
-                    <div className="flex items-center justify-end text-gray-500 
-                        group-hover:text-gray-900 transition-colors">
-                        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-                        <div onClick={(e) => e.stopPropagation()}>
+                {gitHref && (
+                    <div className="pt-4 border-t border-gray-100">
+                        <div className="flex items-center justify-end text-gray-600 
+                            hover:text-gray-900 transition-colors">
                             <ExternalLink
-                                href={gitHref ?? ''}
+                                href={gitHref}
+                                ariaLabel={`View source for ${title} on GitHub`}
                                 icon={(
-                                    <span className="flex items-center text-gray-600 transition-colors hover:text-black">
-                                        <FaGithub className="text-2xl" />
+                                    <span className="flex items-center text-gray-700 transition-colors hover:text-black">
+                                        <FaGithub className="text-2xl" aria-hidden="true" />
                                         <span className="ml-2 text-sm">View Source</span>
                                     </span>
                                 )}
                             />
                         </div>
                     </div>
-                </div>
+                )}
             </div>
-            </button>
-        </div>
+        </article>
     );
 }
 

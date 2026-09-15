@@ -9,17 +9,18 @@ import OtherProjectsSection from '../../sections/OtherProjectsSection.astro'
 import ContactSection from '../../sections/ContactSection.astro'
 ---
 
-<div >
-    <div id = "top-bar" class="relative z-[300]">
+<div>
+    <header id="top-bar" class="relative z-[300]">
         <TopBar/>
-    </div>
+    </header>
     <div aria-hidden="true" class="pointer-events-none fixed inset-x-0 top-0 z-[200] h-18 md:h-22">
         <div class="absolute inset-0 backdrop-blur-sm"></div>
         <div class="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-slate-100/25 to-transparent"></div>
     </div>
-    <div 
-        id = 'scrollContainer'
-        class="relative z-0 h-screen overflow-y-scroll">
+    <main
+        id="content"
+        class="relative z-0 h-screen overflow-y-scroll"
+    >
         <HomeSection/>
         <AboutSection/>
         <ExperienceSection/>
@@ -27,12 +28,12 @@ import ContactSection from '../../sections/ContactSection.astro'
         <OtherProjectsSection/>
         <ContactSection/>
         <BottomBar/>
-    </div>
+    </main>
 </div>
 
 <script>
     const initializeScrollContainer = () => {
-        const scrollContainer = document.getElementById('scrollContainer');
+        const scrollContainer = document.getElementById('content');
         const topBar = document.getElementById('top-bar');
 
         if (!(scrollContainer instanceof HTMLElement) || !(topBar instanceof HTMLElement)) {
@@ -77,6 +78,18 @@ import ContactSection from '../../sections/ContactSection.astro'
 
         lastScrollMap.set(scrollContainer, scrollContainer.scrollTop);
         scrollContainer.addEventListener('scroll', () => handleDirectionalScroll(scrollContainer), { passive: true });
+
+        const skipLink = document.querySelector('.skip-link');
+        skipLink?.addEventListener('click', (event) => {
+            const home = document.getElementById('home');
+            if (!(home instanceof HTMLElement)) {
+                return;
+            }
+
+            event.preventDefault();
+            home.focus({ preventScroll: true });
+            home.scrollIntoView();
+        });
     };
 
     if (document.readyState === 'loading') {

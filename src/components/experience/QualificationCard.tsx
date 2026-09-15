@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { HiOutlineZoomIn } from 'react-icons/hi';
 
@@ -8,48 +8,76 @@ export interface QualifcationProps{
     img: string;
 }
 
-
-
 const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
     const [isImgOpen , setIsImgOpen] = useState(false)
+    const triggerRef = useRef<HTMLButtonElement>(null);
+    const closeRef = useRef<HTMLButtonElement>(null);
 
     const handleImgClick = () => {
         setIsImgOpen(!isImgOpen)
     }
 
+    useEffect(() => {
+        if (!isImgOpen) {
+            return;
+        }
+
+        closeRef.current?.focus();
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                setIsImgOpen(false);
+                return;
+            }
+
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                closeRef.current?.focus();
+            }
+        };
+
+        document.addEventListener('keydown', onKeyDown);
+        return () => {
+            document.removeEventListener('keydown', onKeyDown);
+            triggerRef.current?.focus();
+        };
+    }, [isImgOpen]);
+
     return (
         <div>
             <button
                 type="button"
+                ref={triggerRef}
                 className="group relative rounded-lg border border-blue-100 bg-blue-50/40
                 p-4 transition-colors duration-300 cursor-pointer flex items-center gap-3 w-full text-left"
                 onClick={handleImgClick}
+                aria-expanded={isImgOpen}
+                aria-haspopup="dialog"
+                aria-label={`View ${title} certificate`}
             >
-                {/* Image Container */}
                 <div className="relative flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 
                     rounded overflow-hidden bg-white border border-blue-100">
                     <img 
                         src={img} 
-                        alt={title}
+                        alt=""
                         className="w-full h-full object-contain p-1.5"
                     />
-                    {/* Zoom icon overlay on hover */}
                     <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/15
                         transition-all duration-300 flex items-center justify-center">
                         <HiOutlineZoomIn className="text-white text-xl opacity-0 
-                            group-hover:opacity-100 transition-opacity duration-300" />
+                            group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
                     </div>
                 </div>
 
-                {/* Content */}
                 <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                        <h3
+                        <span
                             className="font-semibold text-gray-900 leading-tight"
                             style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
                         >
                             {title}
-                        </h3>
+                        </span>
                         <span
                             className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
                             style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
@@ -57,31 +85,37 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                             Certification
                         </span>
                     </div>
-                    <p className="text-sm text-gray-400 mt-1">{date}</p>
+                    <p className="text-sm text-gray-600 mt-1">{date}</p>
                 </div>
             </button>
 
-            {/* Modal */}
             {isImgOpen && (
-                <div 
-                    className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center 
-                    justify-center z-50 p-4"
-                    onClick={() => setIsImgOpen(false)}
+                <div
+                    className="fixed inset-0 z-50 p-4 flex items-center justify-center"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`${title} certificate`}
                 >
-                    <button
-                        className="absolute top-4 right-4 sm:top-8 sm:right-8 text-white 
-                        hover:text-gray-300 transition-colors p-2 rounded-full hover:bg-white/10"
+                    <div
+                        className="absolute inset-0 bg-black/90 backdrop-blur-sm"
                         onClick={() => setIsImgOpen(false)}
-                        aria-label="Close"
+                    />
+                    <button
+                        type="button"
+                        ref={closeRef}
+                        className="absolute top-4 right-4 sm:top-8 sm:right-8 z-10 text-white 
+                        hover:text-gray-200 transition-colors p-2 rounded-full hover:bg-white/10
+                        w-11 h-11 flex items-center justify-center"
+                        onClick={() => setIsImgOpen(false)}
+                        aria-label="Close certificate preview"
                     >
-                        <IoClose className="text-3xl sm:text-4xl" />
+                        <IoClose className="text-3xl sm:text-4xl" aria-hidden="true" />
                     </button>
-                    <div className="max-w-4xl max-h-[90vh] overflow-auto">
+                    <div className="relative z-10 max-w-4xl max-h-[90vh] overflow-auto">
                         <img 
                             src={img} 
-                            alt={title}
+                            alt={`${title} certificate`}
                             className="w-full h-full object-contain rounded-lg"
-                            onClick={(e) => e.stopPropagation()}
                         />
                     </div>
                 </div>

@@ -20,7 +20,7 @@ export interface TagData{
     category : string;
 }
 
-const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref}) => {
+const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, href}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -82,11 +82,53 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
         return "bg-blue-50 text-blue-700 border border-blue-200"
     }
 
-    const handleCardClick = () => {
-        window.open(href, '_blank', 'noopener,noreferrer');
-    };
-
     const selectedTags = getSelectedTag(tagNames)
+
+    const renderVideoToggle = () => (
+        <div className="relative">
+            <video
+                src={`${BASE}lunch_demo.mp4`}
+                loop
+                playsInline
+                className="rounded-lg w-full h-[450px] object-contain"
+                ref={videoRef}
+            />
+            <button
+                type="button"
+                onClick={handlePlay}
+                className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-transparent cursor-pointer"
+                aria-label={isPlaying ? 'Pause Lunch Roulette demo video' : 'Play Lunch Roulette demo video'}
+            >
+                {showPlayBtn && (
+                    <FaRegPlayCircle
+                        aria-hidden="true"
+                        className={`text-4xl text-white ${animatePlayBtn ? 'animate-play-out' : ''}`}
+                    />
+                )}
+                {showPauseBtn && (
+                    <FaRegPauseCircle
+                        aria-hidden="true"
+                        className={`text-4xl text-white ${animatePauseBtn ? 'animate-play-out' : ''}`}
+                    />
+                )}
+            </button>
+        </div>
+    );
+
+    const openProjectLink = href ? (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-black transition-colors group"
+        >
+            <span className="text-sm text-gray-700 group-hover:text-black transition-colors">Open Project</span>
+            <RxOpenInNewWindow
+                className="text-2xl text-gray-700 group-hover:text-black transition-colors"
+                aria-hidden="true"
+            />
+        </a>
+    ) : null;
 
     return (
         <div
@@ -97,51 +139,14 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
             {/* Mobile: Single centered media */}
             <div className="sm:hidden md:hidden ">
                 <div className="relative mb-4 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
-                     <div className="flex-1 relative">
-                        {showPlayBtn && (
-                            <button
-                                type="button"
-                                onClick = {handlePlay}
-                                className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                    rounded-full text-white bg-transparent text-4xl cursor-pointer
-                                    ${animatePlayBtn ? 'animate-play-out' : ''}`}
-                                aria-label="Play project video"
-                            >
-                                <FaRegPlayCircle/>
-                            </button>
-                        )}
-                        {showPauseBtn && (
-                            <button
-                                type="button"
-                                onClick = {handlePlay}
-                                className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                    rounded-full text-white bg-transparent text-4xl cursor-pointer
-                                    ${animatePauseBtn ? 'animate-play-out' : ''}`}
-                                aria-label="Pause project video"
-                            >
-                                <FaRegPauseCircle/>
-                            </button>
-                        )}
-                        <button
-                            type="button"
-                            onClick = {handlePlay}
-                            className="block w-full bg-transparent border-0 p-0"
-                            aria-label="Toggle project video playback"
-                        >
-                            <video
-                                src={`${BASE}lunch_demo.mp4`}
-                                loop
-                                className="rounded-lg w-full h-[450px] object-contain"
-                                ref = {videoRef}
-                            />
-                        </button>
-                        
+                    <div className="flex-1 relative">
+                        {renderVideoToggle()}
                     </div>
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white pointer-events-none">
-                        <div className="text-xs font-semibold uppercase tracking-wider mb-1">Featured Project</div>
-                        <div className="text-2xl font-bold">{title}</div>
+                        <p className="text-xs font-semibold uppercase tracking-wider mb-1">Featured Project</p>
+                        <h3 className="text-2xl font-bold">{title}</h3>
                     </div>
                 </div>
 
@@ -165,17 +170,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
 
                 {/* Action buttons */}
                 <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
-                    <button
-                        type="button"
-                        className="flex items-center gap-2 hover:text-black transition-colors group bg-transparent border-0 p-0"
-                        onClick={handleCardClick}
-                    >
-                        <span className="text-sm text-gray-600 group-hover:text-black transition-colors">Open Project</span>
-                        <RxOpenInNewWindow 
-                            className="text-2xl text-gray-600 group-hover:text-black transition-colors"
-                            title="Open Project"
-                        />
-                    </button>
+                    {openProjectLink}
                 </div>
             </div>
 
@@ -185,44 +180,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                     <div className="rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 p-4">
                         <div className="flex gap-4 pb-10">
                             <div className="flex-1 relative">
-                                {showPlayBtn && (
-                                    <button
-                                        type="button"
-                                        onClick = {handlePlay}
-                                        className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                            rounded-full text-white bg-transparent text-4xl cursor-pointer
-                                            ${animatePlayBtn ? 'animate-play-out' : ''}`}
-                                        aria-label="Play project video"
-                                    >
-                                        <FaRegPlayCircle/>
-                                    </button>
-                                )}
-                                 {showPauseBtn && (
-                                    <button
-                                        type="button"
-                                        onClick = {handlePlay}
-                                        className ={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10
-                                            rounded-full text-white bg-transparent text-4xl cursor-pointer
-                                            ${animatePauseBtn ? 'animate-play-out' : ''}`}
-                                        aria-label="Pause project video"
-                                    >
-                                        <FaRegPauseCircle/>
-                                    </button>
-                                )}
-                                <button
-                                    type="button"
-                                    onClick = {handlePlay}
-                                    className="block w-full bg-transparent border-0 p-0"
-                                    aria-label="Toggle project video playback"
-                                >
-                                    <video
-                                        src={`${BASE}lunch_demo.mp4`}
-                                        loop
-                                        className="rounded-lg w-full h-[450px] object-contain"
-                                        ref = {videoRef}
-                                    />
-                                </button>
-    
+                                {renderVideoToggle()}
                             </div>
                             <div className="w-[300px] flex items-center justify-center">
                                 <ProjectMediaSlider/>
@@ -233,8 +191,8 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                         <div className="absolute inset-0 rounded-lg
                             bg-gradient-to-t from-gray-900/70 via-black/20 to-transparent pointer-events-none"></div>
                         <div className="absolute bottom-12 left-6 right-6 text-white pointer-events-none">
-                            <div className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">Featured Project</div>
-                            <div className="text-2xl font-bold">{title}</div>
+                            <p className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">Featured Project</p>
+                            <h3 className="text-2xl font-bold">{title}</h3>
                         </div>
                     </div>
                     
@@ -263,17 +221,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                     
                     {/* Action buttons with divider */}
                     <div className="flex items-center justify-end gap-6 ">
-                        <button
-                            type="button"
-                            className="flex items-center gap-2 hover:text-black transition-colors group bg-transparent border-0 p-0"
-                            onClick={handleCardClick}
-                        >
-                            <span className="text-sm text-gray-600 group-hover:text-black transition-colors group-hover:cursor-pointer">Open Project</span>
-                            <RxOpenInNewWindow 
-                                className="text-2xl text-gray-600 group-hover:text-black transition-colors group-hover:cursor-pointer"
-                                title="Open Project"
-                            />
-                        </button>
+                        {openProjectLink}
                     </div>
                 </div>
 

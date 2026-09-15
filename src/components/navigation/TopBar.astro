@@ -13,10 +13,10 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
     topbar-slide-in">
     
     <div class = "hidden md:block">
-        <nav class = "flex justify-between">
+        <nav class = "flex justify-between" aria-label="Primary">
             <div class = "flex items-center gap-4 md:ml-8">
-               <a href={homeHref} class="relative flex items-center justify-center w-10 h-10 group">
-                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10">N</span>
+               <a href={homeHref} class="relative flex items-center justify-center w-10 h-10 group" aria-label="Home">
+                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10" aria-hidden="true">N</span>
                     <div class="absolute inset-0 border-2 border-blue-600 rounded-sm transition-all duration-200 group-hover:scale-105">
                         <div class="absolute top-0.5 left-0.5 w-2 h-2 border-t-2 border-l-2 border-blue-600 rounded-tl-sm
                                     transition-all duration-200 ease-out
@@ -36,17 +36,16 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
             </div>
             {/* This is the desktop version */ }
             <div class = "flex gap-6 items-center justify-end text-base ">
-                <a href = "#about" class = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" >About</a>
-                <a href = "#experience" class = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" >Experience</a>
-                <a href = "#featured-work" class = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" >Featured Work</a>
-                <a href = "#other-projects" class = "nav-link transition-colors duration-200 hover:text-blue-600 focus:outline-none" >Projects</a>
+                <a href = "#about" class = "nav-link transition-colors duration-200 hover:text-blue-600" >About</a>
+                <a href = "#experience" class = "nav-link transition-colors duration-200 hover:text-blue-600" >Experience</a>
+                <a href = "#featured-work" class = "nav-link transition-colors duration-200 hover:text-blue-600" >Featured Work</a>
+                <a href = "#other-projects" class = "nav-link transition-colors duration-200 hover:text-blue-600" >Projects</a>
                 <a href = "#contact" 
                 class = "nav-link inline-block px-4 py-2 rounded-lg font-semibold
                     [font-family:Rajdhani,_-apple-system,_BlinkMacSystemFont,_Segoe_UI,_sans-serif] tracking-[0.02em]
                         bg-blue-600 text-white
                         hover:-translate-y-1 hover:-translate-x-1
                         hover:bg-blue-700 hover:shadow-[4px_4px_0px_0px_rgba(37,99,235,0.4)]
-                        focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2
                     cursor-pointer transition-all duration-200 will-change-transform " >
                         Contact</a>
                 
@@ -56,11 +55,11 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
     </div>
     {/* This is the mobile version */ }
     <div class = "md:hidden">
-        <nav class = "flex justify-between  ">
+        <nav class = "flex justify-between" aria-label="Primary">
             <div>
-                <a href={homeHref} class="relative flex items-center justify-center w-10 h-10 group">
-                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10">N</span>
-                    <div class="absolute inset-0 border-2 border-blue-600 rounded-sm transition-all duration-200 group-hover:scale-105">
+                <a href={homeHref} class="relative flex items-center justify-center w-10 h-10 group" aria-label="Home">
+                    <span class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 z-10" aria-hidden="true">N</span>
+                    <div class="absolute inset-0 border-2 border-blue-600 rounded-sm transition-all duration-200 group-hover:scale-105" aria-hidden="true">
                         <div class="absolute top-0.5 left-0.5 w-2 h-2 border-t-2 border-l-2 border-blue-600 rounded-tl-sm
                                     transition-all duration-200 ease-out
                                     group-hover:translate-x-1 group-hover:translate-y-1"></div>

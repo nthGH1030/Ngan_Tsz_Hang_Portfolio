@@ -13,6 +13,8 @@ export interface CardProps{
     tagNames: string[];
     href?: string;
     gitHref?: string;
+    kicker?: string;
+    demoOnly?: boolean;
 }
 
 export interface TagData{
@@ -20,7 +22,7 @@ export interface TagData{
     category : string;
 }
 
-const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, href}) => {
+const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, kicker = 'Featured Project', demoOnly = false}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -144,18 +146,21 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                     </div>
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
+                    {!demoOnly && (
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white pointer-events-none">
-                        <p className="text-xs font-semibold uppercase tracking-wider mb-1">Featured Project</p>
+                        <p className="text-xs font-semibold uppercase tracking-wider mb-1">{kicker}</p>
                         <h3 className="text-2xl font-bold">{title}</h3>
                     </div>
+                    )}
                 </div>
 
-                {/* Description card */}
+                {!demoOnly && (
                 <div className="mb-4 rounded-lg bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-lg py-4 px-4">
                     <p className="text-sm leading-relaxed text-gray-700">{content}</p>
                 </div>
+                )}
 
-                {/* Tags section */}
+                {!demoOnly && (
                 <div className="mb-4">
                     <div className="flex flex-wrap gap-2 text-xs">
                         {selectedTags.map((tag, idx) => (
@@ -167,6 +172,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                         ))}
                     </div>
                 </div>
+                )}
 
                 {/* Action buttons */}
                 <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
@@ -178,7 +184,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                 <div className="hidden sm:block md:block relative mb-8">
                     {/* Background stops before the extra padding */}
                     <div className="rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 p-4">
-                        <div className="flex gap-4 pb-10">
+                        <div className={`flex gap-4 ${demoOnly ? '' : 'pb-10'}`}>
                             <div className="flex-1 relative">
                                 {renderVideoToggle()}
                             </div>
@@ -188,25 +194,31 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                         </div>
                         
                         {/* Title and gradient within media container */}
+                        {!demoOnly && (
+                        <>
                         <div className="absolute inset-0 rounded-lg
                             bg-gradient-to-t from-gray-900/70 via-black/20 to-transparent pointer-events-none"></div>
                         <div className="absolute bottom-12 left-6 right-6 text-white pointer-events-none">
-                            <p className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">Featured Project</p>
+                            <p className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">{kicker}</p>
                             <h3 className="text-2xl font-bold">{title}</h3>
                         </div>
+                        </>
+                        )}
                     </div>
                     
                     {/* Description card - overlaps bottom of media */}
+                    {!demoOnly && (
                     <div className="absolute -bottom-2 left-24 right-0 translate-y-1/2 z-20 rounded-lg 
                         bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-xl py-4 px-6">
                         <p className="text-sm leading-relaxed text-gray-700">{content}</p>
                     </div>
+                    )}
                 </div>
                 
 
                 {/* Tags and action buttons - completely separate below */}
-                <div className="hidden sm:block md:block mt-16 ">
-                    {/* Tags section */}
+                <div className={`hidden sm:block md:block ${demoOnly ? 'mt-4' : 'mt-16'}`}>
+                    {!demoOnly && (
                     <div className="mb-4">
                         <div className="flex flex-wrap gap-2 text-xs justify-end">
                             {selectedTags.map((tag, idx) => (
@@ -218,6 +230,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                             ))}
                         </div>
                     </div>
+                    )}
                     
                     {/* Action buttons with divider */}
                     <div className="flex items-center justify-end gap-6 ">

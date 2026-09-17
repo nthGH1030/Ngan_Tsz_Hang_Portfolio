@@ -1,7 +1,5 @@
 import { useId, useState, type KeyboardEvent } from 'react';
 
-const barlow = "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-
 const roles = [
 	{
 		dates: '2018 – Present',
@@ -107,7 +105,7 @@ export default function BackgroundTimeline() {
 							>
 								{item.dates}
 							</p>
-							<p className="mt-1 font-semibold text-gray-900" style={{ fontFamily: barlow }}>
+							<p className="mt-1 font-semibold text-gray-900">
 								{item.title}
 							</p>
 							<p className={`mt-0.5 text-sm ${itemIndex === index ? 'text-gray-700' : 'text-gray-500'}`}>
@@ -122,7 +120,7 @@ export default function BackgroundTimeline() {
 					aria-labelledby={`${baseId}-tab-${index}`}
 					className="mt-5"
 				>
-					<h3 className="text-lg font-semibold text-gray-900" style={{ fontFamily: barlow }}>
+					<h3 className="text-lg font-semibold text-gray-900">
 						{role.title}
 					</h3>
 					<p className="mt-1 text-sm text-gray-600">

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import sourceSansLatin from '@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2?url';
 
 interface Props {
 	title?: string;
@@ -62,9 +63,7 @@ const websiteSchema = {
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow:wght@500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+		<link rel="preload" href={sourceSansLatin} as="font" type="font/woff2" crossorigin />
 		<title>{title}</title>
 		<script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
 		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)}></script>

@@ -79,16 +79,10 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
 
                 <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                        <span
-                            className="font-semibold text-gray-900 leading-tight"
-                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                        >
+                        <span className="font-semibold text-gray-900 leading-tight">
                             {title}
                         </span>
-                        <span
-                            className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full"
-                            style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
-                        >
+                        <span className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full">
                             Certification
                         </span>
                     </div>

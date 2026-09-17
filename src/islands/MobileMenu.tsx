@@ -136,7 +136,6 @@ const MobileMenu: React.FC = () => {
                         bg-gradient-to-br from-white via-blue-50/30 to-slate-100
                         backdrop-blur-xl shadow-[-20px_0_60px_rgba(59,130,246,0.15)]
                         border-l border-blue-600/10 ${menuSlide}`}
-                        style={{ fontFamily: "'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
                         aria-label="Site"
                     >
                         <div className ="flex flex-col items-center justify-center h-full gap-8 px-12 font-semibold text-xl">
@@ -163,7 +162,6 @@ const MobileMenu: React.FC = () => {
                                                 hover:border-blue-700 hover:text-blue-700
                                                 hover:shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]
                                                 cursor-pointer transition-all duration-200 will-change-transform"
-                                style={{ fontFamily: "'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", letterSpacing: '0.02em' }}
                                 onClick = {(e) => handleNavClick(e, "#contact")}>
                                 Contact</a>
                         </div>

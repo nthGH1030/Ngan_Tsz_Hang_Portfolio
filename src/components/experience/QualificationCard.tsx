@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { HiOutlineZoomIn } from 'react-icons/hi';
+import type { OptimizedImg } from '../../types/image';
 
 export interface QualifcationProps{
     title : string;
     date: string;
-    img: string;
+    img: OptimizedImg;
 }
 
 const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
@@ -59,8 +60,14 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 <div className="relative flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 
                     rounded overflow-hidden bg-white border border-blue-100">
                     <img 
-                        src={img} 
+                        src={img.src}
+                        srcSet={img.srcSet}
+                        sizes="56px"
+                        width={img.width}
+                        height={img.height}
                         alt=""
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-contain p-1.5"
                     />
                     <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/15
@@ -113,9 +120,14 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                     </button>
                     <div className="relative z-10 max-w-4xl max-h-[90vh] overflow-auto">
                         <img 
-                            src={img} 
+                            src={img.src}
+                            srcSet={img.srcSet}
+                            sizes="(max-width: 896px) 92vw, 896px"
+                            width={img.width}
+                            height={img.height}
                             alt={`${title} certificate`}
-                            className="w-full h-full object-contain rounded-lg"
+                            className="w-full h-auto object-contain rounded-lg"
+                            style={{ aspectRatio: `${img.width} / ${img.height}` }}
                         />
                     </div>
                 </div>

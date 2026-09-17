@@ -1,9 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import { IoIosArrowForward } from "react-icons/io";
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-    ? import.meta.env.BASE_URL
-    : `${import.meta.env.BASE_URL}/`;
-
+import portrait from '../assets/images/portrait.jpg';
 ---
 
 <section id="about" data-main-section class = "min-h-screen snap-start" >
@@ -69,12 +67,19 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
                 <div class = "relative flex-shrink-0 mx-auto md:mx-0 self-start group">
                     <div class = "absolute top-3 left-3 w-full h-full rounded-lg border-2 border-blue-500 -z-10
                                   group-hover:translate-y-1 group-hover:translate-x-1 transition-all"></div>
-                    <img
-                        src = {`${baseUrl}portrait.jpg`}
-                        alt = "Portrait of Ngan Tsz Hang"
-                        class = "relative w-[clamp(200px,25vw,300px)] h-auto object-cover rounded-lg block 
-                                shadow-lg shadow-blue-500/25 transition-all
-                                group-hover:-translate-y-1 group-hover:-translate-x-1 "
+                    <Picture
+                        src={portrait}
+                        alt="Portrait of Ngan Tsz Hang"
+                        widths={[200, 300, 600]}
+                        sizes="(min-width: 768px) 300px, 200px"
+                        formats={['webp']}
+                        quality={80}
+                        width={300}
+                        height={300}
+                        loading="lazy"
+                        decoding="async"
+                        pictureAttributes={{ class: 'relative block' }}
+                        class="relative w-[clamp(200px,25vw,300px)] aspect-square h-auto object-cover rounded-lg block shadow-lg shadow-blue-500/25 transition-all group-hover:-translate-y-1 group-hover:-translate-x-1"
                     />
                     <div class = "absolute inset-0 bg-blue-500/30 rounded-lg pointer-events-none group-hover:hidden"></div>
                 </div>

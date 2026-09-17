@@ -1,11 +1,8 @@
 import React from 'react';
 import Tag from '../components/project/Tag';
-import ProjectMediaSlider from './ProjectMediaSlider';
+import ProjectMediaSlider, { type MediaSlide } from './ProjectMediaSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { FaRegPlayCircle , FaRegPauseCircle } from "react-icons/fa";
-
-
-const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
 export interface CardProps{
     title : string;
@@ -15,6 +12,8 @@ export interface CardProps{
     gitHref?: string;
     kicker?: string;
     demoOnly?: boolean;
+    videoSrc: string;
+    slides: MediaSlide[];
 }
 
 export interface TagData{
@@ -22,7 +21,7 @@ export interface TagData{
     category : string;
 }
 
-const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, kicker = 'Featured Project', demoOnly = false}) => {
+const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, kicker = 'Featured Project', demoOnly = false, videoSrc, slides}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -89,10 +88,12 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
     const renderVideoToggle = () => (
         <div className="relative">
             <video
-                src={`${BASE}lunch_demo.mp4`}
+                src={videoSrc}
                 loop
                 playsInline
-                className="rounded-lg w-full h-[450px] object-contain"
+                preload="metadata"
+                poster={slides[0]?.src}
+                className="rounded-lg w-full h-[450px] aspect-[1/2] object-contain"
                 ref={videoRef}
             />
             <button
@@ -189,7 +190,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                                 {renderVideoToggle()}
                             </div>
                             <div className="w-[300px] flex items-center justify-center">
-                                <ProjectMediaSlider/>
+                                <ProjectMediaSlider slides={slides}/>
                             </div>
                         </div>
                         

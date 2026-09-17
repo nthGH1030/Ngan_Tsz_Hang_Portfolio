@@ -1,8 +1,11 @@
 ---
 import QualficationCard from './QualificationCard'
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-    ? import.meta.env.BASE_URL
-    : `${import.meta.env.BASE_URL}/`;
+import { optimizeImage } from '../../utils/optimize-image'
+import awsBadge from '../../assets/images/aws-badge.png'
+import cs50x from '../../assets/images/cs50x.png'
+
+const awsImg = await optimizeImage(awsBadge, [112, 300, 600])
+const cs50Img = await optimizeImage(cs50x, [112, 400, 800, 1200, 1600])
 ---
 
 <section id="qualification" class="mt-8"> 
@@ -15,13 +18,13 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
         <QualficationCard
             client:visible
             title = "AWS Certified Solutions Architect - Associate"
-            img = {`${baseUrl}AWS%20badge.png`}
+            img = {awsImg}
             date = "Nov 2024"
         />
         <QualficationCard
             client:visible
             title = "CS50"
-            img = {`${baseUrl}CS50x.png`}
+            img = {cs50Img}
             date = "Oct 2023"
         />
     </div>

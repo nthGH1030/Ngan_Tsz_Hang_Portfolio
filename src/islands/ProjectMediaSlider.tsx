@@ -1,17 +1,15 @@
 import React , {useState} from 'react';
 import { IoIosArrowDropleft } from "react-icons/io";
 import { IoIosArrowDropright } from "react-icons/io";
+import type { OptimizedImg } from '../types/image';
 
-const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+export type MediaSlide = OptimizedImg & { alt: string };
 
-const slides = [
-    { src: `${BASE}Demo_address.png`, alt: 'Lunch Roulette address search screen' },
-    { src: `${BASE}Demo_cuisine.png`, alt: 'Lunch Roulette cuisine filter screen' },
-    { src: `${BASE}Demo_location.png`, alt: 'Lunch Roulette location map screen' },
-    { src: `${BASE}Demo_Restaurants.png`, alt: 'Lunch Roulette restaurant results screen' },
-] as const;
+type ProjectMediaSliderProps = {
+    slides: MediaSlide[];
+};
 
-const ProjectMediaSlider: React.FC = () => {
+const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
     const [imgIdx , setImgIdx] = useState(0)
     const [nextImgIdx , setNextImgIdx] = useState(0)
     const [direction , setDirection] = useState('right')
@@ -56,6 +54,22 @@ const ProjectMediaSlider: React.FC = () => {
             onClickRight();
         }
     };
+
+    const renderSlide = (slide: MediaSlide, className: string, onAnimationEnd?: () => void) => (
+        <img
+            src={slide.src}
+            srcSet={slide.srcSet}
+            sizes="225px"
+            width={slide.width}
+            height={slide.height}
+            alt={slide.alt}
+            loading="lazy"
+            decoding="async"
+            className={className}
+            style={{ aspectRatio: `${slide.width} / ${slide.height}` }}
+            onAnimationEnd={onAnimationEnd}
+        />
+    );
     
     return (
         <div
@@ -70,7 +84,7 @@ const ProjectMediaSlider: React.FC = () => {
             </p>
             <div className="absolute left-1/2 top-0 -translate-x-1/2 
                 w-[320px] h-full rounded-lg z-0 pointer-events-none" />
-                <div className = "relative w-[225px] h-[450px] z-10 flex items-center justify-center">
+                <div className = "relative w-[225px] h-[450px] aspect-[1/2] z-10 flex items-center justify-center">
                     <button
                         type="button"
                         className ="absolute top-1/2 -left-10 -translate-y-1/2
@@ -91,42 +105,28 @@ const ProjectMediaSlider: React.FC = () => {
                     {
                         isSlidingOut ? 
                         <div className = "relative w-full h-full overflow-hidden">
-                            <img 
-                                src = {slides[imgIdx].src}
-                                alt = {slides[imgIdx].alt}
-                                className = {`
-                                    absolute top-0 left-0 w-full h-full
-                                    rounded-lg shadow-lg z-10 object-contain 
-                                ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
-                                    isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
-                                `}
-                                onAnimationEnd={handleSlide}
-                            />
-                            <img
-                                src = {slides[nextImgIdx].src}
-                                alt = {slides[nextImgIdx].alt}
-                                className = {`
-                                    absolute top-0 left-0 w-full h-full
-                                    rounded-lg shadow-lg z-10 object-contain 
-                                ${isSlidingOut && direction === 'left' ? 'animate-slide-in-left' : 
-                                    isSlidingOut && direction === 'right' ?  'animate-slide-in-right' : ''}
-                                `}
-                                onAnimationEnd={() => setIsSlidingOut(false)}
-                            />
+                            {renderSlide(
+                                slides[imgIdx],
+                                `absolute top-0 left-0 w-full h-full rounded-lg shadow-lg z-10 object-contain ${
+                                    direction === 'left' ? 'animate-slide-out-right' : 'animate-slide-out-left'
+                                }`,
+                                handleSlide,
+                            )}
+                            {renderSlide(
+                                slides[nextImgIdx],
+                                `absolute top-0 left-0 w-full h-full rounded-lg shadow-lg z-10 object-contain ${
+                                    direction === 'left' ? 'animate-slide-in-left' : 'animate-slide-in-right'
+                                }`,
+                                () => setIsSlidingOut(false),
+                            )}
                         </div>
                         : 
                         <div className = "relative w-full h-full overflow-hidden">
-                            <img 
-                                src = {slides[imgIdx].src}
-                                alt = {slides[imgIdx].alt}
-                                className = {`
-                                    absolute top-0 left-0 w-full h-full
-                                    rounded-lg shadow-lg z-10 object-contain 
-                                ${isSlidingOut && direction === 'left' ? 'animate-slide-out-right' : 
-                                    isSlidingOut && direction === 'right' ?  'animate-slide-out-left' : ''}
-                                `}
-                                onAnimationEnd={handleSlide}
-                            />
+                            {renderSlide(
+                                slides[imgIdx],
+                                `absolute top-0 left-0 w-full h-full rounded-lg shadow-lg z-10 object-contain`,
+                                handleSlide,
+                            )}
                         </div>
                     }
                     <button

@@ -1,0 +1,22 @@
+---
+interface Props {
+	blurSrc: string;
+	class?: string;
+}
+
+const { blurSrc, class: className } = Astro.props;
+---
+
+<div class:list={['relative overflow-hidden', className]}>
+	<img
+		src={blurSrc}
+		alt=""
+		width="24"
+		height="24"
+		aria-hidden="true"
+		class="pointer-events-none absolute inset-0 h-full w-full scale-110 object-cover blur-xl motion-reduce:scale-100 motion-reduce:blur-none"
+	/>
+	<div class="relative z-10">
+		<slot />
+	</div>
+</div>

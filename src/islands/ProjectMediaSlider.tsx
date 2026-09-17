@@ -65,7 +65,7 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
             alt={slide.alt}
             loading="lazy"
             decoding="async"
-            className={className}
+            className={`absolute top-0 left-0 w-full h-full rounded-lg shadow-lg z-10 object-contain ${className}`}
             style={{ aspectRatio: `${slide.width} / ${slide.height}` }}
             onAnimationEnd={onAnimationEnd}
         />

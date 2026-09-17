@@ -59,7 +59,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
             >
                 <div className="relative flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 
                     rounded overflow-hidden bg-white border border-blue-100">
-                    <img 
+                    <img
                         src={img.src}
                         srcSet={img.srcSet}
                         sizes="56px"
@@ -119,7 +119,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                         <IoClose className="text-3xl sm:text-4xl" aria-hidden="true" />
                     </button>
                     <div className="relative z-10 max-w-4xl max-h-[90vh] overflow-auto">
-                        <img 
+                        <img
                             src={img.src}
                             srcSet={img.srcSet}
                             sizes="(max-width: 896px) 92vw, 896px"

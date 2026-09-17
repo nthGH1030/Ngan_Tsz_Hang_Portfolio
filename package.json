@@ -10,7 +10,8 @@
     "lighthouse:mobile": "node scripts/lighthouse-summary.mjs --mobile",
     "lighthouse:desktop": "node scripts/lighthouse-summary.mjs --desktop",
     "lighthouse:mobile:local": "node scripts/lighthouse-summary.mjs --mobile --local",
-    "lighthouse:desktop:local": "node scripts/lighthouse-summary.mjs --desktop --local"
+    "lighthouse:desktop:local": "node scripts/lighthouse-summary.mjs --desktop --local",
+    "encode:video": "node scripts/encode-lunch-demo.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "chrome-launcher": "^1.2.0",
+    "ffmpeg-static": "^5.3.0",
     "lighthouse": "^13.4.1"
   }
 }

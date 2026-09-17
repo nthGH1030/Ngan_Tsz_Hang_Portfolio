@@ -70,8 +70,8 @@ export default function BackgroundTimeline() {
 	};
 
 	return (
-		<div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm md:p-6">
-			<p className="max-w-3xl text-sm leading-6 text-gray-700">
+		<div className="rounded-2xl border border-line bg-surface p-5 shadow-sm md:p-6">
+			<p className="max-w-3xl text-sm leading-6 text-muted">
 				Day job in real-estate renovation delivery — the setting the software work was built in, not
 				the lead identity on this site.
 			</p>
@@ -80,7 +80,7 @@ export default function BackgroundTimeline() {
 					role="tablist"
 					aria-label="Building surveying timeline"
 					aria-orientation="horizontal"
-					className="grid grid-cols-3 divide-x divide-slate-200 overflow-hidden rounded-xl border border-b-0 border-slate-200"
+					className="grid grid-cols-3 divide-x divide-line overflow-hidden rounded-xl border border-b-0 border-line"
 				>
 					{roles.map((item, itemIndex) => (
 						<button
@@ -93,22 +93,22 @@ export default function BackgroundTimeline() {
 							tabIndex={itemIndex === index ? 0 : -1}
 							className={`min-h-11 min-w-0 border-b-[3px] px-3 py-3 text-left ${
 								itemIndex === index
-									? 'border-b-blue-600 bg-white text-gray-900'
-									: 'border-slate-200 bg-white text-gray-600 hover:text-gray-900'
+									? 'border-b-accent bg-surface text-ink'
+									: 'border-line bg-surface text-muted hover:text-ink'
 							}`}
 							onClick={() => go(itemIndex, false)}
 						>
 							<p
 								className={`text-[11px] font-bold uppercase tracking-[0.12em] ${
-									itemIndex === index ? 'text-blue-700' : 'text-slate-500'
+									itemIndex === index ? 'text-accent' : 'text-muted'
 								}`}
 							>
 								{item.dates}
 							</p>
-							<p className="mt-1 font-semibold text-gray-900">
+							<p className="mt-1 font-semibold text-ink">
 								{item.title}
 							</p>
-							<p className={`mt-0.5 text-sm ${itemIndex === index ? 'text-gray-700' : 'text-gray-500'}`}>
+							<p className={`mt-0.5 text-sm ${itemIndex === index ? 'text-muted' : 'text-muted/80'}`}>
 								{item.employer}
 							</p>
 						</button>
@@ -120,16 +120,16 @@ export default function BackgroundTimeline() {
 					aria-labelledby={`${baseId}-tab-${index}`}
 					className="mt-5"
 				>
-					<h3 className="text-lg font-semibold text-gray-900">
+					<h3 className="text-lg font-semibold text-ink">
 						{role.title}
 					</h3>
-					<p className="mt-1 text-sm text-gray-600">
+					<p className="mt-1 text-sm text-muted">
 						{role.href ? (
 							<a
 								href={role.href}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="font-medium text-blue-700 hover:underline"
+								className="font-medium text-accent hover:underline"
 							>
 								{role.employerFull}
 							</a>
@@ -140,9 +140,9 @@ export default function BackgroundTimeline() {
 					</p>
 					<ul className="mt-4 space-y-3">
 						{role.bullets.map((item) => (
-							<li key={item} className="flex items-start gap-3 text-sm leading-6 text-gray-700">
+							<li key={item} className="flex items-start gap-3 text-sm leading-6 text-muted">
 								<span
-									className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400"
+									className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
 									aria-hidden="true"
 								/>
 								<span>{item}</span>

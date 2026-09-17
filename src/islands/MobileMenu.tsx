@@ -86,7 +86,7 @@ const MobileMenu: React.FC = () => {
             <button
                 type="button"
                 ref={triggerRef}
-                className="w-11 h-11 flex items-center justify-center bg-transparent border-0 p-0"
+                className="hit-target bg-transparent border-0 p-0 text-ink"
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}
                 aria-controls={menuId}
@@ -109,7 +109,7 @@ const MobileMenu: React.FC = () => {
                         <button
                             type="button"
                             ref={closeRef}
-                            className={`w-11 h-11 flex items-center justify-center bg-transparent border-0 p-0
+                            className={`hit-target bg-transparent border-0 p-0 text-ink
                             ${isOpen
                                 ? isVisible ? `opacity-100 animate-spin-fade-in `
                                 :  'opacity-100'
@@ -133,35 +133,30 @@ const MobileMenu: React.FC = () => {
                     <aside
                         id={menuId}
                         className={`fixed top-0 right-0 z-20 h-full w-3/4
-                        bg-gradient-to-br from-white via-blue-50/30 to-slate-100
-                        backdrop-blur-xl shadow-[-20px_0_60px_rgba(59,130,246,0.15)]
-                        border-l border-blue-600/10 ${menuSlide}`}
+                        bg-surface text-ink
+                        shadow-[-20px_0_60px_rgba(15,23,42,0.18)]
+                        border-l border-line ${menuSlide}`}
                         aria-label="Site"
                     >
                         <div className ="flex flex-col items-center justify-center h-full gap-8 px-12 font-semibold text-xl">
                             <a href = "#about"
-                                className = "nav-link transition-colors duration-200 hover:text-blue-600"
+                                className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
                                 onClick = {(e) => handleNavClick(e, "#about")}>
                                 About</a>
                             <a href = "#self-initiatives"
-                                className = "nav-link transition-colors duration-200 hover:text-blue-600"
+                                className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
                                 onClick = {(e) => handleNavClick(e, "#self-initiatives")}>
                                 Self-initiatives</a>
                             <a href = "#other-projects"
-                                className = "nav-link transition-colors duration-200 hover:text-blue-600"
+                                className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
                                 onClick = {(e) => handleNavClick(e, "#other-projects")}>
                                 Projects</a>
                             <a href = "#background"
-                                className = "nav-link transition-colors duration-200 hover:text-blue-600"
+                                className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
                                 onClick = {(e) => handleNavClick(e, "#background")}>
                                 Background</a>
                             <a href = "#contact"
-                                className ="nav-link inline-block px-6 py-3 rounded-xl font-bold text-lg
-                                                border-2 border-blue-600 text-blue-600 bg-transparent
-                                                hover:-translate-y-1 hover:-translate-x-1
-                                                hover:border-blue-700 hover:text-blue-700
-                                                hover:shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]
-                                                cursor-pointer transition-all duration-200 will-change-transform"
+                                className ="nav-link btn-secondary"
                                 onClick = {(e) => handleNavClick(e, "#contact")}>
                                 Contact</a>
                         </div>

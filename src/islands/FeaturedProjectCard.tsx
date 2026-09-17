@@ -80,7 +80,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
     }
 
     function getTagColor() {
-        return "bg-blue-50 text-blue-700 border border-blue-200"
+        return "chip"
     }
 
     const selectedTags = getSelectedTag(tagNames)
@@ -123,11 +123,11 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-black transition-colors group"
+            className="flex items-center gap-2 hit-target px-2 hover:text-accent transition-colors group"
         >
-            <span className="text-sm text-gray-700 group-hover:text-black transition-colors">Open Project</span>
+            <span className="text-sm text-muted group-hover:text-accent transition-colors">Open Project</span>
             <RxOpenInNewWindow
-                className="text-2xl text-gray-700 group-hover:text-black transition-colors"
+                className="text-2xl text-muted group-hover:text-accent transition-colors"
                 aria-hidden="true"
             />
         </a>
@@ -141,7 +141,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
             <div className="w-full rounded-lg shadow-2xl p-4 md:p-8">
             {/* Mobile: Single centered media */}
             <div className="sm:hidden md:hidden ">
-                <div className="relative mb-4 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+                <div className="relative mb-4 rounded-lg bg-well overflow-hidden">
                     <div className="flex-1 relative">
                         {renderVideoToggle()}
                     </div>
@@ -156,8 +156,8 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                 </div>
 
                 {!demoOnly && (
-                <div className="mb-4 rounded-lg bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-lg py-4 px-4">
-                    <p className="text-sm leading-relaxed text-gray-700">{content}</p>
+                <div className="mb-4 rounded-lg bg-surface/90 border border-line backdrop-blur-md shadow-lg py-4 px-4">
+                    <p className="text-sm leading-relaxed text-muted">{content}</p>
                 </div>
                 )}
 
@@ -176,7 +176,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                 )}
 
                 {/* Action buttons */}
-                <div className="flex items-center justify-between gap-4 pt-4 border-t border-gray-200">
+                <div className="flex items-center justify-between gap-4 pt-4 border-t border-line">
                     {openProjectLink}
                 </div>
             </div>
@@ -184,7 +184,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                {/* Desktop: Side-by-side media */}
                 <div className="hidden sm:block md:block relative mb-8">
                     {/* Background stops before the extra padding */}
-                    <div className="rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 p-4">
+                    <div className="rounded-lg bg-well p-4">
                         <div className={`flex gap-4 ${demoOnly ? '' : 'pb-10'}`}>
                             <div className="flex-1 relative">
                                 {renderVideoToggle()}
@@ -198,7 +198,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                         {!demoOnly && (
                         <>
                         <div className="absolute inset-0 rounded-lg
-                            bg-gradient-to-t from-gray-900/70 via-black/20 to-transparent pointer-events-none"></div>
+                            bg-gradient-to-t from-well/70 via-black/20 to-transparent pointer-events-none"></div>
                         <div className="absolute bottom-12 left-6 right-6 text-white pointer-events-none">
                             <p className="text-xs font-semibold uppercase tracking-wider mb-1 opacity-80">{kicker}</p>
                             <h3 className="text-2xl font-bold">{title}</h3>
@@ -210,8 +210,8 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                     {/* Description card - overlaps bottom of media */}
                     {!demoOnly && (
                     <div className="absolute -bottom-2 left-24 right-0 translate-y-1/2 z-20 rounded-lg 
-                        bg-white/90 border border-gray-100/60 backdrop-blur-md shadow-xl py-4 px-6">
-                        <p className="text-sm leading-relaxed text-gray-700">{content}</p>
+                        bg-surface/90 border border-line backdrop-blur-md shadow-xl py-4 px-6">
+                        <p className="text-sm leading-relaxed text-muted">{content}</p>
                     </div>
                     )}
                 </div>

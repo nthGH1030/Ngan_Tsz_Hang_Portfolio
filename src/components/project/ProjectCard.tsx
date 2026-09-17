@@ -18,7 +18,7 @@ export interface TagData{
     category : string;
 }
 
-const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref, paragraphClass = "text-gray-700"}) => {
+const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHref, paragraphClass = "text-muted"}) => {
     const allTags: TagData[] = [
         {name: "JavaScript", category: "language"},
         {name: "TypeScript", category: "language"},
@@ -51,24 +51,24 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
     }
 
     function getTagColor() {
-        return "bg-blue-50 text-blue-700 border border-blue-200"
+        return "chip"
     }
 
     const selectedTags = getSelectedTag(tagNames)
 
     return (
         <article className="h-full p-2">
-            <div className="h-full flex flex-col rounded-xl bg-white border-2 border-gray-300 
-                shadow-md p-6 transition-all duration-300 hover:shadow-2xl hover:border-gray-400 hover:-translate-y-1">
+            <div className="h-full flex flex-col rounded-xl bg-surface border border-line
+                shadow-md p-6 transition-all duration-300 hover:shadow-2xl hover:border-muted/40 hover:-translate-y-1">
                 
                 <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-800 leading-tight pr-2">
+                    <h3 className="text-xl font-bold text-ink leading-tight pr-2">
                         {href ? (
                             <a
                                 href={href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-blue-700"
+                                className="hover:text-accent"
                             >
                                 {title}
                             </a>
@@ -93,14 +93,14 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
                 </div>
 
                 {gitHref && (
-                    <div className="pt-4 border-t border-gray-100">
-                        <div className="flex items-center justify-end text-gray-600 
-                            hover:text-gray-900 transition-colors">
+                    <div className="pt-4 border-t border-line">
+                        <div className="flex items-center justify-end text-muted
+                            hover:text-ink transition-colors">
                             <ExternalLink
                                 href={gitHref}
                                 ariaLabel={`View source for ${title} on GitHub`}
                                 icon={(
-                                    <span className="flex items-center text-gray-700 transition-colors hover:text-black">
+                                    <span className="flex items-center text-muted transition-colors hover:text-accent">
                                         <FaGithub className="text-2xl" aria-hidden="true" />
                                         <span className="ml-2 text-sm">View Source</span>
                                     </span>

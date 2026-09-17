@@ -88,9 +88,9 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                     <button
                         type="button"
                         className ="absolute top-1/2 -left-10 -translate-y-1/2
-                            flex items-center justify-center w-11 h-11
-                            backdrop-blur bg-white/90 text-gray-800 rounded-full
-                            cursor-pointer hover:text-gray-600 z-20
+                            hit-target
+                            backdrop-blur bg-surface/90 text-ink rounded-full
+                            cursor-pointer hover:text-accent z-20
                             disabled:opacity-40 disabled:cursor-not-allowed"
                         onMouseDown={e => e.preventDefault()}
                         onClick={(e) => {
@@ -132,9 +132,9 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                     <button
                         type="button"
                         className ="absolute top-1/2 -right-10 -translate-y-1/2
-                            flex items-center justify-center w-11 h-11
-                            backdrop-blur bg-white/90 text-gray-800 rounded-full
-                            cursor-pointer hover:text-gray-600 z-20
+                            hit-target
+                            backdrop-blur bg-surface/90 text-ink rounded-full
+                            cursor-pointer hover:text-accent z-20
                             disabled:opacity-40 disabled:cursor-not-allowed"
                         onMouseDown={e => e.preventDefault()}
                         onClick={(e) => {

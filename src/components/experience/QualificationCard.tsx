@@ -50,15 +50,15 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
             <button
                 type="button"
                 ref={triggerRef}
-                className="group relative rounded-lg border border-blue-100 bg-blue-50/40
-                p-4 transition-colors duration-300 cursor-pointer flex items-center gap-3 w-full text-left"
+                className="group relative rounded-lg border border-line bg-accent-soft/40
+                p-4 transition-colors duration-300 cursor-pointer flex items-center gap-3 w-full text-left min-h-11"
                 onClick={handleImgClick}
                 aria-expanded={isImgOpen}
                 aria-haspopup="dialog"
                 aria-label={`View ${title} certificate`}
             >
                 <div className="relative flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 
-                    rounded overflow-hidden bg-white border border-blue-100">
+                    rounded overflow-hidden bg-surface border border-line">
                     <img
                         src={img.src}
                         srcSet={img.srcSet}
@@ -70,7 +70,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                         decoding="async"
                         className="w-full h-full object-contain p-1.5"
                     />
-                    <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/15
+                    <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20
                         transition-all duration-300 flex items-center justify-center">
                         <HiOutlineZoomIn className="text-white text-xl opacity-0 
                             group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
@@ -79,14 +79,14 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
 
                 <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-semibold text-gray-900 leading-tight">
+                        <span className="font-semibold text-ink leading-tight">
                             {title}
                         </span>
-                        <span className="text-[11px] uppercase tracking-wide text-blue-700 bg-blue-100 px-2 py-1 rounded-full">
+                        <span className="chip px-2 py-1 text-[11px] uppercase tracking-wide">
                             Certification
                         </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-1">{date}</p>
+                    <p className="text-sm text-muted mt-1">{date}</p>
                 </div>
             </button>
 
@@ -105,8 +105,8 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                         type="button"
                         ref={closeRef}
                         className="absolute top-4 right-4 sm:top-8 sm:right-8 z-10 text-white 
-                        hover:text-gray-200 transition-colors p-2 rounded-full hover:bg-white/10
-                        w-11 h-11 flex items-center justify-center"
+                        hover:text-accent-fg transition-colors p-2 rounded-full hover:bg-white/10
+                        hit-target"
                         onClick={() => setIsImgOpen(false)}
                         aria-label="Close certificate preview"
                     >

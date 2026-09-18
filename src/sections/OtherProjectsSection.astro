@@ -2,51 +2,40 @@
 import ProjectCard from '../components/project/ProjectCard'
 ---
 
-<section id="other-projects" data-main-section class = "min-h-screen snap-start" >
-    <div class = "flex flex-col pt-24 pb-8 min-h-screen">
-        <div class = "shrink-0 mx-8 md:mx-24 flex items-center">
-            <h2 class = "whitespace-nowrap font-bold text-xl md:text-2xl text-ink">3. Other Projects</h2>
-            <div class = "w-full bg-line h-px ml-2"></div>
+<section id="other-projects" data-main-section class="scroll-mt-24 py-16 md:py-24">
+    <div class="page-shell">
+        <div class="flex items-center">
+            <h2 class="whitespace-nowrap font-bold text-xl md:text-2xl text-ink">3. Other Projects</h2>
+            <div class="w-full bg-line h-px ml-2"></div>
         </div>
-        <div class = "flex-1">
-            <div class = " 
-                grid grid-cols-1
-                pt-4 pb-8
-                sm:grid-cols-1
-                md:grid-cols-2
-                mx-8 md:mx-24
-                gap-4
-                ">
-                
-
+        <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <ProjectCard
+                client:visible
+                title="LLM-Token-Checker"
+                content={`A chrome extension that tracks the amount of free token you have
+                and refresh time for LLM chatbot such as POE.com, Grok`}
+                tagNames={["JavaScript" , "React" , "Chrome Extension"]}
+                href={"https://chromewebstore.google.com/detail/llm-token-tracker/cmgmgngefbcehlhfknkciifjfcfgbbpc?hl=en-GB&utm_source=ext_sidebar"}
+                gitHref={"https://github.com/nthGH1030/LLM-Token-Tracker.git"}
+            />
+            <div id="payment-form-filler">
                 <ProjectCard
                     client:visible
-                    title = "LLM-Token-Checker"
-                    content = {`A chrome extension that tracks the amount of free token you have
-                    and refresh time for LLM chatbot such as POE.com, Grok`}
-                    tagNames = {["JavaScript" , "React" , "Chrome Extension"]}
-                    href = {"https://chromewebstore.google.com/detail/llm-token-tracker/cmgmgngefbcehlhfknkciifjfcfgbbpc?hl=en-GB&utm_source=ext_sidebar"}
-                    gitHref = {"https://github.com/nthGH1030/LLM-Token-Tracker.git"}
-                />
-                <div id="payment-form-filler">
-                    <ProjectCard
-                        client:visible
-                        title = "Payment Form filler"
-                        content = {`A desktop Application that takes in a master table in an excel file,
-                        extract its content, and generate form for submitting payment request`}
-                        tagNames = {["JavaScript" , "Electron", "React", "CSS" , "HTML"]}
-                        gitHref = {"https://github.com/nthGH1030/POPRFiller_Electron.git"}
-                    />
-                </div>
-                <ProjectCard
-                    client:visible
-                    title = "HK Car Park Revenue Analysis"
-                    content = {`A Node.js tool that fetches real-time data from DATA.GOV.HK to analyze car park occupancy. 
-                    It visualizes the relationship between parking rates, EV charging availability, and vacancy rates across HK districts.`}
-                    tagNames = {["Node.js", "JavaScript", "DATA.GOV.HK API"]}
-                    gitHref = {"https://github.com/nthGH1030/CarParkRevenue.git"}
+                    title="Payment Form filler"
+                    content={`A desktop Application that takes in a master table in an excel file,
+                    extract its content, and generate form for submitting payment request`}
+                    tagNames={["JavaScript" , "Electron", "React", "CSS" , "HTML"]}
+                    gitHref={"https://github.com/nthGH1030/POPRFiller_Electron.git"}
                 />
             </div>
+            <ProjectCard
+                client:visible
+                title="HK Car Park Revenue Analysis"
+                content={`A Node.js tool that fetches real-time data from DATA.GOV.HK to analyze car park occupancy. 
+                It visualizes the relationship between parking rates, EV charging availability, and vacancy rates across HK districts.`}
+                tagNames={["Node.js", "JavaScript", "DATA.GOV.HK API"]}
+                gitHref={"https://github.com/nthGH1030/CarParkRevenue.git"}
+            />
         </div>
     </div>
 </section>

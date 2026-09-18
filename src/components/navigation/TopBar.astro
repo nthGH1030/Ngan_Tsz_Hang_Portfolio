@@ -6,14 +6,10 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
     : `${import.meta.env.BASE_URL}/`;
 ---
 
-
-<div class = 
-    "z-[400] fixed top-0 w-full text-xs px-[clamp(25px,3vw+10px,50px)] py-8 md:pt-8 
-    bg-nav/90 backdrop-blur-md border-b border-line">
-    
-    <div class = "hidden md:block">
-        <nav class = "flex justify-between text-ink" aria-label="Primary">
-            <div class = "flex items-center gap-4 md:ml-8">
+<div class="z-[400] fixed top-0 w-full bg-nav/90 backdrop-blur-md border-b border-line py-6">
+    <div class="page-shell">
+        <nav class="hidden md:flex justify-between text-ink" aria-label="Primary">
+            <div class="flex items-center gap-4">
                <a href={homeHref} class="relative hit-target group" aria-label="Home">
                     <span class="text-base font-bold text-ink group-hover:text-accent transition-colors duration-200 z-10" aria-hidden="true">N</span>
                     <div class="absolute inset-0 border-2 border-accent rounded-sm transition-all duration-200 group-hover:scale-105">
@@ -31,41 +27,36 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
                                     group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
                     </div>
                 </a>
-                <p class = "text-sm text-muted font-semibold uppercase tracking-wide whitespace-nowrap">Kelvin Ngan</p>
+                <p class="text-sm text-muted font-semibold uppercase tracking-wide whitespace-nowrap">Kelvin Ngan</p>
             </div>
-            <div class = "flex gap-2 items-center justify-end text-base ">
-                <a href = "#about" class = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent" >About</a>
-                <a href = "#self-initiatives" class = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent" >Self-initiatives</a>
-                <a href = "#other-projects" class = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent" >Projects</a>
-                <a href = "#background" class = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent" >Background</a>
+            <div class="flex gap-2 items-center justify-end text-base">
+                <a href="#about" class="nav-link hit-target px-3 transition-colors duration-200 hover:text-accent">About</a>
+                <a href="#self-initiatives" class="nav-link hit-target px-3 transition-colors duration-200 hover:text-accent">Self-initiatives</a>
+                <a href="#other-projects" class="nav-link hit-target px-3 transition-colors duration-200 hover:text-accent">Projects</a>
+                <a href="#background" class="nav-link hit-target px-3 transition-colors duration-200 hover:text-accent">Background</a>
                 <ThemeToggle />
-                <a href = "#contact" class = "nav-link btn-primary" >
-                        Contact</a>
+                <a href="#contact" class="nav-link btn-primary">Contact</a>
             </div>
         </nav>
-    </div>
-    <div class = "md:hidden">
-        <nav class = "flex justify-between text-ink" aria-label="Primary">
-            <div>
-                <a href={homeHref} class="relative hit-target group" aria-label="Home">
-                    <span class="text-base font-bold text-ink group-hover:text-accent transition-colors duration-200 z-10" aria-hidden="true">N</span>
-                    <div class="absolute inset-0 border-2 border-accent rounded-sm transition-all duration-200 group-hover:scale-105" aria-hidden="true">
-                        <div class="absolute top-0.5 left-0.5 w-2 h-2 border-t-2 border-l-2 border-accent rounded-tl-sm
-                                    transition-all duration-200 ease-out
-                                    group-hover:translate-x-1 group-hover:translate-y-1"></div>
-                        <div class="absolute top-0.5 right-0.5 w-2 h-2 border-t-2 border-r-2 border-accent rounded-tr-sm
-                                    transition-all duration-200 ease-out
-                                    group-hover:-translate-x-1 group-hover:translate-y-1"></div>
-                        <div class="absolute bottom-0.5 left-0.5 w-2 h-2 border-b-2 border-l-2 border-accent rounded-bl-sm
-                                    transition-all duration-200 ease-out
-                                    group-hover:translate-x-1 group-hover:-translate-y-1"></div>
-                        <div class="absolute bottom-0.5 right-0.5 w-2 h-2 border-b-2 border-r-2 border-accent rounded-br-sm
-                                    transition-all duration-200 ease-out
-                                    group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
-                    </div>
-                </a>
-            </div>
-            <div class = "fixed top-8 right-8 flex items-center gap-1">
+        <nav class="flex justify-between items-center text-ink md:hidden" aria-label="Primary">
+            <a href={homeHref} class="relative hit-target group" aria-label="Home">
+                <span class="text-base font-bold text-ink group-hover:text-accent transition-colors duration-200 z-10" aria-hidden="true">N</span>
+                <div class="absolute inset-0 border-2 border-accent rounded-sm transition-all duration-200 group-hover:scale-105" aria-hidden="true">
+                    <div class="absolute top-0.5 left-0.5 w-2 h-2 border-t-2 border-l-2 border-accent rounded-tl-sm
+                                transition-all duration-200 ease-out
+                                group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                    <div class="absolute top-0.5 right-0.5 w-2 h-2 border-t-2 border-r-2 border-accent rounded-tr-sm
+                                transition-all duration-200 ease-out
+                                group-hover:-translate-x-1 group-hover:translate-y-1"></div>
+                    <div class="absolute bottom-0.5 left-0.5 w-2 h-2 border-b-2 border-l-2 border-accent rounded-bl-sm
+                                transition-all duration-200 ease-out
+                                group-hover:translate-x-1 group-hover:-translate-y-1"></div>
+                    <div class="absolute bottom-0.5 right-0.5 w-2 h-2 border-b-2 border-r-2 border-accent rounded-br-sm
+                                transition-all duration-200 ease-out
+                                group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
+                </div>
+            </a>
+            <div class="flex items-center gap-1">
                 <ThemeToggle />
                 <MobileMenu client:load/>
             </div>

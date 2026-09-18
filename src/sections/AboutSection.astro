@@ -12,89 +12,86 @@ const portraitBlur = await getImage({
 });
 ---
 
-<section id="about" data-main-section class = "min-h-screen snap-start" >
-    <div class = "w-full max-w-4xl mx-auto flex flex-col pt-32 pb-8 min-h-screen">
-        <div class = "shrink-0 mx-8 md:mx-12 flex items-center">
-            <h2 class = "whitespace-nowrap font-bold text-xl md:text-2xl text-ink">1. About me</h2>
-            <div class = "w-full bg-line h-px ml-2"></div>
+<section id="about" data-main-section class="scroll-mt-24 py-16 md:py-24">
+    <div class="page-shell">
+        <div class="flex items-center">
+            <h2 class="whitespace-nowrap font-bold text-xl md:text-2xl text-ink">1. About me</h2>
+            <div class="w-full bg-line h-px ml-2"></div>
         </div>
-        <div class = "flex-1">
-            <div class = "flex flex-col gap-4 mx-8 md:mx-12 pt-8 md:gap-8 md:flex-row">
-                <div class = "flex-1 min-w-0 text-base text-muted">
-                    <p class = "text-[clamp(0.8rem,2.5vw,1.1rem)] text-muted"> 
-                        I am a chartered building surveyor turned software engineer, 
-                        passionate about leveraging technology to solve real-world problems. 
-                        In my free time, I have developed and deployed solutions that address 
-                        challenges encountered in my professional work, some of which have been 
-                        adopted to enhance productivity and support educational initiatives. 
-                        I actively contribute to brainstorming sessions focused on automation and 
-                        AI adoption within the enterprise, identifying practical use cases 
-                        and creating technical demos to drive innovation and efficiency.
-                    </p>
-                    <br/>
-                    <p class = "text-base text-muted mb-3">Technologies I work with:</p>
-                    <ul class = "grid grid-cols-2 gap-x-6 gap-y-2 mt-2 mb-4">
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">Javascript</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">Typescript</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">Node.js</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">ReactJS</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">Tailwind</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">Astro</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">HTML & CSS</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">OpenAI</span>
-                        </li>
-                        <li class = "flex items-center gap-2 text-accent">
-                            <IoIosArrowForward aria-hidden="true"/>
-                            <span class="text-sm text-muted">Azure</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class = "relative flex-shrink-0 mx-auto md:mx-0 self-start group">
-                    <div class = "absolute top-3 left-3 w-full h-full rounded-lg border-2 border-accent -z-10
-                                  transition-transform duration-200 group-hover:translate-y-1 group-hover:translate-x-1"></div>
-                    <BlurFrame
-                        blurSrc={portraitBlur.src}
-                        class="relative w-[clamp(200px,25vw,300px)] aspect-square rounded-lg shadow-lg shadow-accent/25 transition duration-200 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-xl group-hover:shadow-accent/30"
-                    >
-                    <Picture
-                        src={portrait}
-                        alt="Portrait of Ngan Tsz Hang"
-                        widths={[200, 300, 600]}
-                        sizes="(min-width: 768px) 300px, 200px"
-                        formats={['webp']}
-                        quality={80}
-                        width={300}
-                        height={300}
-                        loading="lazy"
-                        decoding="async"
-                        pictureAttributes={{ class: 'relative block w-full' }}
-                        class="relative w-full aspect-square h-auto object-cover rounded-lg block"
-                    />
-                    </BlurFrame>
-                </div>
+        <div class="mt-8 flex flex-col gap-8 md:flex-row">
+            <div class="min-w-0 flex-1 max-w-3xl text-base text-muted">
+                <p class="text-muted">
+                    I am a chartered building surveyor turned software engineer,
+                    passionate about leveraging technology to solve real-world problems.
+                    In my free time, I have developed and deployed solutions that address
+                    challenges encountered in my professional work, some of which have been
+                    adopted to enhance productivity and support educational initiatives.
+                    I actively contribute to brainstorming sessions focused on automation and
+                    AI adoption within the enterprise, identifying practical use cases
+                    and creating technical demos to drive innovation and efficiency.
+                </p>
+                <p class="text-base text-muted mt-6 mb-3">Technologies I work with:</p>
+                <ul class="grid grid-cols-2 gap-x-6 gap-y-2 mt-2">
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">Javascript</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">Typescript</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">Node.js</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">ReactJS</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">Tailwind</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">Astro</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">HTML & CSS</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">OpenAI</span>
+                    </li>
+                    <li class="flex items-center gap-2 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">Azure</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="relative flex-shrink-0 mx-auto md:mx-0 self-start group">
+                <div class="absolute top-3 left-3 w-full h-full rounded-lg border-2 border-accent -z-10
+                              transition-transform duration-200 group-hover:translate-y-1 group-hover:translate-x-1"></div>
+                <BlurFrame
+                    blurSrc={portraitBlur.src}
+                    class="relative w-[clamp(200px,25vw,300px)] aspect-square rounded-lg shadow-lg shadow-accent/25 transition duration-200 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-xl group-hover:shadow-accent/30"
+                >
+                <Picture
+                    src={portrait}
+                    alt="Portrait of Ngan Tsz Hang"
+                    widths={[200, 300, 600]}
+                    sizes="(min-width: 768px) 300px, 200px"
+                    formats={['webp']}
+                    quality={80}
+                    width={300}
+                    height={300}
+                    loading="lazy"
+                    decoding="async"
+                    pictureAttributes={{ class: 'relative block w-full' }}
+                    class="relative w-full aspect-square h-auto object-cover rounded-lg block"
+                />
+                </BlurFrame>
             </div>
         </div>
     </div>

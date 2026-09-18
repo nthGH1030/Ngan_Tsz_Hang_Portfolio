@@ -17,10 +17,7 @@ import ContactSection from '../../sections/ContactSection.astro'
         <div class="absolute inset-0 backdrop-blur-sm"></div>
         <div class="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-page/40 to-transparent"></div>
     </div>
-    <main
-        id="content"
-        class="relative z-0 h-screen overflow-y-scroll"
-    >
+    <main id="content" class="relative z-0">
         <HomeSection/>
         <AboutSection/>
         <ExperienceSection/>
@@ -32,15 +29,14 @@ import ContactSection from '../../sections/ContactSection.astro'
 </div>
 
 <script>
-    const initializeScrollContainer = () => {
-        const scrollContainer = document.getElementById('content');
+    const initializeWindowScroll = () => {
         const topBar = document.getElementById('top-bar');
 
-        if (!(scrollContainer instanceof HTMLElement) || !(topBar instanceof HTMLElement)) {
+        if (!(topBar instanceof HTMLElement)) {
             return;
         }
 
-        const lastScrollMap = new WeakMap<HTMLElement, number>();
+        let lastScroll = window.scrollY;
         let isBarHidden = false;
 
         const hideBar = () => {
@@ -63,21 +59,17 @@ import ContactSection from '../../sections/ContactSection.astro'
             isBarHidden = false;
         };
 
-        const handleDirectionalScroll = (source: HTMLElement) => {
-            const prev = lastScrollMap.get(source) ?? source.scrollTop;
-            const next = source.scrollTop;
+        window.addEventListener('scroll', () => {
+            const next = window.scrollY;
 
-            if (next > prev) {
+            if (next > lastScroll && next > 8) {
                 hideBar();
-            } else if (next < prev) {
+            } else if (next < lastScroll) {
                 showBar();
             }
 
-            lastScrollMap.set(source, next);
-        };
-
-        lastScrollMap.set(scrollContainer, scrollContainer.scrollTop);
-        scrollContainer.addEventListener('scroll', () => handleDirectionalScroll(scrollContainer), { passive: true });
+            lastScroll = next;
+        }, { passive: true });
 
         const skipLink = document.querySelector('.skip-link');
         skipLink?.addEventListener('click', (event) => {
@@ -93,8 +85,8 @@ import ContactSection from '../../sections/ContactSection.astro'
     };
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeScrollContainer, { once: true });
+        document.addEventListener('DOMContentLoaded', initializeWindowScroll, { once: true });
     } else {
-        initializeScrollContainer();
+        initializeWindowScroll();
     }
 </script>

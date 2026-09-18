@@ -2,29 +2,24 @@
 import Reference from "../components/contact/Reference.astro"
 ---
 
-<section id = "contact" data-main-section class = "min-h-screen snap-start" >
-    <div class = "min-h-screen flex flex-col">
-        <div class = "flex-1 flex flex-col justify-center mx-8 md:mx-24 my-16 gap-4">
-                <h2 class = "text-3xl text-center text-ink">
-                    Let's Connect
-                </h2>
-                <div class = "text-center text-muted">
-                    I am actively seeking new opportunities to work, 
-                    learn, and collaborate with others. 
-                    If you have a project, position, or idea where we can grow together, 
-                    feel free to reach out!
-                </div>
-                <div class = "text-center h-16 mt-8">
-                    <a 
-                        href="mailto:nth.dev@icloud.com"
-                        class = "btn-secondary">
-                        Contact Me
-                    </a>
-                </div>
+<section id="contact" data-main-section class="scroll-mt-24 py-16 md:py-24">
+    <div class="page-shell flex flex-col gap-8">
+        <div class="max-w-3xl self-center flex flex-col items-center gap-4 text-center">
+            <h2 class="text-3xl text-ink">
+                Let's Connect
+            </h2>
+            <p class="text-muted">
+                I am actively seeking new opportunities to work,
+                learn, and collaborate with others.
+                If you have a project, position, or idea where we can grow together,
+                feel free to reach out!
+            </p>
+            <a
+                href="mailto:nth.dev@icloud.com"
+                class="btn-secondary mt-4">
+                Contact Me
+            </a>
         </div>
-        <div class = "shrink-0">
-            <Reference/>
-        </div>
+        <Reference/>
     </div>
 </section>
-

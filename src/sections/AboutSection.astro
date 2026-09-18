@@ -16,10 +16,10 @@ const portraitBlur = await getImage({
     <div class="page-shell">
         <div class="flex items-center">
             <h2 class="whitespace-nowrap font-bold text-xl md:text-2xl text-ink">1. About me</h2>
-            <div class="w-full bg-line h-px ml-2"></div>
+            <div class="w-full bg-line h-px ml-4"></div>
         </div>
         <div class="mt-8 flex flex-col gap-8 md:flex-row">
-            <div class="min-w-0 flex-1 max-w-3xl text-base text-muted">
+            <div class="min-w-0 flex-1 max-w-3xl space-y-6 text-base text-muted">
                 <p class="text-muted">
                     I am a chartered building surveyor turned software engineer,
                     passionate about leveraging technology to solve real-world problems.
@@ -30,52 +30,54 @@ const portraitBlur = await getImage({
                     AI adoption within the enterprise, identifying practical use cases
                     and creating technical demos to drive innovation and efficiency.
                 </p>
-                <p class="text-base text-muted mt-6 mb-3">Technologies I work with:</p>
-                <ul class="grid grid-cols-2 gap-x-6 gap-y-2 mt-2">
-                    <li class="flex items-center gap-2 text-accent">
+                <div>
+                <p class="text-base text-muted">Technologies I work with:</p>
+                <ul class="mt-4 grid grid-cols-2 gap-x-6 gap-y-4">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">Javascript</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">Typescript</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">Node.js</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">ReactJS</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">Tailwind</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">Astro</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">HTML & CSS</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">OpenAI</span>
                     </li>
-                    <li class="flex items-center gap-2 text-accent">
+                    <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">Azure</span>
                     </li>
                 </ul>
+                </div>
             </div>
             <div class="relative flex-shrink-0 mx-auto md:mx-0 self-start group">
-                <div class="absolute top-3 left-3 w-full h-full rounded-lg border-2 border-accent -z-10
+                <div class="absolute top-4 left-4 w-full h-full rounded-lg border-2 border-accent -z-10
                               transition-transform duration-200 group-hover:translate-y-1 group-hover:translate-x-1"></div>
                 <BlurFrame
                     blurSrc={portraitBlur.src}
-                    class="relative w-[clamp(200px,25vw,300px)] aspect-square rounded-lg shadow-lg shadow-accent/25 transition duration-200 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-xl group-hover:shadow-accent/30"
+                    class="relative w-[200px] md:w-[300px] aspect-square rounded-lg shadow-lg shadow-accent/25 transition duration-200 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-xl group-hover:shadow-accent/30"
                 >
                 <Picture
                     src={portrait}

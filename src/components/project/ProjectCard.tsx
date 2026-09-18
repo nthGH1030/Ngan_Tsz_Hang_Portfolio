@@ -57,7 +57,7 @@ const ProjectCard: React.FC<CardProps> = ({title, content, tagNames, href, gitHr
     const selectedTags = getSelectedTag(tagNames)
 
     return (
-        <article className="h-full p-2">
+        <article className="h-full">
             <div className="h-full flex flex-col rounded-xl bg-surface border border-line
                 shadow-md p-6 transition-all duration-300 hover:shadow-2xl hover:border-muted/40 hover:-translate-y-1">
                 

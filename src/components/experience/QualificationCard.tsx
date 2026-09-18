@@ -51,13 +51,13 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 type="button"
                 ref={triggerRef}
                 className="group relative rounded-lg border border-line bg-accent-soft/40
-                p-4 transition-colors duration-300 cursor-pointer flex items-center gap-3 w-full text-left min-h-11"
+                p-4 transition-colors duration-300 cursor-pointer flex items-center gap-4 w-full text-left min-h-11"
                 onClick={handleImgClick}
                 aria-expanded={isImgOpen}
                 aria-haspopup="dialog"
                 aria-label={`View ${title} certificate`}
             >
-                <div className="relative flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 
+                <div className="relative flex-shrink-0 w-12 h-12 md:w-14 md:h-14 
                     rounded overflow-hidden bg-surface border border-line">
                     <img
                         src={img.src}
@@ -78,7 +78,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                 </div>
 
                 <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-4">
                         <span className="font-semibold text-ink leading-tight">
                             {title}
                         </span>
@@ -86,7 +86,7 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                             Certification
                         </span>
                     </div>
-                    <p className="text-sm text-muted mt-1">{date}</p>
+                    <p className="text-sm text-muted mt-4">{date}</p>
                 </div>
             </button>
 
@@ -104,13 +104,13 @@ const QualificationCard: React.FC<QualifcationProps> = ({title, date, img}) => {
                     <button
                         type="button"
                         ref={closeRef}
-                        className="absolute top-4 right-4 sm:top-8 sm:right-8 z-10 text-white 
+                        className="absolute top-4 right-4 md:top-8 md:right-8 z-10 text-white 
                         hover:text-accent-fg transition-colors p-2 rounded-full hover:bg-white/10
                         hit-target"
                         onClick={() => setIsImgOpen(false)}
                         aria-label="Close certificate preview"
                     >
-                        <IoClose className="text-3xl sm:text-4xl" aria-hidden="true" />
+                        <IoClose className="text-3xl md:text-4xl" aria-hidden="true" />
                     </button>
                     <div className="relative z-10 max-w-4xl max-h-[90vh] overflow-auto">
                         <img

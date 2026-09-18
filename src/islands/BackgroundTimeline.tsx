@@ -70,7 +70,7 @@ export default function BackgroundTimeline() {
 	};
 
 	return (
-		<div className="rounded-2xl border border-line bg-surface p-5 shadow-sm md:p-6">
+		<div className="rounded-2xl border border-line bg-surface p-4 shadow-sm md:p-6">
 			<p className="max-w-3xl text-sm leading-6 text-muted">
 				Day job in real-estate renovation delivery — the setting the software work was built in, not
 				the lead identity on this site.
@@ -91,7 +91,7 @@ export default function BackgroundTimeline() {
 							aria-controls={`${baseId}-panel`}
 							aria-selected={itemIndex === index}
 							tabIndex={itemIndex === index ? 0 : -1}
-							className={`min-h-11 min-w-0 border-b-[3px] px-3 py-3 text-left ${
+							className={`min-h-11 min-w-0 border-b-[3px] px-4 py-4 text-left ${
 								itemIndex === index
 									? 'border-b-accent bg-surface text-ink'
 									: 'border-line bg-surface text-muted hover:text-ink'
@@ -105,10 +105,10 @@ export default function BackgroundTimeline() {
 							>
 								{item.dates}
 							</p>
-							<p className="mt-1 font-semibold text-ink">
+							<p className="font-semibold text-ink">
 								{item.title}
 							</p>
-							<p className={`mt-0.5 text-sm ${itemIndex === index ? 'text-muted' : 'text-muted/80'}`}>
+							<p className={`text-sm ${itemIndex === index ? 'text-muted' : 'text-muted/80'}`}>
 								{item.employer}
 							</p>
 						</button>
@@ -118,12 +118,12 @@ export default function BackgroundTimeline() {
 					role="tabpanel"
 					id={`${baseId}-panel`}
 					aria-labelledby={`${baseId}-tab-${index}`}
-					className="mt-5"
+					className="mt-6"
 				>
 					<h3 className="text-lg font-semibold text-ink">
 						{role.title}
 					</h3>
-					<p className="mt-1 text-sm text-muted">
+					<p className="mt-4 text-sm text-muted">
 						{role.href ? (
 							<a
 								href={role.href}
@@ -138,9 +138,9 @@ export default function BackgroundTimeline() {
 						)}
 						{` · ${role.dates}`}
 					</p>
-					<ul className="mt-4 space-y-3">
+					<ul className="mt-4 space-y-4">
 						{role.bullets.map((item) => (
-							<li key={item} className="flex items-start gap-3 text-sm leading-6 text-muted">
+							<li key={item} className="flex items-start gap-4 text-sm leading-6 text-muted">
 								<span
 									className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
 									aria-hidden="true"

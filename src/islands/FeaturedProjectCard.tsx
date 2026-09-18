@@ -165,7 +165,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                                 disabled={duration === 0}
                                 onChange={handleSeek}
                                 onClick={(event) => event.stopPropagation()}
-                                className="pointer-events-auto mx-auto h-1 w-32 cursor-pointer accent-white disabled:cursor-not-allowed"
+                                className="pointer-events-auto mx-auto h-1 w-32 cursor-pointer accent-slate-700 disabled:cursor-not-allowed"
                             />
                         </div>
                     </div>

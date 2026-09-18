@@ -113,7 +113,7 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
             <div className="absolute inset-x-0 bottom-0 z-20 flex h-16 items-end justify-between gap-2 bg-gradient-to-t from-black/70 to-transparent px-2 pb-4">
                     <button
                         type="button"
-                        className="hit-target shrink-0 rounded-full bg-surface/90 text-ink hover:text-accent
+                        className="hit-target shrink-0 rounded-full bg-slate-700/80 text-white hover:text-accent
                             disabled:opacity-40 disabled:cursor-not-allowed"
                         onMouseDown={e => e.preventDefault()}
                         onClick={(e) => {
@@ -129,15 +129,15 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                     {
                         slides.map((_bar , idx) => (
                             idx === (isSlidingOut ? nextImgIdx : imgIdx) ?
-                                <div key={idx} className="h-1 w-4 rounded-lg bg-white"></div>
+                                <div key={idx} className="h-1 w-6 rounded-lg bg-slate-700"></div>
                                 :
-                                <div key={idx} className="h-1 w-4 rounded-lg bg-white/50"></div>
+                                <div key={idx} className="h-1 w-6 rounded-lg bg-slate-700/50"></div>
                         ))
                     }
                     </div>
                     <button
                         type="button"
-                        className="hit-target shrink-0 rounded-full bg-surface/90 text-ink hover:text-accent
+                        className="hit-target shrink-0 rounded-full bg-slate-700/80 text-white hover:text-accent
                             disabled:opacity-40 disabled:cursor-not-allowed"
                         onMouseDown={e => e.preventDefault()}
                         onClick={(e) => {

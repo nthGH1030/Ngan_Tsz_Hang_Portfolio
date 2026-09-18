@@ -20,7 +20,7 @@ const portraitBlur = await getImage({
         </div>
         <div class="mt-8 flex flex-col gap-8 md:flex-row">
             <div class="min-w-0 flex-1 max-w-3xl space-y-6 text-base text-muted">
-                <p class="text-muted">
+                <p class="text-base leading-8 text-muted">
                     I am a chartered building surveyor turned software engineer,
                     passionate about leveraging technology to solve real-world problems.
                     In my free time, I have developed and deployed solutions that address
@@ -35,15 +35,19 @@ const portraitBlur = await getImage({
                 <ul class="mt-4 grid grid-cols-2 gap-x-6 gap-y-4">
                     <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
+                        <span class="text-sm text-muted">Python</span>
+                    </li>
+                    <li class="flex items-center gap-4 text-accent">
+                        <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">Javascript</span>
                     </li>
                     <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
-                        <span class="text-sm text-muted">Typescript</span>
+                        <span class="text-sm text-muted">Node.js</span>
                     </li>
                     <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
-                        <span class="text-sm text-muted">Node.js</span>
+                        <span class="text-sm text-muted">Azure</span>
                     </li>
                     <li class="flex items-center gap-4 text-accent">
                         <IoIosArrowForward aria-hidden="true"/>
@@ -61,14 +65,8 @@ const portraitBlur = await getImage({
                         <IoIosArrowForward aria-hidden="true"/>
                         <span class="text-sm text-muted">HTML & CSS</span>
                     </li>
-                    <li class="flex items-center gap-4 text-accent">
-                        <IoIosArrowForward aria-hidden="true"/>
-                        <span class="text-sm text-muted">OpenAI</span>
-                    </li>
-                    <li class="flex items-center gap-4 text-accent">
-                        <IoIosArrowForward aria-hidden="true"/>
-                        <span class="text-sm text-muted">Azure</span>
-                    </li>
+
+
                 </ul>
                 </div>
             </div>
@@ -77,17 +75,17 @@ const portraitBlur = await getImage({
                               transition-transform duration-200 group-hover:translate-y-1 group-hover:translate-x-1"></div>
                 <BlurFrame
                     blurSrc={portraitBlur.src}
-                    class="relative w-[200px] md:w-[300px] aspect-square rounded-lg shadow-lg shadow-accent/25 transition duration-200 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-xl group-hover:shadow-accent/30"
+                    class="relative w-[160px] aspect-square rounded-lg shadow-lg shadow-accent/25 transition duration-200 group-hover:-translate-y-1 group-hover:-translate-x-1 group-hover:shadow-xl group-hover:shadow-accent/30"
                 >
                 <Picture
                     src={portrait}
                     alt="Portrait of Ngan Tsz Hang"
-                    widths={[200, 300, 600]}
-                    sizes="(min-width: 768px) 300px, 200px"
+                    widths={[160, 320]}
+                    sizes="160px"
                     formats={['webp']}
                     quality={80}
-                    width={300}
-                    height={300}
+                    width={160}
+                    height={160}
                     loading="lazy"
                     decoding="async"
                     pictureAttributes={{ class: 'relative block w-full' }}

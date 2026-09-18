@@ -1,0 +1,32 @@
+---
+import QualficationCard from '../components/experience/QualificationCard'
+import { optimizeImage } from '../utils/optimize-image'
+import awsBadge from '../assets/images/aws-badge.png'
+import cs50x from '../assets/images/cs50x.png'
+
+const awsImg = await optimizeImage(awsBadge, [112, 300, 600])
+const cs50Img = await optimizeImage(cs50x, [112, 400, 800, 1200, 1600])
+---
+
+<section id="certifications" data-main-section class="scroll-mt-24 py-16 md:py-24">
+	<div class="page-shell">
+		<div class="flex items-center">
+			<h2 class="whitespace-nowrap font-bold text-xl md:text-2xl text-ink">4. Certifications</h2>
+			<div class="w-full bg-line h-px ml-4"></div>
+		</div>
+		<div class="mt-8 max-w-3xl border-l-2 border-line space-y-4">
+			<QualficationCard
+				client:visible
+				title="AWS Certified Solutions Architect - Associate"
+				img={awsImg}
+				date="Nov 2024"
+			/>
+			<QualficationCard
+				client:visible
+				title="CS50"
+				img={cs50Img}
+				date="Oct 2023"
+			/>
+		</div>
+	</div>
+</section>

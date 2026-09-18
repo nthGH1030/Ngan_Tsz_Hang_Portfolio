@@ -147,14 +147,14 @@ const MobileMenu: React.FC = () => {
                                 className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
                                 onClick = {(e) => handleNavClick(e, "#self-initiatives")}>
                                 Self-initiatives</a>
-                            <a href = "#other-projects"
-                                className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
-                                onClick = {(e) => handleNavClick(e, "#other-projects")}>
-                                Projects</a>
                             <a href = "#background"
                                 className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
                                 onClick = {(e) => handleNavClick(e, "#background")}>
                                 Background</a>
+                            <a href = "#certifications"
+                                className = "nav-link hit-target px-3 transition-colors duration-200 hover:text-accent"
+                                onClick = {(e) => handleNavClick(e, "#certifications")}>
+                                Certifications</a>
                             <a href = "#contact"
                                 className ="nav-link btn-secondary"
                                 onClick = {(e) => handleNavClick(e, "#contact")}>

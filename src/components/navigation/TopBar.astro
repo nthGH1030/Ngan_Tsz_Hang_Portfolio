@@ -1,6 +1,8 @@
 ---
 import MobileMenu from "../../islands/MobileMenu";
 import ThemeToggle from "./ThemeToggle.astro";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 const homeHref = import.meta.env.BASE_URL.endsWith('/')
     ? import.meta.env.BASE_URL
     : `${import.meta.env.BASE_URL}/`;
@@ -57,6 +59,24 @@ const homeHref = import.meta.env.BASE_URL.endsWith('/')
                 </div>
             </a>
             <div class="flex items-center gap-1">
+                <a
+                    href="https://github.com/nthGH1030"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub profile"
+                    class="hit-target text-muted hover:text-accent transition-colors"
+                >
+                    <FaGithub className="h-5 w-5" aria-hidden="true" />
+                </a>
+                <a
+                    href="https://www.linkedin.com/in/kelvin-ngan-3b098a1a3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn profile"
+                    class="hit-target text-muted hover:text-accent transition-colors"
+                >
+                    <FaLinkedin className="h-5 w-5" aria-hidden="true" />
+                </a>
                 <ThemeToggle />
                 <MobileMenu client:load/>
             </div>

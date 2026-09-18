@@ -9,7 +9,7 @@ const BottomBar: React.FC = () => {
     return (
         <aside aria-label="Social links">
             <div className = "hidden md:block">
-                <div className = "pointer-events-auto fixed bottom-0 left-4 z-10">
+                <div className = "pointer-events-auto fixed bottom-0 left-8 z-10">
                     <div className ="text-2xl text-muted
                         flex flex-col items-center justify-center gap-2 mb-4">
                         <ExternalLink

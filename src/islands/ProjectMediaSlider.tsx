@@ -73,7 +73,7 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
     
     return (
         <div
-            className="relative z-10 w-[225px] max-w-full shrink-0 aspect-[1/2]"
+            className="relative z-10 w-[225px] max-w-full shrink-0 aspect-[1/2] overflow-hidden rounded-lg"
             role="region"
             aria-roledescription="carousel"
             aria-label="Lunch Roulette screenshots"
@@ -83,20 +83,20 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
             <p className="sr-only" aria-live="polite">
                 {`Slide ${ (isSlidingOut ? nextImgIdx : imgIdx) + 1 } of ${slides.length}: ${currentSlide.alt}`}
             </p>
-            <div className="absolute inset-0 overflow-hidden rounded-lg">
+            <div className="absolute inset-0">
                     {
                         isSlidingOut ? 
                         <>
                             {renderSlide(
                                 slides[imgIdx],
-                                `absolute top-0 left-0 w-full h-full rounded-lg shadow-lg z-10 object-contain ${
+                                `absolute top-0 left-0 w-full h-full rounded-lg object-contain ${
                                     direction === 'left' ? 'animate-slide-out-right' : 'animate-slide-out-left'
                                 }`,
                                 handleSlide,
                             )}
                             {renderSlide(
                                 slides[nextImgIdx],
-                                `absolute top-0 left-0 w-full h-full rounded-lg shadow-lg z-10 object-contain ${
+                                `absolute top-0 left-0 w-full h-full rounded-lg object-contain ${
                                     direction === 'left' ? 'animate-slide-in-left' : 'animate-slide-in-right'
                                 }`,
                                 () => setIsSlidingOut(false),
@@ -105,17 +105,15 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                         : 
                             renderSlide(
                                 slides[imgIdx],
-                                `absolute top-0 left-0 w-full h-full rounded-lg shadow-lg z-10 object-contain`,
+                                `absolute top-0 left-0 w-full h-full rounded-lg object-contain`,
                                 handleSlide,
                             )
                     }
             </div>
+            <div className="absolute inset-x-0 bottom-0 z-20 flex h-16 items-end justify-between gap-2 bg-gradient-to-t from-black/70 to-transparent px-2 pb-4">
                     <button
                         type="button"
-                        className ="absolute top-1/2 left-0 z-20 -translate-y-1/2
-                            hit-target
-                            backdrop-blur bg-surface/90 text-ink rounded-full
-                            cursor-pointer hover:text-accent
+                        className="hit-target shrink-0 rounded-full bg-surface/90 text-ink hover:text-accent
                             disabled:opacity-40 disabled:cursor-not-allowed"
                         onMouseDown={e => e.preventDefault()}
                         onClick={(e) => {
@@ -127,12 +125,19 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                     >
                         <IoIosArrowDropleft className="text-3xl" aria-hidden="true" />
                     </button>
+                    <div className="flex min-w-0 flex-1 items-center justify-center gap-1" aria-hidden="true">
+                    {
+                        slides.map((_bar , idx) => (
+                            idx === (isSlidingOut ? nextImgIdx : imgIdx) ?
+                                <div key={idx} className="h-1 w-4 rounded-lg bg-white"></div>
+                                :
+                                <div key={idx} className="h-1 w-4 rounded-lg bg-white/50"></div>
+                        ))
+                    }
+                    </div>
                     <button
                         type="button"
-                        className ="absolute top-1/2 right-0 z-20 -translate-y-1/2
-                            hit-target
-                            backdrop-blur bg-surface/90 text-ink rounded-full
-                            cursor-pointer hover:text-accent
+                        className="hit-target shrink-0 rounded-full bg-surface/90 text-ink hover:text-accent
                             disabled:opacity-40 disabled:cursor-not-allowed"
                         onMouseDown={e => e.preventDefault()}
                         onClick={(e) => {
@@ -144,16 +149,7 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                     >
                         <IoIosArrowDropright className="text-3xl" aria-hidden="true" />
                     </button>
-                    <div className = "absolute bottom-0 z-30 w-full flex items-center justify-center gap-1 pb-4" aria-hidden="true">
-                    {
-                        slides.map((_bar , idx) => (
-                            idx === (isSlidingOut ? nextImgIdx : imgIdx) ?
-                                <div key={idx} className ="w-12 bg-white h-1 rounded-lg"></div>
-                                :
-                                <div key={idx} className ="w-12 bg-white/50 h-1 rounded-lg  "></div>
-                        ))
-                    }
-                    </div>
+            </div>
         </div>
     )
 }

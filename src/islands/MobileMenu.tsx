@@ -105,7 +105,7 @@ const MobileMenu: React.FC = () => {
             </button>
             {isVisible && createPortal(
                 <div ref={panelRef}>
-                    <div className="fixed top-6 right-4 sm:right-6 w-11 h-11 z-30 flex items-center justify-center">
+                    <div className="fixed top-6 right-6 sm:right-8 w-11 h-11 z-30 flex items-center justify-center">
                         <button
                             type="button"
                             ref={closeRef}

@@ -2,7 +2,7 @@ import React from 'react';
 import Tag from '../components/project/Tag';
 import ProjectMediaSlider, { type MediaSlide } from './ProjectMediaSlider';
 import { RxOpenInNewWindow } from "react-icons/rx";
-import { FaRegPlayCircle , FaRegPauseCircle } from "react-icons/fa";
+import { FaRegPlayCircle } from "react-icons/fa";
 
 export interface CardProps{
     title : string;
@@ -40,29 +40,58 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
 
     const videoRef = React.useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = React.useState(false);
-    const [showPlayBtn , setShowPlayBtn] = React.useState(true);
-    const [animatePlayBtn , setAnimatePlayBtn] = React.useState(false);
-    const [showPauseBtn , setShowPauseBtn] = React.useState(false);
-    const [animatePauseBtn , setAnimatePauseBtn] = React.useState(false);
+    const [currentTime, setCurrentTime] = React.useState(0);
+    const [duration, setDuration] = React.useState(0);
+
+    React.useEffect(() => {
+        const video = videoRef.current;
+        if (!video) {
+            return;
+        }
+
+        const syncTime = () => {
+            const nextDuration = Number.isFinite(video.duration) ? video.duration : 0;
+            setDuration(nextDuration);
+            setCurrentTime(video.currentTime);
+        };
+
+        const onPlay = () => setIsPlaying(true);
+        const onPause = () => setIsPlaying(false);
+
+        video.addEventListener('timeupdate', syncTime);
+        video.addEventListener('loadedmetadata', syncTime);
+        video.addEventListener('play', onPlay);
+        video.addEventListener('pause', onPause);
+        syncTime();
+
+        return () => {
+            video.removeEventListener('timeupdate', syncTime);
+            video.removeEventListener('loadedmetadata', syncTime);
+            video.removeEventListener('play', onPlay);
+            video.removeEventListener('pause', onPause);
+        };
+    }, []);
 
     const handlePlay = () => {
-        if(videoRef.current){
-            if(isPlaying){
-                videoRef.current.pause()
-                setAnimatePauseBtn(false)
-                setShowPauseBtn(true)
-            } else {
-                videoRef.current.play()
-                setAnimatePlayBtn(true)
-                setAnimatePauseBtn(true)
-                setTimeout(() => {
-                    setShowPlayBtn(false)
-                    setShowPauseBtn(false)
-            }, 400)
-            }
-            setIsPlaying(prev => !prev)
+        const video = videoRef.current;
+        if (!video) {
+            return;
         }
-    }
+        if (video.paused) {
+            void video.play();
+        } else {
+            video.pause();
+        }
+    };
+
+    const handleSeek = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const video = videoRef.current;
+        if (!video) {
+            return;
+        }
+        video.currentTime = Number(event.target.value);
+        setCurrentTime(video.currentTime);
+    };
 
     function getSelectedTag(tagNames: string[]) {
         const selectedTags = allTags.map(tag => {
@@ -98,9 +127,8 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
     return (
         <div className="w-full">
             <div className="rounded-lg bg-well p-4">
-                <div className="flex flex-col items-center gap-6 md:flex-row md:items-stretch md:justify-center">
-                    <div className="flex w-full max-w-[225px] justify-center md:shrink-0">
-                        <div className="relative w-full aspect-[1/2]">
+                <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:justify-center">
+                    <div className="relative w-[225px] max-w-full shrink-0 aspect-[1/2] overflow-hidden rounded-lg">
                         <video
                             src={videoSrc}
                             loop
@@ -116,19 +144,29 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                             className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-transparent cursor-pointer"
                             aria-label={isPlaying ? 'Pause Lunch Roulette demo video' : 'Play Lunch Roulette demo video'}
                         >
-                            {showPlayBtn && (
+                            {!isPlaying && (
                                 <FaRegPlayCircle
                                     aria-hidden="true"
-                                    className={`text-4xl text-white ${animatePlayBtn ? 'animate-play-out' : ''}`}
-                                />
-                            )}
-                            {showPauseBtn && (
-                                <FaRegPauseCircle
-                                    aria-hidden="true"
-                                    className={`text-4xl text-white ${animatePauseBtn ? 'animate-play-out' : ''}`}
+                                    className="text-4xl text-white drop-shadow-lg"
                                 />
                             )}
                         </button>
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex h-16 items-end bg-gradient-to-t from-black/70 to-transparent px-4 pb-4">
+                            <label className="sr-only" htmlFor="lunch-demo-progress">
+                                Lunch Roulette demo playback
+                            </label>
+                            <input
+                                id="lunch-demo-progress"
+                                type="range"
+                                min={0}
+                                max={duration || 0}
+                                step={0.1}
+                                value={currentTime}
+                                disabled={duration === 0}
+                                onChange={handleSeek}
+                                onClick={(event) => event.stopPropagation()}
+                                className="pointer-events-auto mx-auto h-1 w-32 cursor-pointer accent-white disabled:cursor-not-allowed"
+                            />
                         </div>
                     </div>
                     <div className="flex w-full max-w-[225px] justify-center md:w-[225px] md:shrink-0">

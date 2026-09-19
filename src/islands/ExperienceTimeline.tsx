@@ -2,37 +2,42 @@ import { useId, useState, type KeyboardEvent } from 'react';
 
 const roles = [
 	{
-		dates: '2018 – Present',
+		tabDates: '2019 – Present',
+		dates: 'Sep 2019 – Present',
+		practice: 'Project Management',
 		title: 'Assistant Project Manager',
 		employer: 'Gaw Capital',
 		employerFull: 'Gaw Capital Asset Management Limited',
 		href: 'https://www.gawcapital.com/',
 		bullets: [
-			'Managed multiple properties as a project manager, coordinating leasing and property-management teams to deliver construction projects on schedule and within budget while maintaining compliance.',
-			'Led technical planning and vendor coordination for project execution, balancing operational constraints with delivery quality and cost control.',
-			'Acted as a bridge between operations and management to smoothen property operation.',
+			'Served as core project manager on the asset-enhancement programme, and as a technical contributor on the internal digitalization team.',
+			'Led contractors and consultants through enhancement projects across 29+ regional shopping malls, handling contracts of up to HK$100 million.',
+			'Worked with executive leadership to define strategic property-lifecycle budgets and asset-management policy for the portfolio.',
+			'Enforced statutory compliance and industry practice across those assets so management standards stayed consistent at scale.',
 		],
 	},
 	{
-		dates: '2017 – 2018',
+		tabDates: '2018 – 2019',
+		dates: 'Oct 2018 – Sep 2019',
+		practice: 'Consultancy',
 		title: 'Assistant Building Surveyor',
 		employer: 'United Consultancy',
 		employerFull: 'United Consultancy Limited',
 		bullets: [
-			'Managed large-scale Asset Enhancement Initiatives (AEI) for major institutional clients, including Link REIT, overseeing full-lifecycle renovation projects from technical planning to final delivery.',
-			'Led technical coordination and stakeholder liaison, balancing client requirements with contractor capabilities.',
-			'Acted as a bridge between clients, contractors, and statutory bodies on regulatory requirements.',
+			'Major team contributor on addition-and-alteration consultancy for high-profile real estate investment trusts (REITs).',
+			'Designed statutory solutions that enforced fire-safety protocol and kept premises compliant under the Fire Safety (Commercial Premises) Ordinance (FS(CP)O).',
 		],
 	},
 	{
-		dates: '2015 – 2017',
+		tabDates: '2015 – 2018',
+		dates: 'Sep 2015 – Jun 2018',
+		practice: 'Consultancy',
 		title: 'Assistant Building Surveyor',
 		employer: 'ISS',
-		employerFull: 'ISS Building Consultancy',
+		employerFull: 'ISS Facility Services',
 		bullets: [
-			'Managed government term contracts for large-scale building operations.',
-			'Produced and managed detailed technical drawings in AutoCAD for client review.',
-			'Led Mandatory Building Inspection Scheme (MBIS) projects and building condition surveys for private owners.',
+			'Major team contributor on property consultancy and technical compliance across public and private portfolios, including work to discharge statutory orders.',
+			'Investigated defects and specified maintenance for private owners, specializing in waterproofing, structural repair, and the Mandatory Building Inspection Scheme (MBIS).',
 		],
 	},
 ];
@@ -71,11 +76,7 @@ export default function ExperienceTimeline() {
 
 	return (
 		<div className="rounded-2xl border border-line bg-surface p-4 shadow-sm md:p-6">
-			<p className="max-w-3xl text-sm leading-6 text-muted">
-				Day job in real-estate renovation delivery — the setting the software work was built in, not
-				the lead identity on this site.
-			</p>
-			<div className="mt-6" onKeyDown={onKeyDown}>
+			<div onKeyDown={onKeyDown}>
 				<div
 					role="tablist"
 					aria-label="Experience timeline"
@@ -103,7 +104,7 @@ export default function ExperienceTimeline() {
 									itemIndex === index ? 'text-accent' : 'text-muted'
 								}`}
 							>
-								{item.dates}
+								{item.tabDates}
 							</p>
 							<p className="font-semibold text-ink">
 								{item.title}
@@ -124,6 +125,8 @@ export default function ExperienceTimeline() {
 						{role.title}
 					</h3>
 					<p className="mt-4 text-sm text-muted">
+						{role.practice}
+						{' · '}
 						{role.href ? (
 							<a
 								href={role.href}
@@ -140,7 +143,7 @@ export default function ExperienceTimeline() {
 					</p>
 					<ul className="mt-4 space-y-4">
 						{role.bullets.map((item) => (
-							<li key={item} className="flex items-start gap-4 text-sm leading-6 text-muted">
+							<li key={item} className="flex items-start gap-4 text-base leading-7 text-muted">
 								<span
 									className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
 									aria-hidden="true"

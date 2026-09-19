@@ -31,48 +31,7 @@ import Reference from "../../components/contact/Reference.astro"
 </div>
 
 <script>
-    const initializeWindowScroll = () => {
-        const topBar = document.getElementById('top-bar');
-
-        if (!(topBar instanceof HTMLElement)) {
-            return;
-        }
-
-        let lastScroll = window.scrollY;
-        let isBarHidden = false;
-
-        const hideBar = () => {
-            if (isBarHidden) {
-                return;
-            }
-
-            topBar.classList.remove('topbar-slide-in');
-            topBar.classList.add('topbar-slide-out');
-            isBarHidden = true;
-        };
-
-        const showBar = () => {
-            if (!isBarHidden) {
-                return;
-            }
-
-            topBar.classList.remove('topbar-slide-out');
-            topBar.classList.add('topbar-slide-in');
-            isBarHidden = false;
-        };
-
-        window.addEventListener('scroll', () => {
-            const next = window.scrollY;
-
-            if (next > lastScroll && next > 8) {
-                hideBar();
-            } else if (next < lastScroll) {
-                showBar();
-            }
-
-            lastScroll = next;
-        }, { passive: true });
-
+    const initializeSkipLink = () => {
         const skipLink = document.querySelector('.skip-link');
         skipLink?.addEventListener('click', (event) => {
             const home = document.getElementById('home');
@@ -87,8 +46,8 @@ import Reference from "../../components/contact/Reference.astro"
     };
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeWindowScroll, { once: true });
+        document.addEventListener('DOMContentLoaded', initializeSkipLink, { once: true });
     } else {
-        initializeWindowScroll();
+        initializeSkipLink();
     }
 </script>

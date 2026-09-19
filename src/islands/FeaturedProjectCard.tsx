@@ -147,7 +147,7 @@ const FeaturedProjectCard: React.FC<CardProps> = ({title, content, tagNames, hre
                             {!isPlaying && (
                                 <FaRegPlayCircle
                                     aria-hidden="true"
-                                    className="text-4xl text-white drop-shadow-lg"
+                                    className="text-4xl text-slate-600 drop-shadow-lg"
                                 />
                             )}
                         </button>

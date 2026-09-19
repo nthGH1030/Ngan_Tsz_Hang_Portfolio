@@ -1,85 +1,14 @@
 ---
-import InitiativeCase from '../components/project/InitiativeCase.astro'
-import FeaturedProjectCard from '../islands/FeaturedProjectCard'
-import { optimizeImage } from '../utils/optimize-image'
-import demoAddress from '../assets/images/demo-address.png'
-import demoCuisine from '../assets/images/demo-cuisine.png'
-import demoLocation from '../assets/images/demo-location.png'
-import demoRestaurants from '../assets/images/demo-restaurants.png'
-
-const demoWidths = [225, 450, 675, 900]
-const lunchSlides = [
-	{ ...(await optimizeImage(demoAddress, demoWidths)), alt: 'Lunch Roulette address search screen' },
-	{ ...(await optimizeImage(demoCuisine, demoWidths)), alt: 'Lunch Roulette cuisine filter screen' },
-	{ ...(await optimizeImage(demoLocation, demoWidths)), alt: 'Lunch Roulette location map screen' },
-	{ ...(await optimizeImage(demoRestaurants, demoWidths)), alt: 'Lunch Roulette restaurant results screen' },
-]
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-	? import.meta.env.BASE_URL
-	: `${import.meta.env.BASE_URL}/`
-const videoSrc = `${baseUrl}lunch_demo.mp4`
+import ExperienceTimeline from '../islands/ExperienceTimeline'
 ---
-<section id="self-initiatives" data-main-section class="scroll-mt-24 py-16 md:py-24">
+<section id="experience" data-main-section class="scroll-mt-24 py-16 md:py-24">
 	<div class="page-shell">
 		<div class="flex items-center">
-			<h2 class="whitespace-nowrap font-bold text-xl md:text-2xl text-ink">2. Self-initiatives</h2>
+			<h2 class="whitespace-nowrap font-bold text-xl md:text-2xl text-ink">3. Experience</h2>
 			<div class="w-full bg-line h-px ml-4"></div>
 		</div>
-
-		<div class="mt-8 flex flex-col gap-6">
-			<InitiativeCase
-				title="Serverless OCR workflow"
-				tags={[
-					'Azure Functions',
-					'OCR',
-					'PostgreSQL',
-					'SQLAlchemy',
-					'Blob Storage',
-					'SharePoint',
-					'Azure Key Vault',
-					'GitHub Actions',
-				]}
-				achievement="Replaces a dedicated data-entry headcount by extracting fields instead of re-keying."
-			>
-				<p slot="description">
-					Documents uploaded to SharePoint are synchronized to Blob Storage, processed with OCR on Azure Functions, and persisted to PostgreSQL via SQLAlchemy. Secrets are managed in Azure Key Vault, and GitHub Actions automates UAT deployment.
-				</p>
-			</InitiativeCase>
-
-			<InitiativeCase
-				title="Excel form automation"
-				tags={['JavaScript', 'Electron', 'React', 'HTML', 'CSS']}
-				achievement="Removes repetitive re-keying of payment-request forms from a master table."
-			>
-				<p slot="description">
-					Desktop workflow that reads a master table and generates payment-request forms.
-				</p>
-			</InitiativeCase>
-
-			<InitiativeCase
-				id="featured-work"
-				title="Lunch Roulette"
-				tags={['JavaScript', 'Next.js', 'React', 'Tailwind', 'Vercel', 'Google Map API']}
-			>
-				<p slot="description">
-					A web app that recommends restaurants by location and cuisine. Spin the roulette to decide what to get for lunch.
-				</p>
-				<div slot="demo">
-					<p class="mb-4 text-[11px] font-bold uppercase tracking-[0.12em] text-accent">Live demo</p>
-					<FeaturedProjectCard
-						client:visible
-						demoOnly
-						kicker="Live demo"
-						title="Lunch Roulette"
-						content={`A web app that recommends restaurants, categories by location, cuisines. Spin the roulette to decide what to get for lunch!`}
-						tagNames={["JavaScript", "Next.js", "React", "Tailwind", "Vercel", "Google Map API"]}
-						href={"https://lunch-roulette-phi.vercel.app/"}
-						gitHref={"https://github.com/nthGH1030"}
-						videoSrc={videoSrc}
-						slides={lunchSlides}
-					/>
-				</div>
-			</InitiativeCase>
+		<div class="mt-8">
+			<ExperienceTimeline client:visible />
 		</div>
 	</div>
 </section>

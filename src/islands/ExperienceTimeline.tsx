@@ -37,7 +37,7 @@ const roles = [
 	},
 ];
 
-export default function BackgroundTimeline() {
+export default function ExperienceTimeline() {
 	const [index, setIndex] = useState(0);
 	const baseId = useId();
 	const role = roles[index];
@@ -78,7 +78,7 @@ export default function BackgroundTimeline() {
 			<div className="mt-6" onKeyDown={onKeyDown}>
 				<div
 					role="tablist"
-					aria-label="Building surveying timeline"
+					aria-label="Experience timeline"
 					aria-orientation="horizontal"
 					className="grid grid-cols-3 divide-x divide-line overflow-hidden rounded-xl border border-b-0 border-line"
 				>

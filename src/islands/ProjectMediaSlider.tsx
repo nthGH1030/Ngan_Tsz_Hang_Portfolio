@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import { IoIosArrowDropleft } from "react-icons/io";
 import { IoIosArrowDropright } from "react-icons/io";
 import type { OptimizedImg } from '../types/image';
@@ -15,34 +15,42 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
     const [direction , setDirection] = useState('right')
     const [isSlidingOut, setIsSlidingOut] = useState(false);
 
-    const canGoLeft = imgIdx > 0;
-    const canGoRight = imgIdx < slides.length - 1;
+    const canGoLeft = !isSlidingOut && imgIdx > 0;
+    const canGoRight = !isSlidingOut && imgIdx < slides.length - 1;
     const currentSlide = isSlidingOut ? slides[nextImgIdx] : slides[imgIdx];
 
+    useEffect(() => {
+        [imgIdx - 1, imgIdx + 1].forEach((index) => {
+            const slide = slides[index];
+            if (!slide) {
+                return;
+            }
+            const preload = new Image();
+            preload.src = slide.src;
+        });
+    }, [imgIdx, slides]);
+
     const onClickLeft = () => {
-        if(imgIdx !== 0) {
-            setDirection('left');
-            setIsSlidingOut(true);
-            setNextImgIdx(imgIdx - 1)
+        if (isSlidingOut || imgIdx === 0) {
+            return;
         }
+        setDirection('left');
+        setNextImgIdx(imgIdx - 1);
+        setIsSlidingOut(true);
     }
 
     const onClickRight = () => {
-        if(imgIdx < slides.length - 1 ){
-            setDirection('right');
-            setIsSlidingOut(true);
-            setNextImgIdx(imgIdx + 1)
+        if (isSlidingOut || imgIdx >= slides.length - 1) {
+            return;
         }
+        setDirection('right');
+        setNextImgIdx(imgIdx + 1);
+        setIsSlidingOut(true);
     }
 
-    const handleSlide = () => {
-        if (direction === 'right') {
-            setImgIdx((prev) => prev + 1);
-            setIsSlidingOut(false);
-        } else if ( direction === 'left'){
-            setImgIdx((prev) => prev - 1);
-            setIsSlidingOut(false);
-        }
+    const onSlideFinished = () => {
+        setImgIdx(nextImgIdx);
+        setIsSlidingOut(false);
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -55,8 +63,14 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
         }
     };
 
-    const renderSlide = (slide: MediaSlide, className: string, onAnimationEnd?: () => void) => (
+    const renderSlide = (
+        slide: MediaSlide,
+        className: string,
+        key: string,
+        onAnimationEnd?: () => void,
+    ) => (
         <img
+            key={key}
             src={slide.src}
             srcSet={slide.srcSet}
             sizes="225px"
@@ -92,21 +106,22 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                                 `absolute top-0 left-0 w-full h-full rounded-lg object-contain ${
                                     direction === 'left' ? 'animate-slide-out-right' : 'animate-slide-out-left'
                                 }`,
-                                handleSlide,
+                                `out-${imgIdx}`,
+                                onSlideFinished,
                             )}
                             {renderSlide(
                                 slides[nextImgIdx],
                                 `absolute top-0 left-0 w-full h-full rounded-lg object-contain ${
                                     direction === 'left' ? 'animate-slide-in-left' : 'animate-slide-in-right'
                                 }`,
-                                () => setIsSlidingOut(false),
+                                `slide-${nextImgIdx}`,
                             )}
                         </>
                         : 
                             renderSlide(
                                 slides[imgIdx],
                                 `absolute top-0 left-0 w-full h-full rounded-lg object-contain`,
-                                handleSlide,
+                                `slide-${imgIdx}`,
                             )
                     }
             </div>

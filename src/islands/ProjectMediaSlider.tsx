@@ -48,7 +48,13 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
         setIsSlidingOut(true);
     }
 
-    const onSlideFinished = () => {
+    const onIncomingFinished = (event: React.AnimationEvent<HTMLImageElement>) => {
+        if (
+            event.animationName !== 'slide-in-left' &&
+            event.animationName !== 'slide-in-right'
+        ) {
+            return;
+        }
         setImgIdx(nextImgIdx);
         setIsSlidingOut(false);
     };
@@ -67,7 +73,7 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
         slide: MediaSlide,
         className: string,
         key: string,
-        onAnimationEnd?: () => void,
+        onAnimationEnd?: (event: React.AnimationEvent<HTMLImageElement>) => void,
     ) => (
         <img
             key={key}
@@ -106,22 +112,22 @@ const ProjectMediaSlider: React.FC<ProjectMediaSliderProps> = ({ slides }) => {
                                 `absolute top-0 left-0 w-full h-full rounded-lg object-contain ${
                                     direction === 'left' ? 'animate-slide-out-right' : 'animate-slide-out-left'
                                 }`,
-                                `out-${imgIdx}`,
-                                onSlideFinished,
+                                String(imgIdx),
                             )}
                             {renderSlide(
                                 slides[nextImgIdx],
                                 `absolute top-0 left-0 w-full h-full rounded-lg object-contain ${
                                     direction === 'left' ? 'animate-slide-in-left' : 'animate-slide-in-right'
                                 }`,
-                                `slide-${nextImgIdx}`,
+                                String(nextImgIdx),
+                                onIncomingFinished,
                             )}
                         </>
                         : 
                             renderSlide(
                                 slides[imgIdx],
                                 `absolute top-0 left-0 w-full h-full rounded-lg object-contain`,
-                                `slide-${imgIdx}`,
+                                String(imgIdx),
                             )
                     }
             </div>

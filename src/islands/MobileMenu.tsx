@@ -1,17 +1,45 @@
-import React, { useEffect, useId, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import {createPortal} from 'react-dom'
 
+type TriggerBox = {
+    top: number;
+    left: number;
+    width: number;
+    height: number;
+};
+
+const desktopQuery = '(min-width: 64rem)';
+
 const MobileMenu: React.FC = () => {
     const [isOpen , setisOpen] = useState(false)
     const [isVisible, setIsVisible] = useState(false);
+    const [triggerBox, setTriggerBox] = useState<TriggerBox | null>(null);
     const triggerRef = useRef<HTMLButtonElement>(null);
     const closeRef = useRef<HTMLButtonElement>(null);
     const panelRef = useRef<HTMLElement>(null);
     const menuId = useId();
 
+    const syncTriggerBox = useCallback(() => {
+        const el = triggerRef.current;
+        if (!el) {
+            return;
+        }
+        const rect = el.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) {
+            return;
+        }
+        setTriggerBox({
+            top: rect.top,
+            left: rect.left,
+            width: rect.width,
+            height: rect.height,
+        });
+    }, []);
+
     const handleOpen = () => {
+        syncTriggerBox();
         setIsVisible(true);
         setisOpen(true)
     }
@@ -31,6 +59,37 @@ const MobileMenu: React.FC = () => {
             }
         },150)
     }
+
+    useEffect(() => {
+        const media = window.matchMedia(desktopQuery);
+        const onChange = () => {
+            if (media.matches) {
+                setisOpen(false);
+                setIsVisible(false);
+            }
+        };
+
+        onChange();
+        media.addEventListener('change', onChange);
+        return () => media.removeEventListener('change', onChange);
+    }, []);
+
+    useEffect(() => {
+        if (!isVisible) {
+            return;
+        }
+
+        syncTriggerBox();
+        window.addEventListener('resize', syncTriggerBox);
+        window.visualViewport?.addEventListener('resize', syncTriggerBox);
+        window.visualViewport?.addEventListener('scroll', syncTriggerBox);
+
+        return () => {
+            window.removeEventListener('resize', syncTriggerBox);
+            window.visualViewport?.removeEventListener('resize', syncTriggerBox);
+            window.visualViewport?.removeEventListener('scroll', syncTriggerBox);
+        };
+    }, [isVisible, syncTriggerBox]);
 
     useEffect(() => {
         if (!isOpen) {
@@ -74,7 +133,10 @@ const MobileMenu: React.FC = () => {
         document.addEventListener('keydown', onKeyDown);
         return () => {
             document.removeEventListener('keydown', onKeyDown);
-            triggerRef.current?.focus();
+            const trigger = triggerRef.current;
+            if (trigger && trigger.getClientRects().length > 0) {
+                trigger.focus();
+            }
         };
     }, [isOpen]);
 
@@ -105,7 +167,10 @@ const MobileMenu: React.FC = () => {
             </button>
             {isVisible && createPortal(
                 <div ref={panelRef}>
-                    <div className="fixed top-6 right-6 sm:right-8 w-11 h-11 z-30 flex items-center justify-center">
+                    <div
+                        className="fixed z-30 flex items-center justify-center"
+                        style={triggerBox ?? undefined}
+                    >
                         <button
                             type="button"
                             ref={closeRef}
